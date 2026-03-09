@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZHUN | Behind The Scenes</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="bts.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+
+<body>
+    <header class="bts-header">
+        <div class="bts-container">
+            <div class="bts-tag gs-reveal">CLASSIFIED DOSSIER</div>
+            <h1 class="bts-title gs-reveal">Building<br>The Core</h1>
+            <p class="bts-subtitle gs-reveal">Un recorrido detallado por el proceso de diseño y desarrollo de PIZHUN
+                como trabajo práctico de digitalización. Construido explorando la intersección del diseño web y la
+                inteligencia artificial.</p>
+        </div>
+    </header>
+
+    <main class="bts-container">
+        <!-- Section: The Vision -->
+        <section class="bts-section">
+            <div class="section-grid">
+                <div class="text-content gs-reveal">
+                    <h2>01. La Visión Inicial</h2>
+                    <p>Este trabajo de digitalización nació con el objetivo de deconstruir la estética tradicional del
+                        "streetwear" y crear el diseño conceptual de una supuesta marca ficticia (PIZHUN) con narrativa
+                        tecnológica y vanguardista.</p>
+                    <p>En lugar de depender de herramientas tradicionales de vectorización o sesiones de fotos
+                        convencionales, el proyecto explora el uso del motor de <strong>Grok Imagine</strong> para
+                        visualizar exactamente qué materiales, luces y texturas conformarían esta marca.</p>
+                    <div class="highlight-box">
+                        <strong>PROMPT ENGINEERING:</strong>
+                        <code>/imagine prompt: A high-end, cyberpunk-inspired streetwear lookbook...</code>
+                    </div>
+                </div>
+                <div class="media-showcase gs-reveal" style="box-shadow: none;">
+
+                    <!-- Grok Chat Mockup -->
+                    <div class="grok-chat">
+                        <div class="grok-header">
+                            <span class="sparkle-icon">✦</span> Grok Imagine
+                        </div>
+                        <div class="grok-user-msg">
+                            A high-end, cyberpunk-inspired streetwear lookbook. Dark studio lighting, hyper-realistic,
+                            8k, glassmorphism elements, minimal typography, futuristic fabrics.
+                        </div>
+                        <div class="grok-ai-msg media-showcase">
+                            <img src="https://i.ibb.co/v6VxsHbP/image.png" alt="Grok Generated Moodboard" loading="lazy"
+                                style="border-radius: 8px;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Video Generation -->
+        <section class="bts-section">
+            <div class="section-grid reverse">
+                <div class="text-content gs-reveal">
+                    <h2>02. Cinematografía Sintética</h2>
+                    <p>El dinamismo de la página principal recae fuertemente en su atmósfera audiovisual. Para lograr
+                        esos vídeos con acabado de cámara en mano y texturas fotorrealistas de lluvia y asfalto,
+                        llevamos los concepts de Grok a herramientas generativas de vídeo.</p>
+                    <p>Las indicaciones técnicas incluían peticiones específicas de lentes (p.ej. "shot on 35mm lens") y
+                        movimientos de cámara ("slow pan", "handheld macro shot") para dar la sensación física al robot
+                        y a las chaquetas "Tech-Core".</p>
+                </div>
+                <div class="media-showcase gs-reveal">
+                    <video autoplay loop muted playsinline>
+                        <source src="video/showing robot.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="gallery-grid">
+                <div class="gallery-item gs-reveal">
+                    <video autoplay loop muted playsinline loading="lazy">
+                        <source src="video/toma ojo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery-item gs-reveal">
+                    <video autoplay loop muted playsinline loading="lazy">
+                        <source src="video/rain walk.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery-item gs-reveal">
+                    <video autoplay loop muted playsinline loading="lazy">
+                        <source src="video/street take.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Assembly & Code -->
+        <section class="bts-section">
+            <div class="section-grid">
+                <div class="text-content gs-reveal">
+                    <h2>03. Ensamblaje Web</h2>
+                    <p>Con las ilustraciones generadas por Grok y los vídeos renderizados, el último paso fue orquestar
+                        todo el material en un flujo interactivo.</p>
+                    <p>La entrega del proyecto requería una interfaz que demostrara conocimientos técnicos avanzados,
+                        por lo que en lugar de recargar la web con información, implementamos un diseño SPA (Single Page
+                        Application) simulado. Se integraron rutinas avanzadas y variables en CSS, además de un control
+                        exhaustivo del DOM usando Javascript Vanilla y <strong>GSAP</strong>.</p>
+                </div>
+
+                <!-- Code IDE Mockup -->
+                <div class="media-showcase gs-reveal" style="box-shadow: none;">
+                    <div class="mock-ide-window">
+                        <div class="ide-header">
+                            <span class="mac-btn mac-close"></span>
+                            <span class="mac-btn mac-min"></span>
+                            <span class="mac-btn mac-max"></span>
+                            <span
+                                style="margin-left: 10px; color: #888; font-size: 0.8rem; font-family: sans-serif;">script.js
+                                — PIZHUN</span>
+                        </div>
+                        <div class="ide-content">
+                            <span class="keyword">function</span> <span class="function">initCursor</span>() {
+                            <span class="keyword">const</span> cursor = <span
+                                class="function">document.querySelector</span>(<span class="string">'.cursor'</span>);
+                            cursor.style.display = <span class="string">'block'</span>;
+
+                            <span class="comment">// Fluid Backlight Focus (premium sluggish effect)</span>
+                            <span class="keyword">const</span> cursorX = gsap.<span
+                                class="function">quickTo</span>(cursor, <span class="string">"x"</span>, { duration:
+                            <span class="string">0.2</span> });
+                            <span class="keyword">const</span> cursorY = gsap.<span
+                                class="function">quickTo</span>(cursor, <span class="string">"y"</span>, { duration:
+                            <span class="string">0.2</span> });
+
+                            <span class="function">window.addEventListener</span>(<span
+                                class="string">'mousemove'</span>, (e) => {
+                            <span class="function">cursorX</span>(e.clientX);
+                            <span class="function">cursorY</span>(e.clientY);
+                            });
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Unity AR -->
+        <section class="bts-section">
+            <div class="section-grid reverse">
+                <div class="text-content gs-reveal">
+                    <h2>04. La Experiencia AR en Unity</h2>
+                    <p>Para la funcionalidad de Prueba en Realidad Aumentada (la app de Android), pasamos del entorno
+                        web a un motor de físicas real.</p>
+                    <p>Importamos los modelos 3D (`.glb`) generados para la web directamente a <strong>Unity
+                            Engine</strong>. Utilizando los paquetes de <strong>AR Foundation</strong>, combinamos el
+                        reconocimiento espacial de la cámara del móvil con la iluminación HD de Unity, permitiendo a la
+                        camiseta "flotar" e interactuar con la iluminación de la habitación real en tiempo real antes de
+                        exportarlo al `.apk` final descargable.</p>
+                </div>
+
+                <!-- Unity Mock -->
+                <div class="media-showcase gs-reveal" style="box-shadow: none;">
+                    <div class="unity-mock">
+                        <div class="unity-header">
+                            <span>Unity 2026.1 - PIZHUN_AR_Core</span>
+                            <span>Layout: Default</span>
+                        </div>
+                        <img src="https://i.ibb.co/svWxhTDY/image-Photoroom-3.png" alt="AR Hologram in Unity Scene"
+                            style="width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: sepia(10%) contrast(1.1) brightness(0.8);"
+                            loading="lazy">
+                        <div
+                            style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 4px; font-family: sans-serif; font-size: 0.75rem; color: #0f0;">
+                            <span>► Play</span>
+                            <span style="margin-left: 10px; color: #fff;">AR Session Running...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bts-footer">
+        <button onclick="toggleGuide()"
+            style="display:inline-flex; align-items:center; gap:10px; background:#ffffff; color:#000; border:none; padding:16px 32px; border-radius:100px; font-weight:700; cursor:pointer; font-size:1rem; margin-bottom:16px;">
+            📖 Explicación Detallada (Paso a Paso)
+        </button>
+        <br>
+        <a href="index.html" class="btn-back">← Volver a PIZHUN CORE</a>
+    </footer>
+
+    <!-- ========================== -->
+    <!-- STEP-BY-STEP GUIDE OVERLAY -->
+    <!-- ========================== -->
+    <div id="guide-overlay"
+        style="display:none; position:fixed; inset:0; background:#050505; z-index:9000; overflow-y:auto; padding:60px 5%;">
+        <button onclick="document.getElementById('guide-overlay').style.display='none'"
+            style="position:fixed; top:20px; right:25px; background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:10px 20px; border-radius:100px; cursor:pointer; font-size:0.9rem;">✕
+            Cerrar</button>
+        <div style="max-width:900px; margin:0 auto;">
+            <div class="bts-tag" style="margin-bottom:20px;">PASO A PASO</div>
+            <h2 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:800; mar            <!-- STEP 1 -->
+            <div class=" step-block">
+                <div class="step-num">01</div>
+                <h3>Crear las Imágenes con Grok Imagine</h3>
+                <p>Accede a <a href="https://x.ai" target="_blank" style="color:#8b5cf6;">x.ai</a> e inicia sesión con
+                    tu cuenta de X (antes Twitter). En el menú lateral selecciona <strong>Grok</strong> → pestaña
+                    <strong>Imagen</strong>.
+                </p>
+                <ol style="color:#aaa; padding-left:20px; line-height:2;">
+                    <li>Escribe el prompt con el máximo detalle posible. Por ejemplo: <em>"A tech-core streetwear cap,
+                            matte black, studio lighting, hyper-realistic, 8K, front view"</em>.</li>
+                    <li>Pulsa <strong>Generate</strong> y espera unos 10-15 segundos.</li>
+                    <li>Si no te gusta el resultado, añade más palabras clave como <code
+                            style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">cinematic, editorial, product photography</code>
+                        y vuelve a pulsar Generate.</li>
+                    <li>Cuando tengas la imagen que quieres, descárgala haciendo clic en los tres puntos (⋯) →
+                        <strong>Descargar</strong>.
+                    </li>
+                    <li>Repite el proceso para cada producto (cap, chaqueta, camiseta, figura). Guarda todas las
+                        imágenes en una carpeta <code
+                            style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">/img</code> dentro de tu
+                        proyecto.</li>
+                </ol>
+                <div class="video-embed">
+                    <iframe src=":https://codepen.io/r3hab/pen/nNqZPhCWVEo" title="How to use Grok Imagine"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-block">
+            <div class="step-num">02</div>
+            <h3>Generar los Vídeos de Fondo con IA</h3>
+            <p>Los vídeos de la web aportan el movimiento cinematográfico. Para generarlos sigue estos pasos:</p>
+            <ol style="color:#aaa; padding-left:20px; line-height:2;">
+                <li>Accede a <a href="https://klingai.com" target="_blank" style="color:#8b5cf6;">Kling AI</a> o <a
+                        href="https://runwayml.com" target="_blank" style="color:#8b5cf6;">Runway Gen-3</a> y crea una
+                    cuenta gratuita.</li>
+                <li>Selecciona la opción <strong>Image to Video</strong> y sube una de las imágenes generadas con Grok.
+                </li>
+                <li>En el campo de prompt de movimiento escribe: <em>"slow cinematic pan, handheld camera, cyberpunk
+                        street, rain, shallow depth of field, 35mm lens"</em>.</li>
+                <li>Selecciona duración: <strong>5 segundos</strong>. Resolución: <strong>720p</strong> o superior.</li>
+                <li>Pulsa <strong>Generate</strong>. El proceso tarda 1-3 minutos.</li>
+                <li>Descarga el MP4 resultante y guárdalo en una carpeta <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">/video</code> dentro del
+                    proyecto.</li>
+                <li>Repite para cada escena que quieras: el robot, la lluvia en la calle, los detalles de ropa, etc.
+                </li>
+            </ol>
+            <div class="video-embed">
+                <iframe src="https://codepen.io/r3hab/pen/RG3FZQD35jw" title="AI Video Generation Tutorial"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-block">
+            <div class="step-num">03</div>
+            <h3>Construir la Web con HTML, CSS y JavaScript</h3>
+            <p>Toda la web es una SPA (Single Page Application) montada sin frameworks, únicamente con HTML5, CSS3 y JS
+                Vanilla + GSAP para las animaciones.</p>
+            <ol style="color:#aaa; padding-left:20px; line-height:2;">
+                <li>Crea una carpeta de proyecto y dentro un archivo <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">index.html</code>.</li>
+                <li>En el <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;head&gt;</code>
+                    importa <strong>Google Fonts</strong> (Inter + Syne) y enlaza tu <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">style.css</code>.</li>
+                <li>Añade los scripts de GSAP con el atributo <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">defer</code> para no bloquear el
+                    render:
+                    <br><code
+                        style="background:#1e1e1e; padding:4px 8px; border-radius:3px; display:block; margin-top:6px;">&lt;script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"&gt;&lt;/script&gt;</code>
+                </li>
+                <li>En <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">style.css</code>, define
+                    tus variables de color en <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">:root { --bg-color: #050505; --accent-color: #fff; }</code>.
+                </li>
+                <li>Crea la estructura de secciones en el HTML: <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">hero, shop, ar-app, brand</code>.
+                    Cada una como un <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;section&gt;</code> con un id
+                    único.</li>
+                <li>Añade las imágenes de productos con <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">loading="lazy"</code> para las
+                    que están bajo el fold.</li>
+                <li>Para los vídeos de fondo usa <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;video autoplay loop muted playsinline&gt;</code>.
+                </li>
+                <li>En <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">script.js</code>,
+                    implementa el preloader que espera a que se carguen las imágenes principales antes de mostrar la
+                    página.</li>
+                <li>Usa <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.to()</code> y <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.fromTo()</code> para las
+                    animaciones de entrada del hero.</li>
+                <li>Implementa el cursor personalizado con <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.quickTo()</code> para la
+                    interpolación fluida del movimiento.</li>
+            </ol>
+            <div class="video-embed">
+                <iframe src="https://codepen.io/r3hab/pen/G3e-cpL7ofc" title="HTML CSS Web Design Tutorial"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-block">
+            <div class="step-num">04</div>
+            <h3>App de Realidad Aumentada en Unity</h3>
+            <p>Esta es la parte más técnica del proyecto. Sigue cada paso exactamente en este orden:</p>
+            <ol style="color:#aaa; padding-left:20px; line-height:2;">
+                <li>Descarga e instala <a href="https://unity.com/download" target="_blank" style="color:#8b5cf6;">Unity
+                        Hub</a>. Desde Unity Hub, instala <strong>Unity 2022.3 LTS</strong> (versión estable
+                    recomendada) con el módulo <strong>Android Build Support</strong> + <strong>Android SDK & NDK
+                        Tools</strong>.</li>
+                <li>Crea un nuevo proyecto: <strong>New Project → 3D (Core) → Create Project</strong>.</li>
+                <li>Abre el <strong>Package Manager</strong> (menú Window → Package Manager). En el filtro selecciona
+                    <strong>"Unity Registry"</strong>. Busca e instala por este orden:
+                    <ul style="margin-top:6px;">
+                        <li><strong>AR Foundation</strong> (versión 5.x)</li>
+                        <li><strong>ARCore XR Plugin</strong></li>
+                        <li><strong>XR Plugin Management</strong></li>
+                    </ul>
+                </li>
+                <li>Ve a <strong>Edit → Project Settings → XR Plug-in Management</strong>. En la pestaña
+                    <strong>Android</strong>, activa la casilla <strong>ARCore</strong>.
+                </li>
+                <li>Importa tu modelo 3D: arrastra el archivo <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">.glb</code> directamente a la
+                    carpeta <strong>Assets</strong> en el panel Project. Unity lo convertirá automáticamente a Prefab.
+                </li>
+                <li>En la escena, elimina la Main Camera por defecto. Añade los componentes AR:
+                    <ul style="margin-top:6px;">
+                        <li>Menú <strong>GameObject → XR → AR Session</strong></li>
+                        <li>Menú <strong>GameObject → XR → AR Session Origin</strong></li>
+                    </ul>
+                </li>
+                <li>Al objeto <strong>AR Session Origin</strong> añádele el componente <strong>AR Plane Manager</strong>
+                    (detecta el suelo) y <strong>AR Raycast Manager</strong> (permite tocar la pantalla para colocar
+                    objetos).</li>
+                <li>Crea un script C# llamado <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">PlaceObject.cs</code> que
+                    detecte el toque y coloque el prefab del producto en el punto donde el rayo impacta el plano
+                    detectado.</li>
+                <li>Asigna el prefab del modelo 3D al campo correspondiente del script en el Inspector.</li>
+                <li>Para el Build: ve a <strong>File → Build Settings</strong>. Selecciona <strong>Android</strong> y
+                    pulsa <strong>Switch Platform</strong>. Cuando termine, pulsa <strong>Build</strong>. Elige una
+                    carpeta de destino y espera a que Unity genere el archivo <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">.apk</code> (puede tardar 5-10
+                    minutos).</li>
+                <li>Instala el APK en tu móvil Android (necesitarás activar "Instalar desde fuentes desconocidas" en
+                    Ajustes → Seguridad).</li>
+            </ol>
+            <div class="video-embed">
+                <iframe src="https://codepen.io/r3hab/pen/FWjTpqdhaKs" title="Unity AR Foundation Tutorial"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <img src="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/images/ar-foundation-simulated-scene.gif"
+                alt="Unity AR Foundation Demo" style="width:100%; border-radius:12px; margin-top:20px;" loading="lazy">
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step-block">
+            <div class="step-num">05</div>
+            <h3>Integrar el Asistente de IA con Puter.js</h3>
+            <p>Para dar valor añadido al proyecto integré un chatbot de IA en tiempo real. Aquí el proceso completo de
+                decisión y desarrollo:</p>
+            <ol style="color:#aaa; padding-left:20px; line-height:2;">
+                <li><strong>Primer intento — OpenRouter:</strong> Probé OpenRouter que permite usar modelos como GPT-4
+                    mediante una API. El problema fue que los tiempos de respuesta eran de 5-10 segundos, inaceptables
+                    para una tienda. Requería además gestionar API keys y un backend.</li>
+                <li><strong>Solución — Puter.js:</strong> Descubrí <a href="https://puter.com" target="_blank"
+                        style="color:#8b5cf6;">Puter.js</a>, que no requiere API keys ni backend. Una sola línea en el
+                    <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;head&gt;</code>:
+                    <br><code
+                        style="background:#1e1e1e; padding:4px 8px; border-radius:3px; display:block; margin-top:6px;">&lt;script src="https://js.puter.com/v2/"&gt;&lt;/script&gt;</code>
+                </li>
+                <li>Para llamar a la IA, usa <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">puter.ai.chat()</code> pasando
+                    un array de mensajes con roles:</li>
+                <li>Define un <strong>system prompt</strong> con todo el contexto de tu proyecto como primer mensaje con
+                    <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'system'</code>.
+                </li>
+                <li>Construye el historial de conversación añadiendo cada mensaje del usuario con <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'user'</code> y las
+                    respuestas con <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'assistant'</code>.</li>
+                <li>Crea el panel del chat con CSS (glassmorphism: <code
+                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">backdrop-filter: blur(20px)</code>)
+                    y un input con un botón de enviar.</li>
+                <li>Muestra un indicador de carga ("•••" animado) mientras esperas la respuesta y reemplázalo con el
+                    texto cuando llegue.</li>
+            </ol>
+            <div class="highlight-box" style="margin-top:20px;">
+                <strong>Código básico de llamada:</strong>
+                <code>const res = await puter.ai.chat(historial);<br>const respuesta = res?.message?.content;</code>
+            </div>
+            <div class="video-embed" style="margin-top:24px;">
+                <iframe src="https://codepen.io/r3hab/pen/CTrFElGvLCg" title="Puter.js AI Integration" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+    rame>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- PUTER.JS AI ASSISTANT  -->
+    <!-- ===================== -->
+    <div id="bts-chat-btn" title="Preguntar al asistente de IA" onclick="toggleBtsChat()"
+        style="position:fixed; bottom:30px; right:30px; width:56px; height:56px; background:#8b5cf6; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:8000; box-shadow: 0 4px 20px rgba(139,92,246,0.5); font-size:1.4rem;">
+        🤖
+    </div>
+    <div id="bts-chat-panel"
+        style="display:none; position:fixed; bottom:100px; right:30px; width:360px; max-height:520px; background:#111119; border:1px solid rgba(139,92,246,0.3); border-radius:20px; z-index:8000; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.7);">
+        <div
+            style="padding:16px 20px; background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.2); display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:700; font-size:0.95rem;"><span
+                    style="color:#8b5cf6; margin-right:8px;">✦</span>Asistente del Proyecto</div>
+            <button onclick="toggleBtsChat()"
+                style="background:none; border:none; color:#888; cursor:pointer; font-size:1.1rem;">×</button>
+        </div>
+        <div id="bts-chat-messages"
+            style="flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px;">
+            <div class="bts-ai-msg-bubble">Hola! Soy el asistente de este proyecto. Puedes preguntarme sobre cómo se
+                creó la web, las imágenes, los vídeos, la app de AR en Unity, o cómo recrearlo tú mismo. 👆</div>
+        </div>
+        <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:8px;">
+            <input id="bts-chat-input" type="text" placeholder="Pregunta algo sobre el proyecto..."
+                style="flex:1; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:10px 16px; color:#fff; font-size:0.9rem; outline:none;"
+                onkeydown="if(event.key==='Enter') sendBtsMessage()">
+            <button onclick="sendBtsMessage()"
+                style="background:#8b5cf6; border:none; color:#fff; padding:10px 16px; border-radius:100px; cursor:pointer; font-weight:600; font-size:0.9rem;">&#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                const reveals = document.querySelectorAll('.gs-reveal');
+                reveals.forEach((element) => {
+                    gsap.fromTo(element,
+                        { y: 50, opacity: 0 },
+                        {
+                            scrollTrigger: { trigger: element, start: "top 85%" },
+                            y: 0, opacity: 1, duration: 1, ease: "power3.out"
+                        }
+                    );
+                });
+            }
+        });
+
+        // ---- Guide Panel Toggle ----
+        function toggleGuide() {
+            const overlay = document.getElementById('guide-overlay');
+            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // ---- BTS AI Chat (Puter.js) ----
+        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto de digitalización PIZHUN. 
+PIZHUN es un trabajo académico de digitalización que consiste en:
+1. Una tienda web de streetwear ficticia (HTML/CSS/JavaScript + GSAP)
+2. Las imágenes de los productos se generaron con Grok Imagine (IA de xAI)
+3. Los vídeos de la web se generaron con herramientas de vídeo IA (Kling/Runway)
+4. Una app de Realidad Aumentada construida en Unity con AR Foundation (exportada a APK de Android)
+5. Los modelos 3D se generaron con IA y se integraron en la web como archivos .glb
+
+Puedes ayudar a responder preguntas técnicas sobre: cómo se usó Grok Imagine, cómo funciona el código HTML/CSS/JS, cómo se hicieron las animaciones con GSAP, cómo se construyó la app AR en Unity, y cómo recrear el proyecto paso a paso. Responde siempre en español de forma concisa y amigable.`;
+
+        let btsChatOpen = false;
+        let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
+
+        function toggleBtsChat() {
+            btsChatOpen = !btsChatOpen;
+            document.getElementById('bts-chat-panel').style.display = btsChatOpen ? 'flex' : 'none';
+        }
+
+        async function sendBtsMessage() {
+            const input = document.getElementById('bts-chat-input');
+            const messages = document.getElementById('bts-chat-messages');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+
+            // Add user bubble
+            const userBubble = document.createElement('div');
+            userBubble.className = 'bts-user-msg-bubble';
+            userBubble.textContent = text;
+            messages.appendChild(userBubble);
+            messages.scrollTop = messages.scrollHeight;
+
+            // Typing indicator
+            const typing = document.createElement('div');
+            typing.className = 'bts-ai-msg-bubble';
+            typing.innerHTML = '<span class="typing-dots">•••</span>';
+            messages.appendChild(typing);
+            messages.scrollTop = messages.scrollHeight;
+
+            btsChatHistory.push({ role: 'user', content: text });
+
+            try {
+                const response = await puter.ai.chat(btsChatHistory);
+                const reply = response?.message?.content || response?.text || 'No pude obtener respuesta.';
+                btsChatHistory.push({ role: 'assistant', content: reply });
+                typing.innerHTML = reply;
+            } catch (e) {
+                typing.innerHTML = 'Error al conectar con el asistente. Asegúrate de estar conectado.';
+            }
+            messages.scrollTop = messages.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>

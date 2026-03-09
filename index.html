@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPIZHUN | Modern Streetwear</title>
+    <meta name="description" content="Tienda moderna de ropa PIZHUN. Colecciones exclusivas y colaborativas.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet" preload="true">
+    <!-- GSAP & TweenMax for animations (Deferred) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <!-- Puter.js AI -->
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+
+<body>
+    <!-- AI Assistant Tooltip above chat button -->
+    <div id="ai-toast" style="
+        position: fixed;
+        bottom: 155px;
+        right: 14px;
+        background: rgba(15,15,15,0.97);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 12px;
+        padding: 10px 16px;
+        z-index: 999999;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    ">
+        <span style="font-size:1rem;">&#129302;</span>
+        <span>Nuevo <span style="color:#8b5cf6;">Asistente de IA</span></span>
+        <span style="width:6px; height:6px; background:#22c55e; border-radius:50%; display:inline-block; animation: pulse-dot 1.5s infinite;"></span>
+        <!-- Down arrow pointing at the chat button -->
+        <span style="
+            position: absolute;
+            bottom: -8px;
+            right: 22px;
+            width: 0; height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid rgba(255,255,255,0.15);
+        "></span>
+        <span style="
+            position: absolute;
+            bottom: -7px;
+            right: 23px;
+            width: 0; height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid rgba(15,15,15,0.97);
+        "></span>
+    </div>
+    <style>
+        @keyframes pulse-dot { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:0.5; transform:scale(1.4)} }
+    </style>
+    <script>
+        window.addEventListener('load', () => {
+            const toast = document.getElementById('ai-toast');
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateY(0)';
+            }, 1800);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+            }, 5000);
+        });
+    </script>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <!-- Ambient Light Spotlight -->
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <img src="loading.gif" alt="Loading..." class="loading-spinner">
+        </div>
+        <div class="loading-text">PIZHUN CORE INITIALIZING...</div>
+    </div>
+
+    <div class="announcement-bar">
+        Prueba nuestra app para previsualizar los items y escanearlos en nuestros anuncios
+    </div>
+
+    <header>
+        <div class="logo-container" onclick="switchView('view-home')" style="cursor: pointer;">
+            <img src="https://i.ibb.co/j9ZRkfT4/image.png" alt="PIZHUN Logo" class="logo-img">
+            <img src="https://i.ibb.co/nMttYDKv/image.png" alt="PIZHUN" class="logo-text">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="javascript:switchView('view-shop')">Colección</a></li>
+                <li><a href="javascript:switchView('view-app')">La App</a></li>
+                <li><a href="javascript:switchView('view-brand')">Brand</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home View (Hero/Welcome) -->
+        <section id="view-home" class="view-section active">
+            <section class="hero">
+                <h1 class="stagger-reveal hero-title">
+                    <span class="drop-cap-container">
+                        <img src="https://i.ibb.co/j9ZRkfT4/image.png" alt="P" class="drop-cap-logo">
+                    </span>IZHUN
+                </h1>
+                <p class="stagger-reveal">Streetwear minimalista. Diseñado para la era digital. Colaboraciones
+                    exclusivas y piezas únicas.</p>
+                <a href="javascript:switchView('view-shop')" class="btn-explore stagger-reveal">
+                    Explorar nuestras prendas <span class="arrow-icon">→</span>
+                </a>
+
+
+                                <!-- Home video grid: same thumbnails as Brand but placed under the main title -->
+                                <div class="brand-video-grid home-video-grid" role="list" aria-label="Home videos">
+                                        <video class="brand-thumb" autoplay muted loop playsinline preload="none" aria-hidden="true" loading="lazy">
+                                                <source src="video/showing%20robot.mp4" type="video/mp4">
+                                        </video>
+                                         <video class="brand-thumb" autoplay muted loop playsinline preload="none" aria-hidden="true" loading="lazy">
+                                                <source src="video/toma%20puente.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="brand-thumb" autoplay muted loop playsinline preload="none" aria-hidden="true" loading="lazy">
+                                                <source src="video/toma%20ojo.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="brand-thumb" autoplay muted loop playsinline preload="none" aria-hidden="true" loading="lazy">
+                                                <source src="video/rain%20walk.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="brand-thumb" autoplay muted loop playsinline preload="none" aria-hidden="true" loading="lazy">
+                                                <source src="video/street%20take.mp4" type="video/mp4">
+                                        </video>
+                                </div>
+
+            </section>
+
+            <!-- Previews for Home Landing -->
+            <section class="app-section">
+                <div class="app-container">
+                    <div class="app-content-wrapper">
+                        <div class="app-text-content">
+                            <h2>Lleva PIZHUN a tu realidad</h2>
+                            <p>Nuestra aplicación de realidad aumentada te permite previsualizar cualquier prenda en
+                                tiempo real.</p>
+                            <a href="javascript:switchView('view-app')" class="btn-download-android">Ver detalles de la
+                                App</a>
+                        </div>
+                        <div class="ar-visual-container stagger-reveal">
+                            <img src="/img/AR.png" alt="AR Shirt Hologram"
+                                class="ar-hologram-shirt" loading="lazy">
+                            <img src="https://i.ibb.co/fGM3pgWb/0594ef80-c46a-4dec-ac3b-045c4b23014a-Photoroom.png"
+                                alt="AR Hand Phone" class="ar-hand-phone" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trustpilot-section">
+                <h2 class="section-title">Nuestra Comunidad</h2>
+                <div class="trustpilot-grid">
+                    <div class="review-card">
+                        <div class="review-stars-tp">★★★★★</div>
+                        <h3>Calidad Increíble</h3>
+                        <p>"La chaqueta Tech-Core es otro nivel."</p>
+                        <p class="review-author">— Marc J.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars-tp">★★★★★</div>
+                        <h3>Diseño Único</h3>
+                        <p>"PIZHUN es el futuro del streetwear."</p>
+                        <p class="review-author">— Elena R.</p>
+                    </div>
+                </div>
+                <a href="javascript:switchView('view-brand')" class="btn-hero secondary"
+                    style="margin-top: 40px; border-radius: 30px; font-size: 0.7rem; padding: 12px 25px;">Ver todas las
+                    opiniones</a>
+            </section>
+        </section>
+
+        <!-- Shop View -->
+        <section id="view-shop" class="view-section">
+            <section class="products-section">
+                <h2 class="section-title">Nuevas Prendas</h2>
+                <div class="products-grid">
+                    <!-- Cap -->
+                    <a href="?p=cap" class="product-card stagger-item" data-product="cap">
+                        <div class="product-media-container">
+                            <img src="img/cap.png" alt="Medac Cap" class="product-image">
+                            <video class="product-video" muted loop playsinline>
+                                <source src="video/cap.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-category">Colaboración Medac</p>
+                                <h3 class="product-name">Gorra Medac Edition</h3>
+                            </div>
+                            <p class="product-price">29.99€</p>
+                        </div>
+                    </a>
+
+                    <!-- Jacket -->
+                    <a href="?p=jacket" class="product-card stagger-item" data-product="jacket">
+                        <div class="product-media-container">
+                            <img src="img/jacket.png" alt="PIZHUN Jacket" class="product-image">
+                            <video class="product-video" muted loop playsinline>
+                                <source src="video/jacket.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-category">Exterior</p>
+                                <h3 class="product-name">Chaqueta Tech-Core</h3>
+                            </div>
+                            <p class="product-price">89.99€</p>
+                        </div>
+                    </a>
+
+                    <!-- Figure -->
+                    <a href="?p=figure" class="product-card stagger-item" data-product="figure">
+                        <div class="product-media-container">
+                            <img src="img/figure.png" alt="Modern Figure" class="product-image">
+                            <video class="product-video" muted loop playsinline>
+                                <source src="video/figure.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-category">Coleccionables</p>
+                                <h3 class="product-name">Figura PIZHUN v.1</h3>
+                            </div>
+                            <p class="product-price">45.00€</p>
+                        </div>
+                    </a>
+
+                    <!-- T-Shirt -->
+                    <a href="?p=tshirt" class="product-card stagger-item" data-product="tshirt">
+                        <div class="product-media-container">
+                            <img src="img/tshirt.png" alt="Logo T-shirt" class="product-image">
+                            <video class="product-video" muted loop playsinline>
+                                <source src="video/shirt.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-category">Básicos</p>
+                                <h3 class="product-name">Camiseta Minimal Logo</h3>
+                            </div>
+                            <p class="product-price">35.00€</p>
+                        </div>
+                    </a>
+
+                    <!-- Coming Soon Card -->
+                    <div class="product-card stagger-item coming-soon">
+                        <div class="product-media-container">
+                            <div class="coming-soon-placeholder">
+                                <span class="pizhun-symbol">P</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-category">Próximo Lanzamiento</p>
+                                <h3 class="product-name">Próximamente<span class="animated-dots"></span></h3>
+                            </div>
+                            <p class="product-price">--.--€</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- App View -->
+        <section id="view-app" class="view-section">
+            <section class="app-section">
+                <div class="app-container">
+                    <div class="app-content-wrapper">
+                        <div class="app-text-content">
+                            <h2 class="stagger-reveal">Lleva PIZHUN a tu realidad</h2>
+                            <p class="stagger-reveal">Nuestra aplicación de realidad aumentada te permite previsualizar
+                                cualquier prenda en tiempo real.</p>
+
+                            <!-- Download Card -->
+                            <div class="download-card stagger-reveal">
+                                <div class="download-card-header">
+                                    <img src="https://images.icon-icons.com/2699/PNG/512/android_official_logo_icon_167880.png"
+                                        alt="Android" class="android-logo">
+                                    <div class="download-card-info">
+                                        <span class="download-platform">Disponible para Android</span>
+                                        <span class="download-size">APK • 45 MB</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download-android" id="download-apk-btn">
+                                    <span class="download-icon-btn">↓</span>
+                                    Descargar APK
+                                </a>
+                                <div class="download-qr-block">
+                                    <img id="download-qr" src="" alt="QR descarga APK" class="download-qr">
+                                    <p class="qr-note">Escanea con tu móvil para descargar el APK</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ar-visual-container stagger-reveal">
+                            <img src="https://i.ibb.co/svWxhTDY/image-Photoroom-3.png" alt="AR Shirt Hologram"
+                                class="ar-hologram-shirt" loading="lazy">
+                            <img src="https://i.ibb.co/fGM3pgWb/0594ef80-c46a-4dec-ac3b-045c4b23014a-Photoroom.png"
+                                alt="AR Hand Phone" class="ar-hand-phone" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Brand/Community View -->
+        <section id="view-brand" class="view-section">
+            <!-- Brand Identity Section -->
+            <section class="brand-ethos">
+                <div class="brand-ethos-container">
+                    <div class="ethos-content">
+                        <span class="section-tag">VISION 2026</span>
+                        <h2>TRANSCENDING <br> URBAN BOUNDARIES</h2>
+                        <img src="https://i.ibb.co/v6VxsHbP/image.png" alt="PIZHUN Visual" class="brand-hero-image">
+                        <p>PIZHUN is an experimental design studio focused on technical utility and high-luxury
+                            aesthetics.</p>
+
+                        <!-- Horizontal grid of brand videos (clear, equal spacing) -->
+                        <div class="brand-video-grid" role="list" aria-label="Brand videos">
+                           
+                            <video class="brand-thumb" autoplay playsinline muted loop preload="metadata" aria-hidden="true">
+                                <source src="video/toma%20ojo.mp4" type="video/mp4">
+                            </video>
+                            <video class="brand-thumb" autoplay playsinline muted loop preload="metadata" aria-hidden="true">
+                                <source src="video/rain%20walk.mp4" type="video/mp4">
+                            </video>
+                            <video class="brand-thumb" autoplay playsinline muted loop preload="metadata" aria-hidden="true">
+                                <source src="video/street%20take.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Brand video block: show robot -->
+                        <section class="brand-video-section">
+                            <div class="brand-video-wrapper">
+                                <video class="brand-video" autoplay playsinline muted loop aria-hidden="true" preload="metadata" poster="img/robot-poster.jpg">
+                                    <source src="video/showing%20robot.mp4" type="video/mp4">
+                                </video>
+                                <div class="brand-video-text">
+                                    <h3>SHOW ROBOT — La Demo Técnica</h3>
+                                    <p>Observa nuestros procesos automatizados y la precisión detrás de cada prototipo. Esta pieza ilustra cómo combinamos diseño y tecnología para escalar calidad sin perder detalle.</p>
+                                    <a href="javascript:switchView('view-brand')" class="btn-hero secondary">Explorar Brand</a>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+
+
+            </section>
+
+            <!-- Features -->
+            <section class="features-grid-section">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>SECURE LOGISTICS</h3>
+                    <p>Encrypted delivery paths and priority worldwide shipping.</p>
+                </div>
+                <div class="feature-card highlighted">
+                    <div class="feature-icon">⚡</div>
+                    <h3>CORE QUALITY</h3>
+                    <p>Premium materials sourced from specialized labs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>ECOSYSTEM</h3>
+                    <p>A global community of collectors.</p>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section id="newsletter" class="newsletter-section">
+                <div class="newsletter-container">
+                    <div class="newsletter-header">
+                        <h2>JOIN THE DROPLIST</h2>
+                        <p>Register for priority access.</p>
+                    </div>
+                    <div class="newsletter-row">
+                        <form class="newsletter-form" aria-label="Formulario de suscripción">
+                            <label class="visually-hidden" for="newsletter-email">Correo electrónico</label>
+                            <input id="newsletter-email" type="email" placeholder="ENTER YOUR EMAIL" aria-label="Correo electrónico">
+                            <button type="submit" class="btn-subscribe">STAY INFORMED</button>
+                        </form>
+                        <div class="newsletter-image-card" role="img" aria-label="Promoción">
+                            <img src="https://i.ibb.co/2HSJNVS/image.png" alt="Promo PIZHUN" class="newsletter-image" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trustpilot Reviews -->
+            <section class="trustpilot-section">
+                <div class="trustpilot-header">
+                    <h2 class="section-title">Nuestra Comunidad</h2>
+                    <div class="tp-rating-header">
+                        <img src="/img/trust.png"
+                          style="max-width: 25%;"  >
+                        <div class="tp-stars-global">
+                            <span>★★★★★</span>
+                            <span>Excellent 4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="trustpilot-grid">
+                    <div class="review-card">
+                        <div class="review-stars-tp">★★★★★</div>
+                        <h3>Calidad Increíble</h3>
+                        <p>"La chaqueta Tech-Core es otro nivel. El material es futurista."</p>
+                        <p class="review-author">— Marc J.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars-tp">★★★★★</div>
+                        <h3>Diseño Único</h3>
+                        <p>"No hay nada igual en el mercado. PIZHUN ha captado la estética cyberpunk."</p>
+                        <p class="review-author">— Elena R.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars-tp">★★★★★</div>
+                        <h3>Servicio Top</h3>
+                        <p>"Tuve una duda con la talla y me respondieron al momento."</p>
+                        <p class="review-author">— Pablo M.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Download Security Modal -->
+    <div id="download-modal" class="download-modal">
+        <div class="download-modal-content" style="position: relative;">
+            <button class="close-download-modal">&times;</button>
+            <div class="download-icon">🛡️</div>
+            <h3>Descarga Segura</h3>
+            <p>Estás a punto de descargar la aplicación oficial de <strong>PIZHUN</strong>.</p>
+            <p>Este es el <strong>único lugar oficial y seguro</strong> para descargar nuestra app. No descargues la
+                aplicación desde ningún otro sitio web o fuente no autorizada.</p>
+            <div class="security-badge">
+                ✓ Archivo verificado y libre de malware
+            </div>
+            <div class="download-buttons-modal">
+                <a href="app/pizhun-app.apk" download class="btn-confirm-download">Confirmar Descarga</a>
+                <button class="btn-cancel-download" id="cancel-download">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <div class="gallery-wrapper">
+                        <img id="modal-img" src="" alt="">
+                        <div class="gallery-dots"></div>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <div class="modal-header-info">
+                        <p id="modal-category" class="product-category"></p>
+                        <div class="modal-title-row" style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                            <h2 id="modal-name" class="product-name" style="margin-bottom: 0;"></h2>
+                            <button class="btn-copy-link-icon" id="btn-copy-link" title="Copiar enlace" aria-label="Copiar enlace del producto">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <p id="modal-price" class="product-price"></p>
+                    </div>
+
+                    <div class="modal-scroll-content">
+                        <!-- Size Selector -->
+                        <div class="size-selector-container">
+                            <div class="size-header">
+                                <span>Seleccionar Talla</span>
+                                <a href="#" class="size-guide">Guía de tallas</a>
+                            </div>
+                            <div class="size-options">
+                                <button class="size-btn">S</button>
+                                <button class="size-btn active">M</button>
+                                <button class="size-btn">L</button>
+                                <button class="size-btn">XL</button>
+                            </div>
+                        </div>
+
+                        <p id="modal-desc" class="product-description"></p>
+
+                        <!-- Accordion Details -->
+                        <div class="product-accordions">
+                            <details class="product-detail" open>
+                                <summary>Detalles & Materiales</summary>
+                                <div class="detail-content">
+                                    <ul>
+                                        <li>100% Algodón orgánico premium</li>
+                                        <li>Corte Oversized minimalista</li>
+                                        <li>Logo PIZHUN bordado en alta densidad</li>
+                                        <li>Tejido técnico transpirable</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="product-detail">
+                                <summary>Envío & Devoluciones</summary>
+                                <div class="detail-content">
+                                    <p>Envío gratuito en pedidos superiores a 100€. Entrega estimada: 3-5 días hábiles.
+                                        Devoluciones permitidas hasta 14 días después de la entrega.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- Actions Bar (Mobile Sticky) -->
+                    <div class="modal-actions-bar">
+                        <button class="btn-view-3d" id="btn-view-3d">
+                            <span class="btn-3d-icon">📱</span>
+                            Ver en 3D
+                        </button>
+                        <a href="#" class="btn-add-cart">Añadir al Carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co/j9ZRkfT4/image.png" alt="PIZHUN" class="footer-logo">
+                <p>REDEFINING THE FUTURE OF STREETWEAR.</p>
+                <div class="footer-socials">
+                    <a href="#">TW</a>
+                    <a href="#">IG</a>
+                    <a href="#">DC</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="links-column">
+                    <h4>SHOP</h4>
+                    <a href="#">All Collections</a>
+                    <a href="#">Limited Drops</a>
+                    <a href="#">Accessories</a>
+                </div>
+                <div class="links-column">
+                    <h4>SUPPORT</h4>
+                    <a href="#">Shipping</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="links-column">
+                    <h4>LEGAL</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-credits">&copy; 2026 <span>PIZHUN CORE</span>. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div class="nav-item nav-home" onclick="switchView('view-home')">
+            <img src="https://i.ibb.co/j9ZRkfT4/image.png" alt="Inicio" class="mobile-home-logo" />
+            <span class="nav-label">Inicio</span>
+        </div>
+        <div class="nav-item" onclick="switchView('view-shop')">
+            <svg class="icon-svg nav-icon" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M16 6V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H2v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6h-6zm-6-2h4v2h-4V4zm9 15H5V8h14v11z" />
+            </svg>
+            <span class="nav-label">Tienda</span>
+        </div>
+        <div class="nav-item" onclick="switchView('view-app')">
+            <svg class="icon-svg nav-icon" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+            </svg>
+            <span class="nav-label">La App</span>
+        </div>
+        <div class="nav-item" onclick="switchView('view-brand')">
+            <svg class="icon-svg nav-icon" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M12 12c1.76 0 3-1.24 3-3 0-1.76-1.24-3-3-3-1.76 0-3 1.24-3 3 0 1.76 1.24 3 3 3zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            <span class="nav-label">Brand</span>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+
+    <!-- ===================== -->
+    <!--   PIZHUN STORE BOT    -->
+    <!-- ===================== -->
+    <style>
+        /* Chatbot Widget */
+        #pizhun-chat-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 0 20px rgba(255,255,255,0.25);
+            font-size: 1.3rem;
+            transition: transform 0.2s ease;
+            mix-blend-mode: normal;
+        }
+        #pizhun-chat-btn:hover { transform: scale(1.1); }
+        #pizhun-chat-panel {
+            position: fixed;
+            bottom: 155px;
+            right: 20px;
+            width: 350px;
+            max-height: 500px;
+            background: rgba(8,8,8,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        #pizhun-chat-panel.active { display: flex; }
+        .pz-chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .pz-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pz-ai-bubble {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 14px;
+            border-radius: 14px 14px 14px 3px;
+            font-size: 0.85rem;
+            color: #ddd;
+            line-height: 1.5;
+            max-width: 88%;
+        }
+        .pz-user-bubble {
+            background: #ffffff;
+            color: #000;
+            padding: 10px 14px;
+            border-radius: 14px 14px 3px 14px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            max-width: 88%;
+            align-self: flex-end;
+            font-weight: 500;
+        }
+        .pz-chat-input-row {
+            padding: 12px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            gap: 8px;
+        }
+        .pz-chat-input {
+            flex: 1;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            padding: 9px 16px;
+            color: #fff;
+            font-size: 0.85rem;
+            outline: none;
+            font-family: inherit;
+        }
+        .pz-chat-send {
+            background: #ffffff;
+            color: #000;
+            border: none;
+            border-radius: 100px;
+            padding: 9px 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        #pizhun-chat-panel::-webkit-scrollbar,
+        .pz-chat-messages::-webkit-scrollbar { width: 4px; }
+        .pz-chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+        @keyframes pz-blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
+        .pz-typing { animation: pz-blink 1.2s infinite; letter-spacing: 4px; }
+    </style>
+
+    <div id="pizhun-chat-btn" onclick="togglePzChat()" title="Asistente PIZHUN">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+
+    <div id="pizhun-chat-panel">
+        <div class="pz-chat-header">
+            <span>PIZHUN ✦ ASISTENTE</span>
+            <button onclick="togglePzChat()" style="background:none;border:none;color:#888;cursor:pointer;font-size:1.1rem;">&#215;</button>
+        </div>
+        <div class="pz-chat-messages" id="pz-chat-messages">
+            <div class="pz-ai-bubble">Hola. Soy el asistente de PIZHUN. Pregúntame sobre los productos, el envío, la app AR, o cualquier duda de la tienda.</div>
+        </div>
+        <div class="pz-chat-input-row">
+            <input class="pz-chat-input" id="pz-chat-input" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter') sendPzMessage()">
+            <button class="pz-chat-send" onclick="sendPzMessage()">&#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        const PZ_SYSTEM_PROMPT = `Eres el asistente oficial de la tienda PIZHUN. Responde siempre en español, de forma concisa y con el tono premium de la marca.
+
+PRODUCTOS:
+- PZH-01 CORE CAP (id:cap): 34.99€ – Gorra de sarga de alto gramaje, hebilla metálica ajustable, talla única.
+- TX-SHELL TECH JACKET (id:jacket): 124.00€ – Chaqueta técnica repelente al agua, bolsillos tácticos. Tallas S, M, L, XL.
+- MK-I ART TOY (id:figure): 45.00€ – Figura de colección de vinilo edición limitada. Sin tallas.
+- LOGO-Q PREMIUM TEE (id:tshirt): 39.00€ – Camiseta algodón orgánico pesado, fit oversized. Tallas S, M, L, XL.
+
+OFERTAS:
+- 10% DTO primera compra con código: PIZHUN10
+- Pack CAP + TEE por 64.99€ (ahorro 10€)
+- Flash Sale −15% en colección OUTERWEAR hasta el 15 de marzo
+- Solo 12 unidades MK-I ART TOY disponibles
+
+ENVÍO: Gratis en pedidos >100€. Entrega 3–5 días. Express 24h por 7.99€.
+DEVOLUCIONES: 14 días desde entrega. Cambios de talla gratis en 30 días.
+
+APP AR: APK para Android, gratuita. Prueba los productos en 3D con la cámara.
+
+CONTACTO: Email hola@pizhun.store · Soporte soporte@pizhun.store · WhatsApp +34 611 204 837 · Instagram @pizhun.official
+
+Si no tienes información sobre algo, invéntate una respuesta plausible y coherente con la marca. Nunca digas que no sabes. Responde con confianza.`;
+
+        // --- Context detection helpers ---
+        const APK_KEYWORDS = ['app ar', 'apk', 'realidad aumentada', 'descargar la app', 'android', 'instalar la app'];
+        const PRODUCT_MAP = [
+            { id: 'cap',    name: 'PZH-01 CORE CAP',      keywords: ['core cap', 'pzh-01', 'la gorra'] },
+            { id: 'jacket', name: 'TX-SHELL TECH JACKET',  keywords: ['tech jacket', 'tx-shell', 'la chaqueta'] },
+            { id: 'figure', name: 'MK-I ART TOY',          keywords: ['art toy', 'mk-i', 'la figura', 'el vinilo'] },
+            { id: 'tshirt', name: 'LOGO-Q PREMIUM TEE',    keywords: ['premium tee', 'logo-q', 'la camiseta'] },
+        ];
+        const CONTACT_MAP = [
+            { label: '📧 hola@pizhun.store',        href: 'mailto:hola@pizhun.store',              test: ['hola@pizhun', 'email general'] },
+            { label: '🛠 soporte@pizhun.store',      href: 'mailto:soporte@pizhun.store',            test: ['soporte@pizhun', 'postventa'] },
+            { label: '💬 WhatsApp PIZHUN',           href: 'https://wa.me/34611204837',              test: ['whatsapp', '+34 611'] },
+            { label: '📸 @pizhun.official',          href: 'https://instagram.com/pizhun.official',  test: ['@pizhun.official', 'instagram.com/pizhun'] },
+        ];
+
+        function matchesAny(text, keywords) {
+            const lo = text.toLowerCase();
+            return keywords.some(k => lo.includes(k));
+        }
+
+        function makeActionBtn(label, action, isLink, href) {
+            const el = isLink ? document.createElement('a') : document.createElement('button');
+            el.style.cssText = `display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.12); color:#fff; padding:7px 14px; border-radius:100px;
+                font-weight:600; font-size:0.78rem; text-decoration:none; cursor:pointer; font-family:inherit;
+                transition:background 0.15s, transform 0.15s; white-space:nowrap;`;
+            el.textContent = label;
+            if (isLink) { el.href = href; el.target = '_blank'; el.rel = 'noopener'; }
+            else { el.addEventListener('click', action); }
+            el.addEventListener('mouseenter', () => { el.style.background = 'rgba(255,255,255,0.15)'; el.style.transform = 'scale(1.03)'; });
+            el.addEventListener('mouseleave', () => { el.style.background = 'rgba(255,255,255,0.08)'; el.style.transform = ''; });
+            return el;
+        }
+
+        function injectButtons(msgs, userText, aiReply) {
+            const combined = (userText + ' ' + aiReply).toLowerCase();
+            const btns = [];
+
+            // APK download: only if user asked about app
+            if (matchesAny(userText, APK_KEYWORDS)) {
+                const dlBtn = document.createElement('a');
+                dlBtn.href = 'pizhun.apk';
+                dlBtn.download = 'pizhun.apk';
+                dlBtn.style.cssText = `display:inline-flex; align-items:center; gap:8px; background:#fff; color:#000;
+                    padding:9px 18px; border-radius:100px; font-weight:700; font-size:0.82rem; text-decoration:none;
+                    transition:transform 0.15s; cursor:pointer;`;
+                dlBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar App AR (APK)`;
+                dlBtn.addEventListener('mouseenter', () => dlBtn.style.transform = 'scale(1.04)');
+                dlBtn.addEventListener('mouseleave', () => dlBtn.style.transform = '');
+                btns.push(dlBtn);
+            }
+
+            // Product modal buttons: only if AI specifically mentions product name
+            PRODUCT_MAP.forEach(p => {
+                if (matchesAny(aiReply, p.keywords)) {
+                    btns.push(makeActionBtn(`🛍 Ver ${p.name}`, () => {
+                        togglePzChat();
+                        if (typeof switchView === 'function') switchView('view-shop');
+                        setTimeout(() => {
+                            if (typeof window.openProductModal === 'function') window.openProductModal(p.id);
+                        }, 300);
+                    }, false));
+                }
+            });
+
+            // Contact quick-action buttons
+            CONTACT_MAP.forEach(c => {
+                if (matchesAny(combined, c.test)) {
+                    btns.push(makeActionBtn(c.label, null, true, c.href));
+                }
+            });
+
+            if (btns.length > 0) {
+                const row = document.createElement('div');
+                row.style.cssText = 'display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;';
+                btns.forEach(b => row.appendChild(b));
+                msgs.appendChild(row);
+            }
+        }
+
+        // --- Chat state ---
+        let pzChatHistory = [{ role: 'system', content: PZ_SYSTEM_PROMPT }];
+        let pzChatOpen = false;
+
+        function togglePzChat() {
+            pzChatOpen = !pzChatOpen;
+            document.getElementById('pizhun-chat-panel').classList.toggle('active', pzChatOpen);
+        }
+
+        async function sendPzMessage() {
+            const input = document.getElementById('pz-chat-input');
+            const msgs = document.getElementById('pz-chat-messages');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+
+            const userBubble = document.createElement('div');
+            userBubble.className = 'pz-user-bubble';
+            userBubble.textContent = text;
+            msgs.appendChild(userBubble);
+            msgs.scrollTop = msgs.scrollHeight;
+
+            const typingBubble = document.createElement('div');
+            typingBubble.className = 'pz-ai-bubble';
+            typingBubble.innerHTML = '<span class="pz-typing">&bull;&bull;&bull;</span>';
+            msgs.appendChild(typingBubble);
+            msgs.scrollTop = msgs.scrollHeight;
+
+            pzChatHistory.push({ role: 'user', content: text });
+
+            try {
+                const res = await puter.ai.chat(pzChatHistory, { model: 'gpt-4o-mini' });
+                const reply = res?.message?.content || res?.text || 'No pude obtener respuesta.';
+                pzChatHistory.push({ role: 'assistant', content: reply });
+                typingBubble.textContent = reply;
+                injectButtons(msgs, text, reply);
+            } catch(e) {
+                typingBubble.textContent = 'Error al conectar. Por favor, inténtalo de nuevo.';
+            }
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>

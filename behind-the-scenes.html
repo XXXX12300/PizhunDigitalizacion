@@ -10,6 +10,59 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://js.puter.com/v2/"></script>
+    <style>
+        .app-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 10px;
+            background: #fff;
+            padding: 5px;
+        }
+
+        .step-list {
+            color: #aaa;
+            padding-left: 20px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #111;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #eee;
+            overflow-x: auto;
+            border: 1px solid #333;
+            margin: 15px 0;
+            white-space: pre;
+            line-height: 1.4;
+        }
+
+        .problem-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+        }
+
+        .solution-title {
+            color: #fca5a5;
+            font-weight: 800;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .solution-text {
+            color: #eee;
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,131 +70,170 @@
         <div class="bts-container">
             <div class="bts-tag gs-reveal">CLASSIFIED DOSSIER</div>
             <h1 class="bts-title gs-reveal">Building<br>The Core</h1>
-            <p class="bts-subtitle gs-reveal">Un recorrido detallado por el proceso de diseño y desarrollo de PIZHUN
-                como trabajo práctico de digitalización. Construido explorando la intersección del diseño web y la
-                inteligencia artificial.</p>
+            <p class="bts-subtitle gs-reveal">Un recorrido paso a paso, con extremo detalle, sobre el proceso de diseño
+                y desarrollo de PIZHUN. Construido explorando la intersección del diseño web y la inteligencia
+                artificial, ahora en su versión más completa y minuciosa.</p>
         </div>
     </header>
 
     <main class="bts-container">
-        <!-- Section: The Vision -->
+        <!-- Section: Grok (Images & Videos) -->
         <section class="bts-section">
             <div class="section-grid">
                 <div class="text-content gs-reveal">
-                    <h2>01. La Visión Inicial</h2>
-                    <p>Este trabajo de digitalización nació con el objetivo de deconstruir la estética tradicional del
-                        "streetwear" y crear el diseño conceptual de una supuesta marca ficticia (PIZHUN) con narrativa
-                        tecnológica y vanguardista.</p>
-                    <p>En lugar de depender de herramientas tradicionales de vectorización o sesiones de fotos
-                        convencionales, el proyecto explora el uso del motor de <strong>Grok Imagine</strong> para
-                        visualizar exactamente qué materiales, luces y texturas conformarían esta marca.</p>
-                    <div class="highlight-box">
-                        <strong>PROMPT ENGINEERING:</strong>
-                        <code>/imagine prompt: A high-end, cyberpunk-inspired streetwear lookbook...</code>
+                    <h2>01. Ideación Visual y Audiovisual con Grok</h2>
+                    <p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Grok_logo.svg" alt="Grok Logo"
+                            class="app-logo" style="background:transparent; filter: invert(1);">
+                        <strong>Grok Imagine</strong> fue el núcleo creativo. El objetivo era deconstruir la estética
+                        tradicional del "streetwear" y crear una marca de narrativa tecnológica y vanguardista.
+                    </p>
+                    <p><strong>Paso a paso (Generación de Imágenes):</strong></p>
+                    <ol class="step-list">
+                        <li>Abre tu navegador, accede al panel de control de <strong>x.ai</strong> e inicia sesión con tu cuenta.</li>
+                        <li>En el menú lateral izquierdo, selecciona el módulo <strong>Grok</strong> y navega a la pestaña de "Imágenes".</li>
+                        <li>Haz clic en el cuadro de texto inferior y escribe un *prompt* altamente descriptivo. Por ejemplo: <em>"A tech-core streetwear cap, matte black, studio lighting, hyper-realistic, 8K, front view"</em>.</li>
+                        <li>Haz clic en la flecha de enviar o pulsa <strong>Enter</strong> para generar el arte. Espera a que termine de procesar.</li>
+                        <li>Si el resultado no tiene el material deseado, repite el proceso sumando palabras clave paramétricas como <code>volumetric lighting</code> o <code>shot on 35mm lens</code>.</li>
+                        <li>Haz clic en la imagen generada para expandirla. Escoge la mejor, haz clic derecho sobre ella y selecciona <strong>Guardar imagen como...</strong>.</li>
+                        <li>Guárdala directamente en una carpeta llamada <code>/img</code> dentro del directorio de código de tu proyecto.</li>
+                    </ol>
+
+                    <p><strong>Paso a paso (Generación de Vídeo Cinemático):</strong></p>
+                    <ol class="step-list">
+                        <li>A través de Grok u otras herramientas de vídeo neuronal compatibles, selecciona el modo <strong>Image-to-Video</strong>.</li>
+                        <li>Pulsa el botón de <strong>Upload</strong> y sube la imagen estática generada en los pasos de arriba.</li>
+                        <li>En el panel de animación, incluye órdenes de cámara rigurosas: <em>"slow cinematic pan, handheld camera movement, cyberpunk street, rain, shallow depth of field"</em>.</li>
+                        <li>Ajusta la duración a unos 4 o 5 segundos y pulsa <strong>Generate</strong>.</li>
+                        <li>Descarga el archivo <code>.mp4</code> resultante, ve a tu proyecto, y colócalo dentro de tu carpeta web <code>/video</code>.</li>
+                        <li>Abre el documento de tu web, y en tu HTML enlaza el vídeo usando la etiqueta: <br><code>&lt;video autoplay loop muted playsinline src="video/tu_video.mp4"&gt;&lt;/video&gt;</code> para que sirva de fondo dinámico.</li>
+                    </ol>
+
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Problema: Deformación Visual en la IA</div>
+                        <div class="solution-text">
+                            <strong>Obstáculo:</strong> A la hora de generar los primeros vídeos de las chaquetas, la IA tendía a deformar las costuras o derretir los cierres si le pedía un movimiento muy brusco.<br>
+                            <strong>Solución:</strong> Modifiqué las directrices del *prompt* introduciendo las palabras clave "static subject" y "slow cinematic pan". Obligué a la IA a que moviera EXCLUSIVAMENTE la lente de la cámara simulada y no el objeto físico. Al aislar las físicas del entorno, la ropa se mantuvo fotorealista perfecta.
+                        </div>
                     </div>
                 </div>
-                <div class="media-showcase gs-reveal" style="box-shadow: none;">
-
-                    <!-- Grok Chat Mockup -->
+                
+                <!-- Photos of Processes -->
+                <div class="media-showcase gs-reveal"
+                    style="box-shadow: none; display: flex; flex-direction: column; gap: 15px;">
                     <div class="grok-chat">
                         <div class="grok-header">
-                            <span class="sparkle-icon">✦</span> Grok Imagine
+                            <span class="sparkle-icon">✦</span> Grok AI Console - Visión Temporal
                         </div>
                         <div class="grok-user-msg">
-                            A high-end, cyberpunk-inspired streetwear lookbook. Dark studio lighting, hyper-realistic,
-                            8k, glassmorphism elements, minimal typography, futuristic fabrics.
+                            Generate a hyper-realistic video: slow cinematic pan, static subject, handheld camera over a cyberpunk
+                            streetwear jacket in the rain...
                         </div>
                         <div class="grok-ai-msg media-showcase">
-                            <img src="https://i.ibb.co/v6VxsHbP/image.png" alt="Grok Generated Moodboard" loading="lazy"
-                                style="border-radius: 8px;">
+                            <!-- Process picture representation -->
+                            <img src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Grok Video Process" loading="lazy"
+                                style="border-radius: 8px; width: 100%; opacity: 0.85;">
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Section: Video Generation -->
+        <!-- Section: Meshy.ai -->
         <section class="bts-section">
             <div class="section-grid reverse">
                 <div class="text-content gs-reveal">
-                    <h2>02. Cinematografía Sintética</h2>
-                    <p>El dinamismo de la página principal recae fuertemente en su atmósfera audiovisual. Para lograr
-                        esos vídeos con acabado de cámara en mano y texturas fotorrealistas de lluvia y asfalto,
-                        llevamos los concepts de Grok a herramientas generativas de vídeo.</p>
-                    <p>Las indicaciones técnicas incluían peticiones específicas de lentes (p.ej. "shot on 35mm lens") y
-                        movimientos de cámara ("slow pan", "handheld macro shot") para dar la sensación física al robot
-                        y a las chaquetas "Tech-Core".</p>
+                    <h2>02. Modelado 3D GenAI con Meshy</h2>
+                    <p>
+                        <span style="font-size: 2rem; vertical-align: middle; margin-right: 10px;">🧊</span>
+                        <strong>Meshy.ai</strong> fue la llave para dar el salto volumétrico. Convertimos la imagen plana
+                        del concept de Grok a modelos tridimensionales físicos para nuestra Realidad Aumentada.
+                    </p>
+                    <p><strong>Paso a paso (Generación y Exportación del Modelo):</strong></p>
+                    <ol class="step-list">
+                        <li>Entra en <strong>Meshy.ai</strong> y haz clic en Iniciar Sesión con tu cuenta de Google.</li>
+                        <li>En el panel lateral izquierdo, selecciona el flujo de trabajo llamado <strong>Image to 3D</strong>.</li>
+                        <li>Haz clic en el recuadro gigante que dice <strong>Upload Image</strong>, navega a tu carpeta <code>/img</code> y selecciona la foto plana frontal del diseño de tu gorra Neural/chaqueta.</li>
+                        <li>En la configuración lateral derecha, selecciona la calidad de topología a <strong>High Quality (PBR Textures)</strong>.</li>
+                        <li>Pulsa el botón inferior negro de <strong>Generate</strong>. Toma asiento; este proceso calculará la profundidad poligonal y puede tardar entre 2 y 4 largos minutos.</li>
+                        <li>Una vez complete el proceso de *Baking*, previsualizarás el objeto usando el visor 3D en tu navegador para revisar irregularidades.</li>
+                        <li>En la esquina superior del visor, pulsa el botón morado de <strong>Download</strong>.</li>
+                        <li>Surgirá un menú desplegable preguntando por el formato. Esto es vital: Haz clic de forma selectiva en formato <strong>.glb</strong> (GL Transmission Format Binary). Es el formato más pulido, unificado y universal para proyectos en Unity y render web.</li>
+                        <li>Guarda el archivo final en tu escritorio.</li>
+                    </ol>
+
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Problema: Modelos Gigantes y Escala Absoluta</div>
+                        <div class="solution-text">
+                            <strong>Obstáculo:</strong> Al arrastrar el `.glb` de Meshy directamente hacia mi proyecto de Unity o Three.js web, la gorra cargaba, pero su escala lo ocupaba todo (medía decenas de metros virtualmente) colisionando la cámara y rompiendo el rastreo.<br>
+                            <strong>Solución:</strong> Meshy crea las métricas de forma masiva en unidades relativas. Aprendí a usar la propiedad de <code>Transform -> Scale</code> de Unity. Seleccioné el objeto *prefab* en mi base de datos de Unity y en sus tres ejes (X, Y, Z) modifiqué manualmente su escala a un rígido <code>0.05</code> en cada eje. Esto redujo el modelo a su tamaño de Realidad Aumentada móvil real (escala humana).
+                        </div>
+                    </div>
                 </div>
                 <div class="media-showcase gs-reveal">
-                    <video autoplay loop muted playsinline>
-                        <source src="video/showing robot.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
-            <!-- Video Grid -->
-            <div class="gallery-grid">
-                <div class="gallery-item gs-reveal">
-                    <video autoplay loop muted playsinline loading="lazy">
-                        <source src="video/toma ojo.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="gallery-item gs-reveal">
-                    <video autoplay loop muted playsinline loading="lazy">
-                        <source src="video/rain walk.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="gallery-item gs-reveal">
-                    <video autoplay loop muted playsinline loading="lazy">
-                        <source src="video/street take.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Meshy AI Interface Process" loading="lazy"
+                        style="border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                 </div>
             </div>
         </section>
 
-        <!-- Section: Assembly & Code -->
+        <!-- Section: Ensamblaje Web -->
         <section class="bts-section">
             <div class="section-grid">
                 <div class="text-content gs-reveal">
-                    <h2>03. Ensamblaje Web</h2>
-                    <p>Con las ilustraciones generadas por Grok y los vídeos renderizados, el último paso fue orquestar
-                        todo el material en un flujo interactivo.</p>
-                    <p>La entrega del proyecto requería una interfaz que demostrara conocimientos técnicos avanzados,
-                        por lo que en lugar de recargar la web con información, implementamos un diseño SPA (Single Page
-                        Application) simulado. Se integraron rutinas avanzadas y variables en CSS, además de un control
-                        exhaustivo del DOM usando Javascript Vanilla y <strong>GSAP</strong>.</p>
-                </div>
+                    <h2>03. Arquitectura Web y Entorno IDE</h2>
+                    <p>
+                        <span style="font-size: 2rem; vertical-align: middle; margin-right: 10px;">🚀</span>
+                        La plataforma central, su diseño de animaciones (Single Page Application SPA) y programación DOM fueron meticulosamente construidas utilizando el motor de <strong>Google Antigravity IDE</strong>.
+                    </p>
+                    <p><strong>Paso a paso Frontend (HTML+GSAP+Puter):</strong></p>
+                    <ol class="step-list">
+                        <li>Arranca el entorno de <strong>Google Antigravity IDE</strong> en tu ordenador y abre el directorio raíz de trabajo.</li>
+                        <li>Crea un archivo nuevo, guárdalo como <code>index.html</code>. Haz clic dentro del código, pulsa el carácter <code>!</code> y luego pulsa la tecla <strong>Tabulador</strong> para auto-generar tu esqueleto HTML básico.</li>
+                        <li>Abre tu `<head>`. Debes enlazar los motores gráficos de animaciones web. Pega este texto exacto: <code>&lt;script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"&gt;&lt;/script&gt;</code> y debajo su plugin de scroll <code>ScrollTrigger.min.js</code>.</li>
+                        <li>Crea un botón nativo en el HTML y asígnale el evento <strong>onclick="toggleBtsChat()"</strong>.</li>
+                        <li>Abre tu archivo CSS o crea un bloque `<style>`. Define un panel con el parámetro <code>display: none;</code> que alojará la interfaz de chat en UI.</li>
+                        <li>Abre tu documento Javascript. Crea un evento nativo para inicializar GSAP: <code>document.addEventListener('DOMContentLoaded', () => { ... });</code>.</li>
+                        <li>Dentro del evento de carga, utiliza código selectivo como <code>document.querySelectorAll('.clase-animada')</code> para registrar todos los nodos. Luego, con un bucle anónimo recorre cada uno haciendo <code>gsap.fromTo(node, { y: 50, opacity: 0}, { scrollTrigger: ... , y: 0, opacity: 1})</code>.</li>
+                        <li>Para conectar la Inteligencia artificial de Puter.js de forma asincrónica: vincula una función global al botón de "Preguntar" con tu <code>onclick</code>. Escribe <code>await puter.ai.chat(btsChatHistory);</code> dentro de un bloque Try-Catch para enviar el texto HTML que recuperaste de tu form-input.</li>
+                    </ol>
 
-                <!-- Code IDE Mockup -->
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Problema: Solapamiento Visual y Lag ('Stuttering')</div>
+                        <div class="solution-text">
+                            <strong>Obstáculo:</strong> Mi página, al incluir transiciones rápidas y vídeos de 4K, comenzó a verse extremadamente pausada ("Lagg") en móviles y mi cursor personalizado saltaba repentinamente. Las animaciones al hacer Scroll chocaban constantemente.<br>
+                            <strong>Solución:</strong> Prescindí por completo de animar el Margin o Width con CSS porque recarga el "Paint" del navegador. Rehice las funciones GSAP para el puntero utilizando su API premium <code>gsap.quickTo()</code> el cual ignora el DOM por defecto y redibuja de forma interpolada. Y respecto a las interacciones, las até en seco usando ScrollTrigger añadiendo este bloque estricto: <code>{ trigger: element, start: "top 85%" }</code> para asegurarme de que nunca animaría dos veces simultáneamente.
+                        </div>
+                    </div>
+                </div>
+                <!-- IDE Mockup -->
                 <div class="media-showcase gs-reveal" style="box-shadow: none;">
                     <div class="mock-ide-window">
                         <div class="ide-header">
-                            <span class="mac-btn mac-close"></span>
-                            <span class="mac-btn mac-min"></span>
-                            <span class="mac-btn mac-max"></span>
+                            <span class="mac-btn mac-close"></span><span class="mac-btn mac-min"></span><span
+                                class="mac-btn mac-max"></span>
                             <span
-                                style="margin-left: 10px; color: #888; font-size: 0.8rem; font-family: sans-serif;">script.js
-                                — PIZHUN</span>
+                                style="margin-left: 10px; color: #888; font-size: 0.8rem; font-family: sans-serif;">Google
+                                Antigravity IDE — script.js</span>
                         </div>
                         <div class="ide-content">
-                            <span class="keyword">function</span> <span class="function">initCursor</span>() {
-                            <span class="keyword">const</span> cursor = <span
-                                class="function">document.querySelector</span>(<span class="string">'.cursor'</span>);
-                            cursor.style.display = <span class="string">'block'</span>;
+                            <span class="comment">// Resolviendo "Stuttering" y Pizhun Cursor Web Initialization</span>
+                            <span class="keyword">function</span> <span class="function">initInteraction</span>() {
+                            <span class="keyword">const</span> cursor = document.querySelector(<span
+                                class="string">'.cursor'</span>);
+                            <span class="comment">// El uso de quickTo evita el reflow del DOM y solventa lag //</span>
+                            <span class="keyword">const</span> xTo = gsap.quickTo(cursor, <span
+                                class="string">"x"</span>, {duration: <span class="string">0.2</span>, ease: <span
+                                class="string">"power3"</span>});
+                            <span class="keyword">const</span> yTo = gsap.quickTo(cursor, <span
+                                class="string">"y"</span>, {duration: <span class="string">0.2</span>, ease: <span
+                                class="string">"power3"</span>});
 
-                            <span class="comment">// Fluid Backlight Focus (premium sluggish effect)</span>
-                            <span class="keyword">const</span> cursorX = gsap.<span
-                                class="function">quickTo</span>(cursor, <span class="string">"x"</span>, { duration:
-                            <span class="string">0.2</span> });
-                            <span class="keyword">const</span> cursorY = gsap.<span
-                                class="function">quickTo</span>(cursor, <span class="string">"y"</span>, { duration:
-                            <span class="string">0.2</span> });
-
-                            <span class="function">window.addEventListener</span>(<span
-                                class="string">'mousemove'</span>, (e) => {
-                            <span class="function">cursorX</span>(e.clientX);
-                            <span class="function">cursorY</span>(e.clientY);
+                            window.addEventListener(<span class="string">'mousemove'</span>, e => {
+                            xTo(e.clientX);
+                            yTo(e.clientY);
                             });
                             }
                         </div>
@@ -154,274 +246,268 @@
         <section class="bts-section">
             <div class="section-grid reverse">
                 <div class="text-content gs-reveal">
-                    <h2>04. La Experiencia AR en Unity</h2>
-                    <p>Para la funcionalidad de Prueba en Realidad Aumentada (la app de Android), pasamos del entorno
-                        web a un motor de físicas real.</p>
-                    <p>Importamos los modelos 3D (`.glb`) generados para la web directamente a <strong>Unity
-                            Engine</strong>. Utilizando los paquetes de <strong>AR Foundation</strong>, combinamos el
-                        reconocimiento espacial de la cámara del móvil con la iluminación HD de Unity, permitiendo a la
-                        camiseta "flotar" e interactuar con la iluminación de la habitación real en tiempo real antes de
-                        exportarlo al `.apk` final descargable.</p>
-                </div>
+                    <h2>04. Realidad Aumentada Extrema en Unity</h2>
+                    <p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg"
+                            alt="Unity Logo" class="app-logo" style="background:#fff;">
+                        Por si la web inmersiva no fuera poco, toda la experiencia física transcurre en
+                        <strong>Unity</strong> a través de un aplicativo de Android apoyándose en los motores de reconocimiento espacial de Google.
+                    </p>
 
-                <!-- Unity Mock -->
-                <div class="media-showcase gs-reveal" style="box-shadow: none;">
-                    <div class="unity-mock">
-                        <div class="unity-header">
-                            <span>Unity 2026.1 - PIZHUN_AR_Core</span>
-                            <span>Layout: Default</span>
-                        </div>
-                        <img src="https://i.ibb.co/svWxhTDY/image-Photoroom-3.png" alt="AR Hologram in Unity Scene"
-                            style="width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: sepia(10%) contrast(1.1) brightness(0.8);"
-                            loading="lazy">
-                        <div
-                            style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 4px; font-family: sans-serif; font-size: 0.75rem; color: #0f0;">
-                            <span>► Play</span>
-                            <span style="margin-left: 10px; color: #fff;">AR Session Running...</span>
+                    <p><strong>Configuración y Extracción Cronométrica (Instrucciones AR Foundation):</strong></p>
+                    <ol class="step-list">
+                        <li>Abre la aplicación nativa <strong>Unity Hub</strong> en tu PC.</li>
+                        <li>Haz clic en la esquina superior derecha en el botón azul de <strong>New Project</strong>.</li>
+                        <li>En el menú de plantillas visuales, selecciona <strong>3D (Core)</strong>. Dale a tu proyecto un nombre como <code>Smart_Pizhun_AR_Core</code> y haz clic inferior derecho en <strong>Create Project</strong>.</li>
+                        <li>Al cargar el Editor, mira el menú horizontal de la ventana. Da clic en <strong>Window</strong>, desplaza hacia abajo y pulsa en <strong>Package Manager</strong>.</li>
+                        <li>En el panel lateral flotante que se te abre, en la esquina izquierda dice 'Packages: In Project'. Haz clic ahí y cámbialo a <strong>Packages: Unity Registry</strong> para acceder a los repositorios de la empresa.</li>
+                        <li>Usa la pequeña lupa de buscar, escribe <code>AR Foundation</code> y abajo a la derecha pulsa al botón oscuro <strong>Install</strong>. Luego, borra la barra, busca "<code>ARCore XR Plugin</code>" y púlsale Install nuevamente.</li>
+                        <li>Ahora hay que activar todo en el Kernel. Ve al menú <strong>Edit -> Project Settings</strong>. Ve el menú lateral, pulsa abajo en <strong>XR Plug-in Management</strong>. Ahora pincha en la pestaña con el icono de un Robot Androide, y marca con un <code>✓</code> la casilla que dice "ARCore".</li>
+                        <li>Ya tienes AR inyectada. En la pestaña izquierda en la mitad de la pantalla, que llama "Hierarchy", tienes la escena predeterminada. Usa <strong>Eliminar/Suprimir (Borrar)</strong> la "Main Camera" predeterminada, no la usaremos.</li>
+                        <li>En esa misma pestaña, pulsa Click Derecho -> Navega al sub-menú <code>XR</code> y haz pulsar en <strong>AR Session</strong>. Repite el clic derecho -> Navega al sub-menú <code>XR</code> y pulsa <strong>AR Session Origin</strong>.</li>
+                        <li>Para el Image Tracking: Selecciona tu <code>AR Session Origin</code> de la Hierarchy de escena, mira tu panel "Inspector" de la derecha, y pulsa ese inmenso botón debajo del todo llamado <strong>Add Component</strong>. Escribe ahí <code>AR Tracked Image Manager</code> y dale click.</li>
+                        <li>Toma el archivo <code>.glb</code> que sacamos antes de Meshy (escalado a 0.05). Arrástralo como recurso prefabricado *Prefab* de tu disco duro y enchúfalo en la casilla "Tracked Image Prefab" que figura en el Manager que acabas de añadir a la escena.</li>
+                        <li><strong>Requisito Final (La Generación):</strong> Para construir la aplicación finalmente como un <code>.apk</code> de teléfono Android real. Arriba a la izquierda, entra a <strong>File</strong> y toca <strong>Build Settings...</strong>.</li>
+                        <li>Haz clic en el cuadro <strong>Android</strong> debajo de la sección Plataforma local. Luego toca abajo a la derecha el botón de <strong>Switch Platform</strong> (espera que recalcule e importe activos).</li>
+                        <li>Pulsa el botón de <strong>Add Open Scenes</strong> para asegurarte arriba de que estás buildeando la escena correcta con tus objetos XR adentro.</li>
+                        <li>Una vez listo todo, clicamos el gran botón <strong>Build</strong> al lado derecho de Build settings. Elegimos una ruta y guardamos el sistema Android a nuestro celular.</li>
+                    </ol>
+
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Problemas Fatales Frecuentes en el SDK de Unity</div>
+                        <div class="solution-text">
+                            <strong>Problema 1 - Pantalla Azul y Render Roto:</strong> Un día, en un intento por solucionar fallos, borré la carpeta <code>Library</code> de mi proyecto Windows para limpiar caché (una práctica común). Al reabrir y construir mi cámara de AR móvil, ésta generaba una vista completamente azul oscuro / negro (no activaba la cámara trasera real nunca).<br>
+                            <strong>Solución:</strong> Todo el 'Universal Render Pipeline' de Unity se desincronizó. Tras horas de análisis, localicé el núcleo. Tuve que ir a las opciones globales, forzar una reimportación masiva del URP, además de añadir un archivo llamado "Forward Renderer Data". En la pestaña base, tuve que reinsertar artificialmente el <code>AR Background Render Feature</code> a dicho pipeline. Milagrosamente, la cámara del móvil volvió a emitir el entorno real.
+                            <br><br>
+                            <strong>Problema 2 - Gorra de Face Tracking Despegada:</strong> Mi módulo AR sí reconocía perfectamente la cara de los usuarios en red, pero instanciaba y generaba el `.glb` de la gorra fusionándola con la nariz. El <code>ARFace</code> toma el centro de la geometría del cráneo como su punto cero.<br>
+                            <strong>Solución:</strong> Tuve que alterar el sistema completo de anclado diseñando un script que lo offsetee de la malla principal. Modifiqué concretamente la línea vectorial del transform en C#: <code>_currentHatInstance.transform.localPosition = new Vector3(0, 0.15f, 0.05f);</code> obligando a la malla a subirse verticalmente 15 cm relativos para quedar en la frente y 5 cm para el avance frontal, emulando la visera a la perfección sin dañar el Tracking en tiempo de ejecución.
                         </div>
                     </div>
                 </div>
+
+                <!-- Unity Process -->
+                <div class="media-showcase gs-reveal"
+                    style="box-shadow: none; display: flex; flex-direction: column; gap: 15px;">
+                    <img src="https://images.unsplash.com/photo-1633534575825-f7cb67ca2b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Unity Interfaz - Proceso AR" loading="lazy"
+                        style="border-radius: 8px; opacity: 0.9; width: 100%;">
+                </div>
+            </div>
+
+            <div class="gs-reveal" style="margin-top: 40px;">
+                <h3>Scripts Nativos de Unity Desarrollados</h3>
+                <p style="color: #aaa; margin-bottom: 5px;"><strong>HologramGlitchAnimator.cs</strong> - Gestiona el
+                    glow y parpadeos iniciales de la simulación de sistema CRT en interfaces espaciales.</p>
+                <div class="code-block">using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(CanvasGroup))]
+public class HologramGlitchAnimator : MonoBehaviour
+{
+    private CanvasGroup _canvasGroup;
+    private RectTransform _rectTransform;
+
+    [Header("Glitch Appearance Settings")]
+    [Tooltip("How long the opening glitch sequence lasts before settling.")]
+    public float transitionDuration = 0.4f;
+    [Tooltip("Starting scale on the Y axis to simulate a CRT/Hologram turning on.")]
+    public float startScaleY = 0.05f;
+
+    [Header("Color/Image Glitch (Optional)")]
+    [Tooltip("If assigned, its color/alpha will flicker during the transition.")]
+    public Graphic primaryGraphic;
+
+    private Vector3 _originalScale;
+    private Color _originalColor;
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent&lt;CanvasGroup&gt;();
+        _rectTransform = GetComponent&lt;RectTransform&gt;();
+        _originalScale = Vector3.one;
+
+        if (primaryGraphic != null)
+        {
+            _originalColor = primaryGraphic.color;
+        }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(GlitchInCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        _canvasGroup.alpha = 0f;
+        _rectTransform.localScale = new Vector3(_originalScale.x, startScaleY, _originalScale.z);
+    }
+
+    private IEnumerator GlitchInCoroutine()
+    {
+        float elapsed = 0f;
+        _canvasGroup.alpha = 0.2f;
+        Vector3 currentScale = _originalScale;
+        currentScale.y = startScaleY;
+        _rectTransform.localScale = currentScale;
+
+        while (elapsed &lt; transitionDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / transitionDuration;
+
+            // 1. Scale Glitch
+            float scaleY = Mathf.Lerp(startScaleY, _originalScale.y * 1.05f, t);
+            if (t &gt; 0.8f)
+            {
+                scaleY = Mathf.Lerp(_originalScale.y * 1.05f, _originalScale.y, (t - 0.8f) / 0.2f);
+            }
+            _rectTransform.localScale = new Vector3(_originalScale.x, scaleY, _originalScale.z);
+
+            // 2. Alpha/Visibility Glitch
+            if (Random.value &gt; t)
+            {
+                _canvasGroup.alpha = Random.Range(0.1f, 0.8f);
+            }
+            else
+            {
+                _canvasGroup.alpha = Mathf.Lerp(0.5f, 1f, t);
+            }
+
+            // 3. Offset Glitch (Jitter)
+            if (Random.value &lt; 0.3f && t &lt; 0.9f)
+            {
+                float jitter = Random.Range(-15f, 15f) * (1f - t);
+                _rectTransform.anchoredPosition = new Vector2(jitter, _rectTransform.anchoredPosition.y);
+            }
+            else
+            {
+                _rectTransform.anchoredPosition = new Vector2(0, _rectTransform.anchoredPosition.y);
+            }
+
+            // 4. Color Glitch
+            if (primaryGraphic != null)
+            {
+                if (Random.value &lt; 0.2f)
+                {
+                    primaryGraphic.color = Random.value &gt; 0.5f ? Color.cyan : Color.magenta;
+                }
+                else
+                {
+                    primaryGraphic.color = _originalColor;
+                }
+            }
+
+            yield return null;
+        }
+
+        _rectTransform.localScale = _originalScale;
+        _rectTransform.anchoredPosition = new Vector2(0, _rectTransform.anchoredPosition.y);
+        _canvasGroup.alpha = 1f;
+        if (primaryGraphic != null) primaryGraphic.color = _originalColor;
+    }
+}</div>
+
+                <p style="color: #aaa; margin-top: 30px; margin-bottom: 5px;"><strong>ARHatController.cs</strong> -
+                    (Solución a la Gorra Flotante del Problema 2). Calcula el punto geométrico del Tracking de cara y sube el asset 15 cm arriba y 5 cm adelante.</p>
+                <div class="code-block">using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+
+[RequireComponent(typeof(ARFace))]
+public class ARHatController : MonoBehaviour
+{
+    private ARFace _arFace;
+
+    [Tooltip("The Hat prefab instance currently attached to the face.")]
+    private GameObject _currentHatInstance;
+
+    void Awake()
+    {
+        _arFace = GetComponent&lt;ARFace&gt;();
+    }
+
+    void OnEnable()
+    {
+        _arFace.updated += OnFaceUpdated;
+        HatSelectionManager.OnHatChanged += SetHatPrefab;
+    }
+
+    void Start()
+    {
+        TryLoadInitialHat();
+    }
+
+    void LateUpdate()
+    {
+        if (_currentHatInstance == null)
+        {
+            TryLoadInitialHat();
+        }
+    }
+
+    private void TryLoadInitialHat()
+    {
+        if (HatSelectionManager.Instance != null && HatSelectionManager.Instance.SelectedHatPrefab != null)
+        {
+            SetHatPrefab(HatSelectionManager.Instance.SelectedHatPrefab);
+        }
+    }
+
+    void OnDisable()
+    {
+        _arFace.updated -= OnFaceUpdated;
+        HatSelectionManager.OnHatChanged -= SetHatPrefab;
+    }
+
+    private void OnFaceUpdated(ARFaceUpdatedEventArgs args)
+    {
+        if (_currentHatInstance != null)
+        {
+            if (_arFace.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+            {
+                _currentHatInstance.SetActive(true);
+            }
+            else
+            {
+                _currentHatInstance.SetActive(false);
+            }
+        }
+    }
+
+    public void SetHatPrefab(GameObject newHatPrefab)
+    {
+        if (_currentHatInstance != null)
+        {
+            Destroy(_currentHatInstance);
+        }
+
+        if (newHatPrefab != null)
+        {
+            _currentHatInstance = Instantiate(newHatPrefab);
+
+            _currentHatInstance.transform.SetParent(transform, false);
+
+            _currentHatInstance.transform.localScale = Vector3.one;
+
+            // EL GRAN ARREGLO AL PROBLEMA 2:
+            // Offset upwards above the center of the face: 15cm up, 5cm forward so it sits on the forehead exacto
+            _currentHatInstance.transform.localPosition = new Vector3(0, 0.15f, 0.05f);
+            _currentHatInstance.transform.localRotation = Quaternion.identity;
+
+            Debug.Log($"[ARHatController] Hat {newHatPrefab.name} spawned!");
+        }
+    }
+}</div>
             </div>
         </section>
     </main>
 
     <footer class="bts-footer">
-        <button onclick="toggleGuide()"
-            style="display:inline-flex; align-items:center; gap:10px; background:#ffffff; color:#000; border:none; padding:16px 32px; border-radius:100px; font-weight:700; cursor:pointer; font-size:1rem; margin-bottom:16px;">
-            📖 Explicación Detallada (Paso a Paso)
-        </button>
         <br>
         <a href="index.html" class="btn-back">← Volver a PIZHUN CORE</a>
     </footer>
-
-    <!-- ========================== -->
-    <!-- STEP-BY-STEP GUIDE OVERLAY -->
-    <!-- ========================== -->
-    <div id="guide-overlay"
-        style="display:none; position:fixed; inset:0; background:#050505; z-index:9000; overflow-y:auto; padding:60px 5%;">
-        <button onclick="document.getElementById('guide-overlay').style.display='none'"
-            style="position:fixed; top:20px; right:25px; background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:10px 20px; border-radius:100px; cursor:pointer; font-size:0.9rem;">✕
-            Cerrar</button>
-        <div style="max-width:900px; margin:0 auto;">
-            <div class="bts-tag" style="margin-bottom:20px;">PASO A PASO</div>
-            <h2 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:800; mar            <!-- STEP 1 -->
-            <div class=" step-block">
-                <div class="step-num">01</div>
-                <h3>Crear las Imágenes con Grok Imagine</h3>
-                <p>Accede a <a href="https://x.ai" target="_blank" style="color:#8b5cf6;">x.ai</a> e inicia sesión con
-                    tu cuenta de X (antes Twitter). En el menú lateral selecciona <strong>Grok</strong> → pestaña
-                    <strong>Imagen</strong>.
-                </p>
-                <ol style="color:#aaa; padding-left:20px; line-height:2;">
-                    <li>Escribe el prompt con el máximo detalle posible. Por ejemplo: <em>"A tech-core streetwear cap,
-                            matte black, studio lighting, hyper-realistic, 8K, front view"</em>.</li>
-                    <li>Pulsa <strong>Generate</strong> y espera unos 10-15 segundos.</li>
-                    <li>Si no te gusta el resultado, añade más palabras clave como <code
-                            style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">cinematic, editorial, product photography</code>
-                        y vuelve a pulsar Generate.</li>
-                    <li>Cuando tengas la imagen que quieres, descárgala haciendo clic en los tres puntos (⋯) →
-                        <strong>Descargar</strong>.
-                    </li>
-                    <li>Repite el proceso para cada producto (cap, chaqueta, camiseta, figura). Guarda todas las
-                        imágenes en una carpeta <code
-                            style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">/img</code> dentro de tu
-                        proyecto.</li>
-                </ol>
-                <div class="video-embed">
-                    <iframe src=":https://codepen.io/r3hab/pen/nNqZPhCWVEo" title="How to use Grok Imagine"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="step-block">
-            <div class="step-num">02</div>
-            <h3>Generar los Vídeos de Fondo con IA</h3>
-            <p>Los vídeos de la web aportan el movimiento cinematográfico. Para generarlos sigue estos pasos:</p>
-            <ol style="color:#aaa; padding-left:20px; line-height:2;">
-                <li>Accede a <a href="https://klingai.com" target="_blank" style="color:#8b5cf6;">Kling AI</a> o <a
-                        href="https://runwayml.com" target="_blank" style="color:#8b5cf6;">Runway Gen-3</a> y crea una
-                    cuenta gratuita.</li>
-                <li>Selecciona la opción <strong>Image to Video</strong> y sube una de las imágenes generadas con Grok.
-                </li>
-                <li>En el campo de prompt de movimiento escribe: <em>"slow cinematic pan, handheld camera, cyberpunk
-                        street, rain, shallow depth of field, 35mm lens"</em>.</li>
-                <li>Selecciona duración: <strong>5 segundos</strong>. Resolución: <strong>720p</strong> o superior.</li>
-                <li>Pulsa <strong>Generate</strong>. El proceso tarda 1-3 minutos.</li>
-                <li>Descarga el MP4 resultante y guárdalo en una carpeta <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">/video</code> dentro del
-                    proyecto.</li>
-                <li>Repite para cada escena que quieras: el robot, la lluvia en la calle, los detalles de ropa, etc.
-                </li>
-            </ol>
-            <div class="video-embed">
-                <iframe src="https://codepen.io/r3hab/pen/RG3FZQD35jw" title="AI Video Generation Tutorial"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="step-block">
-            <div class="step-num">03</div>
-            <h3>Construir la Web con HTML, CSS y JavaScript</h3>
-            <p>Toda la web es una SPA (Single Page Application) montada sin frameworks, únicamente con HTML5, CSS3 y JS
-                Vanilla + GSAP para las animaciones.</p>
-            <ol style="color:#aaa; padding-left:20px; line-height:2;">
-                <li>Crea una carpeta de proyecto y dentro un archivo <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">index.html</code>.</li>
-                <li>En el <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;head&gt;</code>
-                    importa <strong>Google Fonts</strong> (Inter + Syne) y enlaza tu <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">style.css</code>.</li>
-                <li>Añade los scripts de GSAP con el atributo <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">defer</code> para no bloquear el
-                    render:
-                    <br><code
-                        style="background:#1e1e1e; padding:4px 8px; border-radius:3px; display:block; margin-top:6px;">&lt;script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"&gt;&lt;/script&gt;</code>
-                </li>
-                <li>En <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">style.css</code>, define
-                    tus variables de color en <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">:root { --bg-color: #050505; --accent-color: #fff; }</code>.
-                </li>
-                <li>Crea la estructura de secciones en el HTML: <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">hero, shop, ar-app, brand</code>.
-                    Cada una como un <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;section&gt;</code> con un id
-                    único.</li>
-                <li>Añade las imágenes de productos con <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">loading="lazy"</code> para las
-                    que están bajo el fold.</li>
-                <li>Para los vídeos de fondo usa <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;video autoplay loop muted playsinline&gt;</code>.
-                </li>
-                <li>En <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">script.js</code>,
-                    implementa el preloader que espera a que se carguen las imágenes principales antes de mostrar la
-                    página.</li>
-                <li>Usa <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.to()</code> y <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.fromTo()</code> para las
-                    animaciones de entrada del hero.</li>
-                <li>Implementa el cursor personalizado con <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">gsap.quickTo()</code> para la
-                    interpolación fluida del movimiento.</li>
-            </ol>
-            <div class="video-embed">
-                <iframe src="https://codepen.io/r3hab/pen/G3e-cpL7ofc" title="HTML CSS Web Design Tutorial"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="step-block">
-            <div class="step-num">04</div>
-            <h3>App de Realidad Aumentada en Unity</h3>
-            <p>Esta es la parte más técnica del proyecto. Sigue cada paso exactamente en este orden:</p>
-            <ol style="color:#aaa; padding-left:20px; line-height:2;">
-                <li>Descarga e instala <a href="https://unity.com/download" target="_blank" style="color:#8b5cf6;">Unity
-                        Hub</a>. Desde Unity Hub, instala <strong>Unity 2022.3 LTS</strong> (versión estable
-                    recomendada) con el módulo <strong>Android Build Support</strong> + <strong>Android SDK & NDK
-                        Tools</strong>.</li>
-                <li>Crea un nuevo proyecto: <strong>New Project → 3D (Core) → Create Project</strong>.</li>
-                <li>Abre el <strong>Package Manager</strong> (menú Window → Package Manager). En el filtro selecciona
-                    <strong>"Unity Registry"</strong>. Busca e instala por este orden:
-                    <ul style="margin-top:6px;">
-                        <li><strong>AR Foundation</strong> (versión 5.x)</li>
-                        <li><strong>ARCore XR Plugin</strong></li>
-                        <li><strong>XR Plugin Management</strong></li>
-                    </ul>
-                </li>
-                <li>Ve a <strong>Edit → Project Settings → XR Plug-in Management</strong>. En la pestaña
-                    <strong>Android</strong>, activa la casilla <strong>ARCore</strong>.
-                </li>
-                <li>Importa tu modelo 3D: arrastra el archivo <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">.glb</code> directamente a la
-                    carpeta <strong>Assets</strong> en el panel Project. Unity lo convertirá automáticamente a Prefab.
-                </li>
-                <li>En la escena, elimina la Main Camera por defecto. Añade los componentes AR:
-                    <ul style="margin-top:6px;">
-                        <li>Menú <strong>GameObject → XR → AR Session</strong></li>
-                        <li>Menú <strong>GameObject → XR → AR Session Origin</strong></li>
-                    </ul>
-                </li>
-                <li>Al objeto <strong>AR Session Origin</strong> añádele el componente <strong>AR Plane Manager</strong>
-                    (detecta el suelo) y <strong>AR Raycast Manager</strong> (permite tocar la pantalla para colocar
-                    objetos).</li>
-                <li>Crea un script C# llamado <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">PlaceObject.cs</code> que
-                    detecte el toque y coloque el prefab del producto en el punto donde el rayo impacta el plano
-                    detectado.</li>
-                <li>Asigna el prefab del modelo 3D al campo correspondiente del script en el Inspector.</li>
-                <li>Para el Build: ve a <strong>File → Build Settings</strong>. Selecciona <strong>Android</strong> y
-                    pulsa <strong>Switch Platform</strong>. Cuando termine, pulsa <strong>Build</strong>. Elige una
-                    carpeta de destino y espera a que Unity genere el archivo <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">.apk</code> (puede tardar 5-10
-                    minutos).</li>
-                <li>Instala el APK en tu móvil Android (necesitarás activar "Instalar desde fuentes desconocidas" en
-                    Ajustes → Seguridad).</li>
-            </ol>
-            <div class="video-embed">
-                <iframe src="https://codepen.io/r3hab/pen/FWjTpqdhaKs" title="Unity AR Foundation Tutorial"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <img src="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/images/ar-foundation-simulated-scene.gif"
-                alt="Unity AR Foundation Demo" style="width:100%; border-radius:12px; margin-top:20px;" loading="lazy">
-        </div>
-
-        <!-- STEP 5 -->
-        <div class="step-block">
-            <div class="step-num">05</div>
-            <h3>Integrar el Asistente de IA con Puter.js</h3>
-            <p>Para dar valor añadido al proyecto integré un chatbot de IA en tiempo real. Aquí el proceso completo de
-                decisión y desarrollo:</p>
-            <ol style="color:#aaa; padding-left:20px; line-height:2;">
-                <li><strong>Primer intento — OpenRouter:</strong> Probé OpenRouter que permite usar modelos como GPT-4
-                    mediante una API. El problema fue que los tiempos de respuesta eran de 5-10 segundos, inaceptables
-                    para una tienda. Requería además gestionar API keys y un backend.</li>
-                <li><strong>Solución — Puter.js:</strong> Descubrí <a href="https://puter.com" target="_blank"
-                        style="color:#8b5cf6;">Puter.js</a>, que no requiere API keys ni backend. Una sola línea en el
-                    <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">&lt;head&gt;</code>:
-                    <br><code
-                        style="background:#1e1e1e; padding:4px 8px; border-radius:3px; display:block; margin-top:6px;">&lt;script src="https://js.puter.com/v2/"&gt;&lt;/script&gt;</code>
-                </li>
-                <li>Para llamar a la IA, usa <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">puter.ai.chat()</code> pasando
-                    un array de mensajes con roles:</li>
-                <li>Define un <strong>system prompt</strong> con todo el contexto de tu proyecto como primer mensaje con
-                    <code style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'system'</code>.
-                </li>
-                <li>Construye el historial de conversación añadiendo cada mensaje del usuario con <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'user'</code> y las
-                    respuestas con <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">role: 'assistant'</code>.</li>
-                <li>Crea el panel del chat con CSS (glassmorphism: <code
-                        style="background:#1e1e1e; padding:2px 5px; border-radius:3px;">backdrop-filter: blur(20px)</code>)
-                    y un input con un botón de enviar.</li>
-                <li>Muestra un indicador de carga ("•••" animado) mientras esperas la respuesta y reemplázalo con el
-                    texto cuando llegue.</li>
-            </ol>
-            <div class="highlight-box" style="margin-top:20px;">
-                <strong>Código básico de llamada:</strong>
-                <code>const res = await puter.ai.chat(historial);<br>const respuesta = res?.message?.content;</code>
-            </div>
-            <div class="video-embed" style="margin-top:24px;">
-                <iframe src="https://codepen.io/r3hab/pen/CTrFElGvLCg" title="Puter.js AI Integration" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-    </div>
-    rame>
-    </div>
-    </div>
-    </div>
-    </div>
 
     <!-- ===================== -->
     <!-- PUTER.JS AI ASSISTANT  -->
@@ -441,11 +527,12 @@
         </div>
         <div id="bts-chat-messages"
             style="flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px;">
-            <div class="bts-ai-msg-bubble">Hola! Soy el asistente de este proyecto. Puedes preguntarme sobre cómo se
-                creó la web, las imágenes, los vídeos, la app de AR en Unity, o cómo recrearlo tú mismo. 👆</div>
+            <div class="bts-ai-msg-bubble">¡Hola! Soy el asistente técnico oficial de PIZHUN. Puedo resolver tus dudas
+                sobre Generación AI con Grok o Meshy, Arquitectura con Antigravity IDE, o la extrema implementación detallada en Unity AR.
+            </div>
         </div>
         <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:8px;">
-            <input id="bts-chat-input" type="text" placeholder="Pregunta algo sobre el proyecto..."
+            <input id="bts-chat-input" type="text" placeholder="Pregunta técnica..."
                 style="flex:1; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:10px 16px; color:#fff; font-size:0.9rem; outline:none;"
                 onkeydown="if(event.key==='Enter') sendBtsMessage()">
             <button onclick="sendBtsMessage()"
@@ -470,22 +557,14 @@
             }
         });
 
-        // ---- Guide Panel Toggle ----
-        function toggleGuide() {
-            const overlay = document.getElementById('guide-overlay');
-            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // ---- BTS AI Chat (Puter.js) ----
         const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto de digitalización PIZHUN. 
-PIZHUN es un trabajo académico de digitalización que consiste en:
-1. Una tienda web de streetwear ficticia (HTML/CSS/JavaScript + GSAP)
-2. Las imágenes de los productos se generaron con Grok Imagine (IA de xAI)
-3. Los vídeos de la web se generaron con herramientas de vídeo IA (Kling/Runway)
-4. Una app de Realidad Aumentada construida en Unity con AR Foundation (exportada a APK de Android)
-5. Los modelos 3D se generaron con IA y se integraron en la web como archivos .glb
-
-Puedes ayudar a responder preguntas técnicas sobre: cómo se usó Grok Imagine, cómo funciona el código HTML/CSS/JS, cómo se hicieron las animaciones con GSAP, cómo se construyó la app AR en Unity, y cómo recrear el proyecto paso a paso. Responde siempre en español de forma concisa y amigable.`;
+Consideracions clave del proyecto:
+1. Una tienda web (HTML/CSS/JS) creada aceleradamente con Google Antigravity IDE solventando el Lag.
+2. Imágenes y vídeos cinematográficos generados por Grok Imagine aislando movimientos estáticos.
+3. Modelos 3D generados con Meshy.ai reescalados a 0.05 a partir de las fotos de Grok.
+4. App de AR en Unity con interfaz Glow (HologramGlitchAnimator) y Face Tracking con arreglos de Offset (ARHatController).
+Tambien ayudas a explicar como se solucionó el problema de Pantalla Azul por Unity URP tras borrar la Library.
+Responde siempre en español.`;
 
         let btsChatOpen = false;
         let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
@@ -502,14 +581,12 @@ Puedes ayudar a responder preguntas técnicas sobre: cómo se usó Grok Imagine,
             if (!text) return;
             input.value = '';
 
-            // Add user bubble
             const userBubble = document.createElement('div');
             userBubble.className = 'bts-user-msg-bubble';
             userBubble.textContent = text;
             messages.appendChild(userBubble);
             messages.scrollTop = messages.scrollHeight;
 
-            // Typing indicator
             const typing = document.createElement('div');
             typing.className = 'bts-ai-msg-bubble';
             typing.innerHTML = '<span class="typing-dots">•••</span>';
@@ -524,7 +601,7 @@ Puedes ayudar a responder preguntas técnicas sobre: cómo se usó Grok Imagine,
                 btsChatHistory.push({ role: 'assistant', content: reply });
                 typing.innerHTML = reply;
             } catch (e) {
-                typing.innerHTML = 'Error al conectar con el asistente. Asegúrate de estar conectado.';
+                typing.innerHTML = 'Error de conexión. Inténtalo más tarde.';
             }
             messages.scrollTop = messages.scrollHeight;
         }

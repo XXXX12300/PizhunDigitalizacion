@@ -62,6 +62,37 @@
             color: #eee;
             font-size: 0.95rem;
         }
+
+        .metric-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08); /* var(--glass-border) */
+            text-align: center;
+        }
+
+        .metric-value { font-size: 2rem; font-weight: 800; color: #8b5cf6; font-family: 'Syne', sans-serif; }
+        .metric-label { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px;}
+
+        .step-block {
+            background: rgba(255, 255, 255, 0.03); /* var(--glass-bg) */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* var(--glass-border) */
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.05);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
+        }
     </style>
 </head>
 
@@ -77,11 +108,58 @@
     </header>
 
     <main class="bts-container">
+        <!-- FASE 1: Ecommerce y Estrategia -->
+        <section class="bts-section">
+            <div class="text-content gs-reveal" style="margin-bottom: 40px;">
+                <h2>01. Estrategia de Ecommerce (Tema 14)</h2>
+                <p>El objetivo es asentar las bases del negocio local y llevarlo al mundo digital. PIZHUN actúa como una marca de Streetwear Tecnológico (Tech-Core). Queremos que el comprador en tienda física escanee la etiqueta de la prenda y salte directamente al embudo de ventas online inmersivo y compre la prenda física a través de nuestra pasarela.</p>
+            </div>
+
+            <div class="step-block gs-reveal">
+                <div class="step-num">1.1</div>
+                <h3>Ficha de Producto y Precio Estratégico</h3>
+                <p>El producto insignia es la <strong>PIZHUN Neural Cap (Gorra Táctica)</strong> y la <strong>Aero-Jacket</strong>. Nuestro modelo de negocio se basa fuertemente en la exclusividad percibida y el valor añadido de la experiencia inmersiva.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div class="metric-card">
+                        <div class="metric-value">25.00€</div>
+                        <div class="metric-label">Coste Producción</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">40%</div>
+                        <div class="metric-label">Margen Deseado</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">21%</div>
+                        <div class="metric-label">IVA (España)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">50.82€</div>
+                        <div class="metric-label">Precio Final PVP</div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: #888; font-size: 0.95rem;">
+                    <strong>Justificación:</strong> Es un precio altamente competitivo en el nicho del "Tech-Wear" avanzado. El coste de 25€ (materiales impermeables) más un 40% de margen de beneficio nos da 10€ de ganancia (Base imponible de 35€). Aplicando el obligatorio 21% de IVA (7.35€) llegamos exactamente a 42.35€, que es reajustado a nivel de marketing a 50€ para poder costear servidores AR y la identidad de marca digital.
+                </p>
+            </div>
+            
+            <div class="step-block gs-reveal">
+                <div class="step-num">1.2</div>
+                <h3>La Web como Capa de Confianza (Landing Page)</h3>
+                <p>El Ecommerce actúa como la <strong>herramienta de conversión pura y dura</strong>. Mientras que Unity y la AR generan el efecto "wow", es la web la que debe dar la confianza para cerrar la venta.</p>
+                <ol class="step-list">
+                    <li><strong>Estructura Mobile-First:</strong> Como el usuario viene inevitablemente de interactuar con la Realidad Aumentada desde su teléfono, usamos Media Queries, Grid CSS y Flexbox para garantizar una navegación de una sola mano.</li>
+                    <li><strong>Semántica HTML5 y Accesibilidad:</strong> Usamos etiquetas como <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, y <code>&lt;section&gt;</code> para SEO, y aseguramos contraste de colores para cumplir normas de accesibilidad W3C.</li>
+                    <li><strong>Interactividad y Tensión Visual:</strong> Estados <code>:hover</code> incisivos en los botones de "Comprar" (CTA), animaciones de inercia y la presentación impecable de nuestros métodos de pago y políticas logísticas para erradicar cualquier fricción en la tarjeta de crédito.</li>
+                </ol>
+            </div>
+        </section>
+
         <!-- Section: Grok (Images & Videos) -->
         <section class="bts-section">
             <div class="section-grid">
                 <div class="text-content gs-reveal">
-                    <h2>01. Ideación Visual y Audiovisual con Grok</h2>
+                    <h2>02. Ideación Visual y Audiovisual con Grok</h2>
                     <p>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Grok_logo.svg" alt="Grok Logo"
                             class="app-logo" style="background:transparent; filter: invert(1);">
@@ -144,7 +222,7 @@
         <section class="bts-section">
             <div class="section-grid reverse">
                 <div class="text-content gs-reveal">
-                    <h2>02. Modelado 3D GenAI con Meshy</h2>
+                    <h2>03. Modelado 3D GenAI con Meshy</h2>
                     <p>
                         <span style="font-size: 2rem; vertical-align: middle; margin-right: 10px;">🧊</span>
                         <strong>Meshy.ai</strong> fue la llave para dar el salto volumétrico. Convertimos la imagen plana
@@ -183,7 +261,7 @@
         <section class="bts-section">
             <div class="section-grid">
                 <div class="text-content gs-reveal">
-                    <h2>03. Arquitectura Web y Entorno IDE</h2>
+                    <h2>04. Arquitectura Web y Entorno IDE</h2>
                     <p>
                         <span style="font-size: 2rem; vertical-align: middle; margin-right: 10px;">🚀</span>
                         La plataforma central, su diseño de animaciones (Single Page Application SPA) y programación DOM fueron meticulosamente construidas utilizando el motor de <strong>Google Antigravity IDE</strong>.
@@ -246,7 +324,7 @@
         <section class="bts-section">
             <div class="section-grid reverse">
                 <div class="text-content gs-reveal">
-                    <h2>04. Realidad Aumentada Extrema en Unity</h2>
+                    <h2>05. Realidad Aumentada Extrema en Unity (Tema 13)</h2>
                     <p>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg"
                             alt="Unity Logo" class="app-logo" style="background:#fff;">
@@ -265,8 +343,10 @@
                         <li>Ahora hay que activar todo en el Kernel. Ve al menú <strong>Edit -> Project Settings</strong>. Ve el menú lateral, pulsa abajo en <strong>XR Plug-in Management</strong>. Ahora pincha en la pestaña con el icono de un Robot Androide, y marca con un <code>✓</code> la casilla que dice "ARCore".</li>
                         <li>Ya tienes AR inyectada. En la pestaña izquierda en la mitad de la pantalla, que llama "Hierarchy", tienes la escena predeterminada. Usa <strong>Eliminar/Suprimir (Borrar)</strong> la "Main Camera" predeterminada, no la usaremos.</li>
                         <li>En esa misma pestaña, pulsa Click Derecho -> Navega al sub-menú <code>XR</code> y haz pulsar en <strong>AR Session</strong>. Repite el clic derecho -> Navega al sub-menú <code>XR</code> y pulsa <strong>AR Session Origin</strong>.</li>
-                        <li>Para el Image Tracking: Selecciona tu <code>AR Session Origin</code> de la Hierarchy de escena, mira tu panel "Inspector" de la derecha, y pulsa ese inmenso botón debajo del todo llamado <strong>Add Component</strong>. Escribe ahí <code>AR Tracked Image Manager</code> y dale click.</li>
+                        <li>Para el Image Tracking: Selecciona tu <code>AR Session Origin</code> de la Hierarchy de escena, mira tu panel "Inspector" de la derecha, y pulsa ese inmenso botón debajo del todo llamado <strong>Add Component</strong>. Escribe ahí <code>AR Tracked Image Manager</code> y dale click. Usaremos un Tracker de alta contraste (formas irregulares y sin reflejos) para que Unity nos dé un rastro de mínimo 3 estrellas de calidad.</li>
                         <li>Toma el archivo <code>.glb</code> que sacamos antes de Meshy (escalado a 0.05). Arrástralo como recurso prefabricado *Prefab* de tu disco duro y enchúfalo en la casilla "Tracked Image Prefab" que figura en el Manager que acabas de añadir a la escena.</li>
+                        <li><strong>Requisito Crítico (Interacción de la Gorra 3D):</strong> Selecciona tu objeto Prefab importado. Debemos hacer que salté a nuestra web al tocarlo. Por lo que ve a su Inspector, pulsa 'Add Component' y colócale un <code>Box Collider</code>. Sin estos colisionadores las mallas 3D son solo humo y la pantalla táctil las ignoraría.</li>
+                        <li><strong>Script de Acción de Compra:</strong> Haz click derecho en tu carpeta de Assets, crea un archivo C# nuevo y nómbralo <code>BotonCompra</code>. Este script se encargará de levantar un OpenURL a la web (el código está exhaustivamente detallado abajo). Arrastra el script y suéltalo sobre tu gorra 3D para instalarlo.</li>
                         <li><strong>Requisito Final (La Generación):</strong> Para construir la aplicación finalmente como un <code>.apk</code> de teléfono Android real. Arriba a la izquierda, entra a <strong>File</strong> y toca <strong>Build Settings...</strong>.</li>
                         <li>Haz clic en el cuadro <strong>Android</strong> debajo de la sección Plataforma local. Luego toca abajo a la derecha el botón de <strong>Switch Platform</strong> (espera que recalcule e importe activos).</li>
                         <li>Pulsa el botón de <strong>Add Open Scenes</strong> para asegurarte arriba de que estás buildeando la escena correcta con tus objetos XR adentro.</li>
@@ -296,7 +376,38 @@
 
             <div class="gs-reveal" style="margin-top: 40px;">
                 <h3>Scripts Nativos de Unity Desarrollados</h3>
-                <p style="color: #aaa; margin-bottom: 5px;"><strong>HologramGlitchAnimator.cs</strong> - Gestiona el
+                
+                <div class="highlight-box" style="margin: 30px 0; padding: 20px; background: rgba(139, 92, 246, 0.05); border-left: 4px solid #8b5cf6; border-radius: 0 8px 8px 0;">
+                    <strong style="color:#a5b4fc">PROMPT DE DEPURACIÓN EN CHATGPT (Criterio de Memoria IA Tema 13):</strong><br>
+                    <code style="color: #eee;">"En Unity usando AR Foundation, tengo un modelo 3D que aparece al escanear una imagen. Necesito un script simple en C# que detecte cuando el usuario toca ese modelo en la pantalla táctil y abra una URL (mi ecommerce). Explica qué necesita el modelo para ser 'tocable'."</code>
+                </div>
+
+                <p style="color: #aaa; margin-bottom: 5px;"><strong>BotonCompra.cs</strong> - El nexo entre el Tema 13 (AR) y Tema 14 (Ecommerce). Detecta toques precisos en el collider de la ropa para saltar al checkout digital.</p>
+                <div class="code-block">using UnityEngine;
+
+// Script adjunto a nuestro Prefab (El modelo 3D).
+// Su objetivo es convertir el modelo en un enlace al Ecommerce.
+public class BotonCompra : MonoBehaviour 
+{
+    // Variable pública string para poder cambiar la URL directamente desde el Inspector de Unity con total libertad
+    // Perfectamente alineado a la "Estrategia de Ecommerce" (página pasarela de compra) explicada en el Tema 14.
+    public string urlCompra = "https://nuestro-ecommerce-pizhun.com/producto/neural-cap";
+
+    // Método nativo de física en Unity. Se ejecuta cuando el usuario pulsa (clic o toque de pulgar en la pantalla móvil) 
+    // sobre el Collider geométrico de este objeto en el raycast implícito de la cámara AR.
+    // Obligatorio: El modelo 3D DEBE tener adosado internamente un componente Mesh Collider o Box Collider, como se describió antes.
+    void OnMouseDown() 
+    {
+        // LLama a la API local de la aplicación móvil (Android/iOS) con la URL objetivo. Esto suspenderá el juego temporalmente
+        // para abrir el navegador web predeterminado del teléfono y dirigir al usuario directamente a la Landing Page del carrito en un solo paso.
+        Application.OpenURL(urlCompra);
+        
+        // Mensaje de consola para poder depurar en el editor y asegurar que el binding de toque físico virtual está funcionando.
+        Debug.Log("Redirigiendo a la pasarela de pago y checkout del Ecommerce...");
+    }
+}</div>
+
+                <p style="color: #aaa; margin-top: 30px; margin-bottom: 5px;"><strong>HologramGlitchAnimator.cs</strong> - Gestiona el
                     glow y parpadeos iniciales de la simulación de sistema CRT en interfaces espaciales.</p>
                 <div class="code-block">using System.Collections;
 using UnityEngine;
@@ -557,14 +668,13 @@ public class ARHatController : MonoBehaviour
             }
         });
 
-        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto de digitalización PIZHUN. 
-Consideracions clave del proyecto:
-1. Una tienda web (HTML/CSS/JS) creada aceleradamente con Google Antigravity IDE solventando el Lag.
-2. Imágenes y vídeos cinematográficos generados por Grok Imagine aislando movimientos estáticos.
-3. Modelos 3D generados con Meshy.ai reescalados a 0.05 a partir de las fotos de Grok.
-4. App de AR en Unity con interfaz Glow (HologramGlitchAnimator) y Face Tracking con arreglos de Offset (ARHatController).
-Tambien ayudas a explicar como se solucionó el problema de Pantalla Azul por Unity URP tras borrar la Library.
-Responde siempre en español.`;
+        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto de digitalización PIZHUN y Consultor Escolar. 
+Proyecto: Une el Punto de Venta Físico con el Ecommerce mediante Unity AR Foundation (AR Tracked Image Manager).
+Temas a tratar:
+- Tema 14: Estrategia Ecommerce (Pricing, 21% IVA, Fichas de producto, Diseño web Mobile First).
+- Tema 13: Unity AR (AR Session Origin, Box Collider, Script BotonCompra.cs para abrir URL, solución Pantalla Azul).
+Consideracions adicionales: Generación AI con Grok (static movements), Meshy.ai (escala 0.05), Antigravity IDE (lag GSAP solucionado), ARHatController (Offset).
+Responde siempre en español de forma amigable.`;
 
         let btsChatOpen = false;
         let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];

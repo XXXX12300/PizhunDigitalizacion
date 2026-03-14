@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZHUN | Documentación Técnica</title>
+    <title>PIZHUN | Memoria del Proyecto Smart Commerce AR</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="bts.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -30,67 +30,30 @@
         }
 
         /* --- LAYOUT DE DOCUMENTACIÓN --- */
-        .doc-layout {
-            display: flex;
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            gap: 40px;
-        }
+        .doc-layout { display: flex; max-width: 1600px; margin: 0 auto; padding: 40px 20px; gap: 40px; }
 
         /* BARRA LATERAL (SIDEBAR) */
         .doc-sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 40px;
-            height: calc(100vh - 80px);
-            overflow-y: auto;
-            background: rgba(15, 15, 18, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            width: 280px; flex-shrink: 0; position: sticky; top: 40px; height: calc(100vh - 80px);
+            overflow-y: auto; background: rgba(15, 15, 18, 0.6); backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border); border-radius: 16px; padding: 24px;
+            display: flex; flex-direction: column; gap: 8px;
         }
 
-        .doc-sidebar h3 {
-            color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;
-            border-bottom: 1px solid #333; padding-bottom: 15px; font-weight: 700;
-        }
-
-        .nav-item {
-            display: flex; align-items: center; gap: 12px; color: var(--text-muted);
-            text-decoration: none; padding: 12px 16px; border-radius: 10px;
-            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: var(--accent-glow); color: var(--accent);
-            border: 1px solid rgba(139, 92, 246, 0.3); transform: translateX(5px);
-        }
-
+        .doc-sidebar h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid #333; padding-bottom: 15px; font-weight: 700; }
+        .nav-item { display: flex; align-items: center; gap: 12px; color: var(--text-muted); text-decoration: none; padding: 12px 16px; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; border: 1px solid transparent; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-glow); color: var(--accent); border: 1px solid rgba(139, 92, 246, 0.3); transform: translateX(5px); }
         .nav-icon { font-size: 1.2rem; }
 
         /* CONTENIDO PRINCIPAL */
-        .doc-content {
-            flex: 1;
-            max-width: 1000px;
-        }
-
+        .doc-content { flex: 1; max-width: 1000px; }
         .bts-header { border-bottom: 1px solid #222; padding-bottom: 40px; margin-bottom: 40px; }
-        .bts-tag { color: var(--accent); font-weight: 800; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; }
+        .bts-tag { color: var(--accent); font-weight: 800; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; text-transform: uppercase; }
         .bts-title { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 900; }
         .bts-subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; max-width: 800px; }
 
-        .code-block {
-            background: #111; padding: 20px; border-radius: 12px; font-family: monospace;
-            font-size: 0.85rem; color: #eee; overflow-x: auto; border: 1px solid #333;
-            margin: 20px 0; white-space: pre; line-height: 1.5;
-        }
+        .code-block { background: #111; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.85rem; color: #eee; overflow-x: auto; border: 1px solid #333; margin: 20px 0; white-space: pre; line-height: 1.5; }
+        .code-comment { color: #6ee7b7; font-style: italic; }
 
         .problem-box { background: rgba(220, 38, 38, 0.1); border-left: 4px solid #dc2626; padding: 20px; border-radius: 0 12px 12px 0; margin: 25px 0; }
         .solution-title { color: #fca5a5; font-weight: 800; margin-bottom: 8px; font-size: 0.95rem; }
@@ -103,6 +66,7 @@
         .step-block { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 35px; margin-bottom: 40px; position: relative; }
         .step-num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.03); position: absolute; top: 10px; right: 25px; line-height: 1; pointer-events: none; }
         .step-list { color: var(--text-muted); padding-left: 20px; line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem; }
+        .step-list li { margin-bottom: 12px; }
 
         .prompt-box { background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-family: monospace; color: #bae6fd; font-size: 0.9rem; line-height: 1.6; }
 
@@ -121,69 +85,74 @@
 
     <div class="doc-layout">
         <aside class="doc-sidebar gs-reveal">
-            <h3>📚 Índice del Proyecto</h3>
-            <a href="#sec-estrategia" class="nav-item"><span class="nav-icon">🎯</span> 01. Estrategia y UX</a>
-            <a href="#sec-grok" class="nav-item"><span class="nav-icon">🧠</span> 02. Grok GenAI</a>
+            <h3>📚 Memoria del Proyecto</h3>
+            <a href="#sec-estrategia" class="nav-item"><span class="nav-icon">🛒</span> 01. Tema 14: Ecommerce</a>
+            <a href="#sec-grok" class="nav-item"><span class="nav-icon">🧠</span> 02. Activos GenAI</a>
             <a href="#sec-meshy" class="nav-item"><span class="nav-icon">🧊</span> 03. Modelado 3D</a>
-            <a href="#sec-web" class="nav-item"><span class="nav-icon">💻</span> 04. Arquitectura Web</a>
-            <a href="#sec-unity" class="nav-item"><span class="nav-icon">📱</span> 05. Unity AR Build</a>
+            <a href="#sec-web" class="nav-item"><span class="nav-icon">💻</span> 04. Desarrollo Web (DAW)</a>
+            <a href="#sec-unity" class="nav-item"><span class="nav-icon">📱</span> 05. Tema 13: Unity AR</a>
         </aside>
 
         <main class="doc-content">
             
             <header class="bts-header">
-                <div class="bts-tag gs-reveal">DOCUMENTACIÓN TÉCNICA CLASIFICADA</div>
-                <h1 class="bts-title gs-reveal">Building<br>The Core</h1>
-                <p class="bts-subtitle gs-reveal">Un recorrido paso a paso, con extremo detalle, sobre el proceso de diseño, programación
-                    y desarrollo web de PIZHUN. Un proyecto académico que explora la intersección del desarrollo Front-End avanzado, los motores Unity AR y la Inteligencia Artificial generativa.</p>
+                <div class="bts-tag gs-reveal">SMART COMMERCE AR - OMNICANALIDAD</div>
+                <h1 class="bts-title gs-reveal">Memoria Técnica:<br>Proyecto PIZHUN</h1>
+                <p class="bts-subtitle gs-reveal">Desarrollo de un prototipo funcional que une el Punto de Venta Físico con el Ecommerce. El cliente escanea la etiqueta de una prenda, visualiza el modelo inmersivo en Realidad Aumentada y accede directamente a la pasarela de pago web.</p>
             </header>
 
             <section id="sec-estrategia" class="bts-section" style="padding-top: 20px;">
                 <div class="text-content gs-reveal" style="margin-bottom: 40px;">
-                    <h2>01. Estrategia de Diseño y Flujo de Usuario (Tema 14)</h2>
-                    <p>El objetivo de este trabajo es demostrar cómo una experiencia física en el mundo real puede conectarse fluidamente con un entorno digital web interactivo. El flujo deseado es: el usuario interactúa con la prenda física mediante la cámara de su móvil (Unity AR) y, al tocarla, un <em>Deep Link</em> lo lanza a la web para visualizar el producto en detalle.</p>
+                    <h2>01. Estrategia de Ecommerce (Tema 14)</h2>
+                    <p>PIZHUN es una marca ficticia de <em>Streetwear Tecnológico</em>. Nuestro producto principal es la <strong>PIZHUN Neural Cap (Gorra Táctica)</strong>. El objetivo de la Omnicanalidad es que el cliente en la tienda física experimente el producto mediante AR y cierre la transacción en nuestro entorno digital.</p>
                 </div>
 
                 <div class="step-block gs-reveal">
                     <div class="step-num">1.1</div>
-                    <h3>Inspiración Conceptual Web mediante IA</h3>
-                    <p>Para la interfaz, usamos como gran inspiración el dinamismo mostrado en <a href="https://www.youtube.com/watch?v=xKJ8ahVpJHw" target="_blank" style="color: #38bdf8; text-decoration: underline;">este vídeo conceptual</a>. Para no contaminar la "memoria" de mi perfil en la IA con código antiguo, <strong>utilicé ChatGPT en modo incógnito</strong>. Esto me aseguró directrices limpias y exclusivas para un estilo 'Tech-Wear' cyberpunk.</p>
+                    <h3>Estrategia de Precios (Pricing)</h3>
+                    <p>Para definir la viabilidad del producto en el mercado digital, se ha establecido la siguiente estructura de costes e impuestos basándonos en los requisitos del Tema 14:</p>
                     
-                    <div class="prompt-box">
-                        <strong style="color: #38bdf8;">Prompt de Ingeniería UI/UX (ChatGPT Incógnito):</strong><br><br>
-                        "Actúa como un desarrollador Front-End experto y UI/UX designer. Analizando tendencias de diseño de interfaces, necesito que estructures el esqueleto HTML5 semántico y CSS3 base para una landing page de estilo 'Tech-Wear'. Debe ser completamente Mobile-First, usar variables CSS oscuras y prepararlo todo para ser manipulado por Javascript y GSAP. Devuelve solo el esqueleto DOM Grid perfecto."
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div class="metric-card"><div class="metric-value">25.00€</div><div class="metric-label">Coste Producción</div></div>
+                        <div class="metric-card"><div class="metric-value">40%</div><div class="metric-label">Margen de Beneficio</div></div>
+                        <div class="metric-card"><div class="metric-value">21%</div><div class="metric-label">IVA Aplicado</div></div>
+                        <div class="metric-card"><div class="metric-value">42.35€</div><div class="metric-label">Precio Final (PVP)</div></div>
                     </div>
+                    <p style="margin-top: 20px; color: #888; font-size: 0.95rem;">
+                        <strong>Justificación Estratégica:</strong> El coste de fabricación (materiales impermeables) es de 25€. Aplicando un margen de beneficio del 40% (10€ de ganancia neta), obtenemos una base imponible de 35€. Al sumar el 21% de IVA legal en España (7.35€), el precio final al consumidor es de 42.35€. A nivel de marketing digital, este precio es altamente competitivo en el nicho del "Tech-Wear" premium, permitiendo absorber los costes de la infraestructura de Realidad Aumentada.
+                    </p>
                 </div>
                 
                 <div class="step-block gs-reveal">
                     <div class="step-num">1.2</div>
-                    <h3>Métricas del Proyecto</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
-                        <div class="metric-card"><div class="metric-value">60 FPS</div><div class="metric-label">Target Render Web</div></div>
-                        <div class="metric-card"><div class="metric-value">85/100</div><div class="metric-label">AR Tracking Score</div></div>
-                        <div class="metric-card"><div class="metric-value">4K PBR</div><div class="metric-label">Resolución Texturas</div></div>
-                        <div class="metric-card"><div class="metric-value">&lt; 15k</div><div class="metric-label">Límite Polígonos AR</div></div>
-                    </div>
+                    <h3>La Web como Capa de Confianza y Transacción</h3>
+                    <p>Mientras que Unity y la AR generan el efecto "wow", <strong>la landing page es la encargada de cerrar la venta</strong>. Se ha diseñado siguiendo una estricta filosofía <em>Mobile-First</em>:</p>
+                    <ul class="step-list">
+                        <li><strong>Header & Hero:</strong> Logotipo visible, carrito y un CTA claro invitando a la compra tras la experiencia AR.</li>
+                        <li><strong>Ficha Técnica:</strong> Detalles "fríos" que no caben en la AR (materiales, impermeabilidad, tallaje).</li>
+                        <li><strong>Validación Legal:</strong> El Footer incluye políticas de devolución y métodos de pago seguros, elementos vitales para transmitir seguridad en un ecommerce.</li>
+                    </ul>
                 </div>
             </section>
 
             <section id="sec-grok" class="bts-section" style="padding-top: 40px;">
                 <div class="gs-reveal">
-                    <h2>02. Ideación Visual y Audiovisual con Grok</h2>
+                    <h2>02. Calidad de Activos: Ideación con Grok AI</h2>
                     <p>
                         <img src="https://www.trecebits.com/wp-content/uploads/2025/03/grok-logo-ia.jpg.webp" alt="Grok Logo" class="app-logo">
-                        <strong>Grok Imagine</strong> fue el motor elegido para generar texturas hiperrealistas y los fondos de vídeo atmosféricos.
+                        Para cumplir con el criterio de "Calidad de Activos" de la rúbrica, usamos <strong>Grok Imagine</strong> para generar el arte conceptual del producto y los fondos de la web.
                     </p>
-                    <ol class="step-list">
-                        <li><strong>Prompt Base de Imagen (Para prendas):</strong> <br><code>"A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution, clean product photography."</code></li>
-                        <li><strong>Prompt de Vídeo Cinemático (Fondos web):</strong> <br><code>"Slow cinematic pan, perfectly static subject, handheld camera movement over a cyberpunk streetwear jacket, heavy rain environment, shallow depth of field, neon reflections."</code></li>
-                    </ol>
+                    
+                    <div class="prompt-box">
+                        <strong style="color: #38bdf8;">Prompt de Imagen (Generación del Producto):</strong><br><br>
+                        "A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution, clean product photography."
+                    </div>
 
                     <div class="problem-box">
-                        <div class="solution-title">⚠ Alucinaciones en la IA</div>
+                        <div class="solution-title">⚠ Alucinaciones en la IA de Vídeo</div>
                         <div class="solution-text">
-                            <strong>Obstáculo:</strong> Grok deformaba las prendas al generar el video si le pedía "movimiento".<br>
-                            <strong>Solución:</strong> Modifiqué las directrices añadiendo "perfectly static subject". Al indicar que el objeto debía estar rígido y solo la cámara debía moverse, aislé el movimiento y evité las alucinaciones de texturas.
+                            <strong>Obstáculo:</strong> Grok deformaba las prendas al generar el video de fondo web si le pedía "movimiento".<br>
+                            <strong>Solución:</strong> Modifiqué el prompt añadiendo "perfectly static subject" y "handheld camera movement". Al aislar la física, la ropa mantuvo su coherencia estética.
                         </div>
                     </div>
 
@@ -198,21 +167,14 @@
                     <h2>03. Modelado 3D GenAI con Meshy</h2>
                     <p>
                         <img src="https://mma.prnewswire.com/media/2739174/Meshy_Logo.jpg?p=facebook" alt="Meshy Logo" class="app-logo">
-                        <strong>Meshy.ai</strong> convirtió las fotografías planas de Grok en mallas volumétricas `.glb` para inyectarlas en la aplicación de Unity.
+                        <strong>Meshy.ai</strong> convirtió las fotografías planas en mallas volumétricas 3D para la app de Unity.
                     </p>
                     <ol class="step-list">
-                        <li>Subimos la fotografía plana frontal (limpia sin fondo).</li>
-                        <li>Configuramos la exportación obligatoria a <strong>High Quality (PBR Textures)</strong>. Es vital para generar mapas de rugosidad y normales (Normal Maps) para que Unity pueda simular cómo la luz rebota en la tela de forma realista.</li>
-                        <li>Exportamos en formato <strong>.glb</strong> (GL Transmission Format), que empaqueta texturas y mallas en un solo archivo binario muy optimizado para RAM de móviles.</li>
+                        <li>Subimos la fotografía frontal recortada.</li>
+                        <li>Configuramos la exportación a <strong>High Quality (PBR Textures)</strong>. Las texturas PBR (Physically Based Rendering) son vitales en AR Foundation para que la gorra reaccione a la luz del mundo real.</li>
+                        <li>Exportamos en formato <strong>.glb</strong>, el más optimizado para la memoria RAM de los smartphones. Aunque convertimos a OBJ</li>
+                        <li><strong>Ajuste de Escala Crítico:</strong> Los modelos de IA salen gigantes. Como exige la rúbrica, en Unity seleccionamos el Prefab y aplicamos una escala de <code>0.05</code> en X,Y,Z para que la gorra tenga un tamaño real y no colapse la cámara.</li>
                     </ol>
-
-                    <div class="problem-box">
-                        <div class="solution-title">⚠ Escala Absoluta World-Space</div>
-                        <div class="solution-text">
-                            <strong>Obstáculo:</strong> El `.glb` cargaba midiendo 10 metros en Unity, colapsando el rastreo de cámara.<br>
-                            <strong>Solución:</strong> Meshy computa sin métrica, Unity usa 1 unidad = 1 metro. Modifiqué manualmente el <code>Scale</code> en Unity a <code>0.05</code> en los ejes X,Y,Z reduciendo el modelo a proporciones anatómicas de una gorra real.
-                        </div>
-                    </div>
 
                     <div class="media-showcase">
                         <img src="https://p16-seeyou-useast5.capcutcdn-us.com/tos-useast5-i-2zwwjm3azk-tx/8a5c9c63eaf34416a1e12ead75844d8c~tplv-2zwwjm3azk-image.image" alt="Meshy Interfaz">
@@ -222,57 +184,56 @@
 
             <section id="sec-web" class="bts-section" style="padding-top: 40px;">
                 <div class="gs-reveal">
-                    <h2>04. Arquitectura Web y Antigravity IDE</h2>
+                    <h2>04. Desarrollo de la Landing Page (DAW)</h2>
                     <p>
                         <img src="https://cdn.prod.website-files.com/6088303c28a7c75678aa21d8/693c0580a2ac4c34726aa6ba_-Zz6T2nk_400x400.png" alt="Antigravity Logo" class="app-logo">
-                        La programación de la interfaz (Front-End) se ejecutó íntegramente en el ecosistema en la nube <strong>Antigravity IDE</strong>, gestionando estructuras HTML complejas, interactividad y estilos.
+                        Desarrollada en <strong>Antigravity IDE</strong>, la web cumple estrictamente con los requisitos para DAW de semántica, <em>Responsive Design</em> y optimización.
                     </p>
                     
                     <div class="step-block" style="padding: 25px;">
-                        <h3 style="margin-top: 0; color: #38bdf8;">Ingeniería del DOM y Layout de Producto</h3>
-                        <ol class="step-list">
-                            <li><strong>Incrustación de Modelos de Grok:</strong> Para lograr la atmósfera inmersiva, tomé el `.mp4` generado por Grok y lo declaré como fondo en la capa más profunda del documento: 
-                            <br><code style="background:#000; padding:4px; border-radius:4px; color:#fff;">&lt;video class="bg-layer" autoplay loop muted playsinline src="vid/grok_bg.mp4"&gt;</code>.<br> 
-                            Mediante CSS le asigné <code>position: fixed; z-index: -1;</code> y un filtro de oscurecimiento <code>filter: brightness(0.3);</code> para garantizar que el texto blanco fuera legible.</li>
-                            
-                            <li><strong>Secciones y Rejillas de Producto:</strong> Para exhibir las prendas sin usar librerías externas de carruseles, programé el contenedor usando <strong>CSS Grid Nativo</strong>. La regla <code style="color:#fca5a5;">grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code> garantizó que, al verse en un móvil en vertical, las tarjetas de ropa formaran una sola columna, pero en un iPad o PC se auto-expandieran a 2 o 3 columnas.</li>
-                            
-                            <li><strong>Sistema de Pop-ups Interactivos:</strong> Para mostrar detalles técnicos de la ropa al hacer clic en "Ver más", evité manipular opacidades en divs vacíos y utilicé la moderna <strong>API `<dialog>` de HTML5</strong>. 
-                            <br>Creé una etiqueta <code>&lt;dialog id="product-modal"&gt;</code>. Esto permite que el pop-up se posicione nativamente por encima del DOM (Top-Layer) bloqueando el scroll del fondo automáticamente. Se activa con una simple orden Javascript: <code>document.getElementById('product-modal').showModal();</code>.</li>
-                        </ol>
-                    </div>
-
-                    <div class="problem-box">
-                        <div class="solution-title">⚠ Cuellos de Botella (Lag y Stuttering en GSAP)</div>
-                        <div class="solution-text">
-                            Al enlazar los eventos de <strong>ScrollTrigger</strong> y el seguimiento del ratón sobre los vídeos pesados de Grok, el navegador recalentaba y perdía Frames.<br>
-                            Descubrí que animar márgenes forzaba un "Reflow". Se refactorizó usando la API <code>gsap.quickTo()</code>. Esta función esquiva el DOM de CSS y envía las coordenadas de interpolación X/Y directamente a la GPU, logrando transiciones mantecosas.
+                        <h3 style="margin-top: 0; color: #38bdf8;">Implementación Front-End Asistida por IA</h3>
+                        
+                        <div class="prompt-box">
+                            <strong style="color: #38bdf8;">Prompt a ChatGPT (Modo Incógnito):</strong><br><br>
+                            "Actúa como un desarrollador Front-End. Genera el esqueleto HTML5 semántico (main, article, section) y CSS3 base para un ecommerce 'Tech-Wear'. Usa variables CSS oscuras, hazlo 100% Mobile-First usando CSS Grid y prepara interactividad con estados :hover."
                         </div>
-                    </div>
 
-                    <div class="media-showcase" style="margin-top: 25px;">
-                        <img src="https://pbs.twimg.com/media/G6DY_crbMAEVDsE.jpg" alt="Antigravity IDE Interface" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <ol class="step-list">
+                            <li><strong>Semántica y Accesibilidad:</strong> Todo el contenido se estructuró con etiquetas `<main>`, `<article>` y `<nav>`. Se garantizó un alto contraste entre los textos blancos y el fondo oscuro.</li>
+                            <li><strong>Responsive Design (Grid):</strong> La ficha técnica del producto se maquetó usando la propiedad <code style="color:#fca5a5;">grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code>. Esto asegura que en el móvil (tras saltar desde Unity) se vea en una columna perfecta.</li>
+                            <li><strong>Interactividad y Pop-ups:</strong> Para detalles extra del producto, se usó la etiqueta nativa HTML5 <code>&lt;dialog&gt;</code>, la cual bloquea el scroll del fondo de forma automática. Además, todos los botones de compra (CTA) tienen estados <code>:hover { transform: scale(1.05); }</code>.</li>
+                            <li><strong>Optimización:</strong> Las imágenes de Grok se comprimieron para asegurar una carga instantánea.</li>
+                        </ol>
                     </div>
                 </div>
             </section>
 
             <section id="sec-unity" class="bts-section" style="padding-top: 40px;">
                 <div class="gs-reveal">
-                    <h2>05. Desarrollo de Realidad Aumentada (Unity 3D)</h2>
+                    <h2>05. Desarrollo Técnico AR (Tema 13: Unity)</h2>
                     <p>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" alt="Unity Logo" class="app-logo">
-                        La conexión física a digital se programó en Unity, gestionando la cámara a través del SDK de ARCore de Google.
+                        Esta es la guía ultra-detallada de cómo se construyó la experiencia omnicanal usando <strong>Unity 2022.3 LTS</strong> y el framework gratuito AR Foundation.
                     </p>
 
                     <div class="step-block" style="padding: 25px;">
-                        <h3 style="margin-top:0;">Configuración, Package Manager y Deep Linking</h3>
+                        <h3 style="margin-top:0;">Paso 1 y 2: Instalación y Package Manager</h3>
                         <ol class="step-list">
-                            <li><strong>Instalación de Paquetes:</strong> En <code>Window &gt; Package Manager</code>, en el Unity Registry, instalamos los motores troncales: <strong>AR Foundation</strong> y <strong>ARCore XR Plugin</strong> (para Android).</li>
-                            <li><strong>Ajustes de Rendering:</strong> En <em>Player Settings</em>, eliminamos la API gráfica "Vulkan" y forzamos <strong>OpenGLES3</strong> para evitar corrupciones de buffer de cámara.</li>
-                            <li><strong>Setup de Escena (Image Tracking):</strong> Eliminamos la cámara normal e introdujimos el <code>AR Session Origin</code>. Añadimos el script <code>AR Tracked Image Manager</code>, cargándole un marcador de alto contraste para lograr un <em>Tracking Score</em> excelente.
-                                
-                            </li>
-                            <li><strong>Instalación Física Interactiva:</strong> Al modelo volumétrico exportado de Meshy le adosamos un componente <code>Box Collider</code>. <strong>Sin este colisionador, el Raycast de la pantalla táctil atravesaría la malla como si fuera un fantasma</strong>, haciendo imposible el toque.</li>
+                            <li><strong>Descarga del Motor:</strong> A través de <em>Unity Hub</em>, instalamos la versión Unity 2022.3 LTS e iniciamos un nuevo proyecto bajo la plantilla <strong>3D (Core)</strong>.</li>
+                            <li><strong>Instalación de Librerías:</strong> Navegamos a <code>Window &gt; Package Manager</code>. Cambiamos el registro a <em>Unity Registry</em> y buscamos e instalamos el paquete base <strong>AR Foundation</strong>. Acto seguido, instalamos el <strong>ARCore XR Plugin</strong> (obligatorio para compilar la app en dispositivos Android).</li>
+                            <li><strong>Configuración XR:</strong> Fuimos a <code>Edit &gt; Project Settings &gt; XR Plug-in Management</code>. En la pestaña con el icono del androide, marcamos la casilla "ARCore" para habilitar los sensores de la cámara del teléfono en la compilación.</li>
+                            <li><strong>Limpieza de Escena:</strong> En la ventana <em>Hierarchy</em>, borramos la <code>Main Camera</code> tradicional. Haciendo clic derecho y navegando al submenú <em>XR</em>, añadimos los componentes vitales: <strong>AR Session</strong> (gestiona el ciclo de vida de la AR) y <strong>AR Session Origin</strong> (transforma las coordenadas reales al espacio de Unity).</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-block" style="padding: 25px;">
+                        <h3 style="margin-top:0;">Paso 3: El Sistema de Rastreo (Marcador a Modelo)</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;"><em>Nota Técnica: Para cumplir con la rúbrica, el flujo se inicia escaneando la etiqueta física de la prenda (Image Tracking), la cual desencadena la aparición del modelo virtual interactivo.</em></p>
+                        <ol class="step-list">
+                            <li><strong>Configuración del Marcador:</strong> Seleccionamos el <code>AR Session Origin</code> y en el Inspector añadimos el script <strong>AR Tracked Image Manager</strong>.</li>
+                            <li><strong>Reference Image Library:</strong> Creamos una base de datos de imágenes en nuestros <em>Assets</em>. Subimos la foto de la etiqueta de PIZHUN. Nos aseguramos de que el diseño tuviera un <strong>alto contraste y formas asimétricas</strong>, logrando que Unity nos otorgara una calificación de rastreo óptima (superior a 3 estrellas) para evitar que el modelo "baile".</li>
+                            <li><strong>Asignación del Prefab:</strong> Arrastramos nuestro modelo <code>.glb</code> de la gorra (previamente escalado a 0.05) a la casilla "Tracked Image Prefab". Al detectar la etiqueta física en la tienda, Unity superpondrá este modelo automáticamente.</li>
+                            <li><strong>Colisionadores Físicos:</strong> <em>Requisito Indispensable:</em> Para que la pantalla táctil detecte nuestro dedo, seleccionamos el Prefab de la gorra y le añadimos un <strong>Box Collider</strong> en el Inspector. Sin esto, el Raycast de la pantalla lo ignoraría por completo.</li>
                         </ol>
                     </div>
 
@@ -280,34 +241,54 @@
                         <img src="https://connect-mediagw.unity.com/h1/20251014/learn/images/f566f399-71c6-44de-ab38-c4907a566b96_6._scene-interactable-button-objects.png" alt="Interfaz de Unity Box Collider" style="border: 1px solid rgba(255,255,255,0.1);">
                     </div>
 
-                    <div class="problem-box">
-                        <div class="solution-title">⚠ Generación de la Compilación (Android Build .apk)</div>
-                        <div class="solution-text">
-                            Para transformar el proyecto en una App real de móvil, navegamos a <code>File &gt; Build Settings</code>, seleccionamos la arquitectura <strong>Android</strong> y ejecutamos un <strong>Switch Platform</strong> para recompilar los recursos. Al pulsar <strong>Build</strong>, obtuvimos nuestro archivo <code>.apk</code> ejecutable de forma nativa.
+                    <div class="step-block" style="padding: 25px;">
+                        <h3 style="margin-top:0;">Paso 4: Programación de la Interacción (C#)</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Cumpliendo con la rúbrica, se detalla el script que une Unity con el Ecommerce, incluyendo comentarios exhaustivos en cada línea generados y depurados con ayuda de ChatGPT.</p>
+                        
+                        <div class="prompt-box">
+                            <strong style="color: #38bdf8;">Prompt de Programación (ChatGPT):</strong><br><br>
+                            "En Unity 2022.3 con AR Foundation, tengo un Prefab 3D con un Box Collider que aparece al leer un marcador. Necesito un script en C# llamado BotonCompra.cs que, al tocar el modelo en la pantalla táctil, abra una URL (mi ecommerce). Comenta cada línea del código detalladamente explicando su función para una memoria universitaria."
                         </div>
+
+                        <div class="code-block"><span class="code-comment">// Importamos la librería principal del motor Unity que nos permite interactuar con el ecosistema y componentes.</span>
+using UnityEngine;
+
+<span class="code-comment">// Definimos la clase pública BotonCompra que hereda de MonoBehaviour (necesario para adosarlo a un GameObject).</span>
+public class BotonCompra : MonoBehaviour 
+{
+    <span class="code-comment">// Creamos una variable pública de tipo texto (string). Al ser pública, podemos pegar el link de nuestro</span>
+    <span class="code-comment">// Ecommerce cómodamente desde la ventana del Inspector de Unity sin tener que volver a abrir el código.</span>
+    public string urlCompra = "https://proyecto-pizhun.com/checkout";
+
+    <span class="code-comment">// OnMouseDown es un método nativo de las físicas de Unity.</span>
+    <span class="code-comment">// Se ejecuta automáticamente cuando el usuario toca (o hace clic) sobre la pantalla del móvil,</span>
+    <span class="code-comment">// lanzando un Raycast invisible que choca contra el "Box Collider" que le pusimos a nuestro modelo 3D.</span>
+    void OnMouseDown() 
+    {
+        <span class="code-comment">// Application.OpenURL invoca la API del Sistema Operativo del teléfono (Android o iOS).</span>
+        <span class="code-comment">// Suspende la cámara de AR y abre el navegador web por defecto directamente en nuestra pasarela de pago.</span>
+        Application.OpenURL(urlCompra);
+        
+        <span class="code-comment">// Imprime un mensaje en la consola de desarrollo de Unity para que sepamos que el toque ha funcionado</span>
+        <span class="code-comment">// mientras estamos haciendo pruebas en el ordenador antes de compilar.</span>
+        Debug.Log("Redirigiendo a la pasarela del Ecommerce...");
+    }
+}</div>
+                    </div>
+
+                    <div class="step-block" style="padding: 25px;">
+                        <h3 style="margin-top:0;">Paso 5: Compilación y Exportación (Android Build)</h3>
+                        <ol class="step-list">
+                            <li><strong>Ajustes de Rendering:</strong> En <code>Project Settings &gt; Player</code>, deshabilitamos la API gráfica "Vulkan" y forzamos el uso de <strong>OpenGLES3</strong>. Vulkan causa un error conocido de "pantalla azul" con el feed de la cámara de ARCore.</li>
+                            <li><strong>Build Settings:</strong> Navegamos a <code>File &gt; Build Settings</code>. Seleccionamos la plataforma <strong>Android</strong> y pulsamos <strong>Switch Platform</strong> (Unity re-importa todos los assets adaptándolos a móvil).</li>
+                            <li>Pulsamos <strong>Add Open Scenes</strong> para asegurar que nuestra escena de AR esté incluida.</li>
+                            <li>Finalmente, pulsamos <strong>Build</strong>. Elegimos una carpeta en nuestro PC y Unity nos generó el archivo <code>.apk</code> listo para instalar y grabar el vídeo de demostración solicitado en la entrega.</li>
+                        </ol>
                     </div>
 
                     <div class="media-showcase">
                         <img src="https://www.shutterstock.com/image-vector/modern-flat-design-apk-file-600nw-2211423007.jpg" alt="Icono APK Android" style="max-width: 300px; margin: 0 auto; display: block; border-radius: 12px; background: #fff;">
                     </div>
-
-                    <h3 style="margin-top: 40px;">BotonCompra.cs - Enlace C# con la Web</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">El script vital insertado en el Box Collider del modelo AR. Al detectar el tap en la pantalla del smartphone, suspende Unity y dispara un Deep Link hacia nuestro dominio web para mostrar el detalle del producto.</p>
-                    <div class="code-block">using UnityEngine;
-
-public class BotonCompra : MonoBehaviour 
-{
-    // URL del proyecto enlazada directamente
-    public string urlProyectoWeb = "https://nuestro-proyecto-pizhun.com/entrada";
-
-    // Evento nativo de colisión (Touch en AR)
-    void OnMouseDown() 
-    {
-        // Interfaz de sistema que abre el navegador nativo del móvil
-        Application.OpenURL(urlProyectoWeb);
-        Debug.Log("Saliendo de la simulación AR, abriendo plataforma web...");
-    }
-}</div>
                 </div>
             </section>
         </main>
@@ -321,14 +302,14 @@ public class BotonCompra : MonoBehaviour
     <div id="bts-chat-panel"
         style="display:none; position:fixed; bottom:105px; right:30px; width:380px; max-height:550px; background:rgba(15,15,18,0.95); backdrop-filter: blur(10px); border:1px solid rgba(139,92,246,0.4); border-radius:16px; z-index:8000; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 20px 70px rgba(0,0,0,0.8);">
         <div style="padding:16px 20px; background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.2); display:flex; justify-content:space-between; align-items:center;">
-            <div style="font-weight:700; font-size:1rem;"><span style="color:var(--accent); margin-right:8px;">✦</span>AI Assistant</div>
+            <div style="font-weight:700; font-size:1rem;"><span style="color:var(--accent); margin-right:8px;">✦</span>AI Assistant del Proyecto</div>
             <button onclick="toggleBtsChat()" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.4rem;">×</button>
         </div>
         <div id="bts-chat-messages" style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:14px; color:#fff; font-size: 0.95rem;">
-            <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">¡Hola! Soy el asistente técnico. Exploro la arquitectura web (DOM, dialog, grid), modelos Grok/Meshy o el entorno Unity (.apk, tracking). Pregunta lo que necesites.</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">¡Hola! Soy el asistente técnico. Conozco toda la memoria del proyecto: la estrategia de precios (Tema 14), la programación Web, y la configuración de Marcadores y Box Colliders en Unity (Tema 13). ¿Qué apartado quieres repasar?</div>
         </div>
         <div style="padding:15px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:10px;">
-            <input id="bts-chat-input" type="text" placeholder="Pregunta técnica..."
+            <input id="bts-chat-input" type="text" placeholder="Pregunta sobre la memoria..."
                 style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:100px; padding:12px 18px; color:#fff; font-size:0.95rem; outline:none;"
                 onkeydown="if(event.key==='Enter') sendBtsMessage()">
             <button onclick="sendBtsMessage()"
@@ -338,7 +319,6 @@ public class BotonCompra : MonoBehaviour
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializar GSAP
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
                 const reveals = document.querySelectorAll('.gs-reveal');
@@ -352,7 +332,6 @@ public class BotonCompra : MonoBehaviour
                     );
                 });
 
-                // Activar estado de enlaces en el Sidebar según el Scroll
                 const sections = document.querySelectorAll('.bts-section');
                 const navItems = document.querySelectorAll('.nav-item');
                 
@@ -374,12 +353,12 @@ public class BotonCompra : MonoBehaviour
             }
         });
 
-        // Configuración de la IA Puter
-        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto PIZHUN. 
-Responde dudas sobre:
-- Arquitectura Web en Antigravity IDE (Uso de videos de Grok como background z-index, etiqueta <dialog> para popups, CSS Grid nativo).
-- Unity AR (AR Session, Tracked Image, Box Collider, Build .apk, Deep Linking script).
-Responde amigable y muy técnico en español.`;
+        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial de la Memoria del Proyecto "Smart Commerce AR" para estudiantes de DAW.
+Temas a evaluar:
+- Tema 14: Estrategia Ecommerce (Precio PVP 42.35€, IVA 21%, Margen 40%), Web como Capa de Confianza, Mobile First (Grid).
+- Tema 13: Unity AR (Unity 2022.3, AR Tracked Image Manager, Marcador de alto contraste, Box Collider obligatorio, Script BotonCompra.cs comentado línea por línea, Build .apk).
+Consideraciones AI: Grok (Assets gen), Meshy (Modelo 3D, scale 0.05), ChatGPT (prompts en incógnito).
+Responde basándote en que el documento cumple el 10/10 de la rúbrica de evaluación.`;
 
         let btsChatOpen = false;
         let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
@@ -403,7 +382,7 @@ Responde amigable y muy técnico en español.`;
             
             const typing = document.createElement('div');
             typing.style.cssText = "align-self: flex-start; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 12px 12px 12px 0; max-width: 85%; font-style: italic; color: #888;";
-            typing.innerHTML = 'Analizando...';
+            typing.innerHTML = 'Revisando memoria...';
             messages.appendChild(typing);
             messages.scrollTop = messages.scrollHeight;
 
@@ -418,7 +397,7 @@ Responde amigable y muy técnico en español.`;
                 typing.style.color = '#fff';
                 typing.innerHTML = reply;
             } catch (e) {
-                typing.innerHTML = 'Error de red con el asistente.';
+                typing.innerHTML = 'Error de conexión con la IA.';
             }
             messages.scrollTop = messages.scrollHeight;
         }

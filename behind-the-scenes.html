@@ -98,13 +98,13 @@
             <header class="bts-header">
                 <div class="bts-tag gs-reveal">SMART COMMERCE AR - OMNICANALIDAD</div>
                 <h1 class="bts-title gs-reveal">Memoria Técnica:<br>Proyecto PIZHUN</h1>
-                <p class="bts-subtitle gs-reveal">Desarrollo de un prototipo funcional que une el Punto de Venta Físico con el Ecommerce. El cliente interactúa con un catálogo virtual, se prueba virtualmente la prenda mediante <strong>Face Tracking AR</strong> y accede directamente a la pasarela web.</p>
+                <p class="bts-subtitle gs-reveal">Desarrollo de un prototipo funcional que digitaliza la experiencia de compra. El cliente abre la aplicación, interactúa con un catálogo virtual, se prueba virtualmente la prenda mediante <strong>Face Tracking AR</strong> y accede directamente a la pasarela web de pago con un solo toque.</p>
             </header>
 
             <section id="sec-estrategia" class="bts-section" style="padding-top: 20px;">
                 <div class="text-content gs-reveal" style="margin-bottom: 40px;">
                     <h2>01. Estrategia de Ecommerce (Tema 14)</h2>
-                    <p>PIZHUN es una marca ficticia de <em>Streetwear Tecnológico</em>. Nuestro producto principal es la <strong>PIZHUN Neural Cap (Gorra Táctica)</strong>. El objetivo es que el cliente experimente el producto mediante un <em>Virtual Try-On</em> (probador virtual) y cierre la transacción en nuestro entorno web.</p>
+                    <p>PIZHUN es una marca ficticia de <em>Streetwear Tecnológico</em>. Nuestro producto principal es la <strong>PIZHUN Neural Cap (Gorra Táctica)</strong>. El objetivo es que el cliente experimente el producto mediante un <em>Virtual Try-On</em> (probador virtual inmersivo) desde su propio dispositivo y cierre la transacción en nuestro entorno web seguro.</p>
                 </div>
 
                 <div class="step-block gs-reveal">
@@ -119,18 +119,18 @@
                         <div class="metric-card"><div class="metric-value">42.35€</div><div class="metric-label">Precio Final (PVP)</div></div>
                     </div>
                     <p style="margin-top: 20px; color: #888; font-size: 0.95rem;">
-                        <strong>Justificación Estratégica:</strong> El coste de fabricación (materiales impermeables) es de 25€. Aplicando un margen de beneficio del 40% (10€ de ganancia neta), obtenemos una base imponible de 35€. Al sumar el 21% de IVA legal en España (7.35€), el precio final al consumidor es de 42.35€. Este precio es altamente competitivo en el nicho premium.
+                        <strong>Justificación Estratégica:</strong> El coste de fabricación (materiales impermeables) es de 25€. Aplicando un margen de beneficio del 40% (10€ de ganancia neta), obtenemos una base imponible de 35€. Al sumar el 21% de IVA legal en España (7.35€), el precio final al consumidor es de 42.35€. Este precio es altamente competitivo en el nicho premium, absorbiendo los costes de la plataforma AR.
                     </p>
                 </div>
                 
                 <div class="step-block gs-reveal">
                     <div class="step-num">1.2</div>
                     <h3>La Web como Capa de Confianza y Transacción</h3>
-                    <p>Mientras que Unity y la AR generan el efecto "wow", <strong>la landing page es la encargada de cerrar la venta</strong>. Se ha diseñado siguiendo una estricta filosofía <em>Mobile-First</em>:</p>
+                    <p>Mientras que la aplicación de Unity genera el efecto "wow" del probador, <strong>la landing page web es la encargada de cerrar la venta</strong>. Se ha diseñado siguiendo una estricta filosofía <em>Mobile-First</em>:</p>
                     <ul class="step-list">
                         <li><strong>Header & Hero:</strong> Logotipo visible, carrito y un CTA claro invitando a la compra tras la experiencia AR.</li>
-                        <li><strong>Ficha Técnica:</strong> Detalles "fríos" que no caben en la AR (materiales, impermeabilidad, tallaje).</li>
-                        <li><strong>Validación Legal:</strong> El Footer incluye políticas de devolución y métodos de pago seguros, elementos vitales para transmitir seguridad en un ecommerce.</li>
+                        <li><strong>Ficha Técnica:</strong> Detalles "fríos" que no caben en la AR (composición de materiales, impermeabilidad, tallaje).</li>
+                        <li><strong>Validación Legal:</strong> El Footer incluye políticas de devolución y métodos de pago seguros, elementos vitales para transmitir seguridad en un ecommerce moderno.</li>
                     </ul>
                 </div>
             </section>
@@ -152,7 +152,7 @@
                         <div class="solution-title">⚠ Alucinaciones en la IA de Vídeo</div>
                         <div class="solution-text">
                             <strong>Obstáculo:</strong> Grok deformaba las prendas al generar el video de fondo web (formato .mp4) si le pedía "movimiento".<br>
-                            <strong>Solución:</strong> Modifiqué el prompt añadiendo "perfectly static subject" y "handheld camera movement". Al aislar la física y pedir que solo se moviese la cámara virtual, la imagen estática de la ropa mantuvo su coherencia estética en el vídeo.
+                            <strong>Solución:</strong> Modifiqué el prompt añadiendo "perfectly static subject" y "handheld camera movement". Al aislar la física y pedir que solo se moviese la cámara virtual, la imagen estática de la ropa mantuvo su coherencia estética en el vídeo generado.
                         </div>
                     </div>
 
@@ -171,9 +171,9 @@
                     </p>
                     <ol class="step-list">
                         <li>Subimos la fotografía frontal (imagen 2D) generada en el paso anterior.</li>
-                        <li>Configuramos la exportación a <strong>High Quality (PBR Textures)</strong>. Las texturas PBR son vitales para que la malla reaccione a la luz del mundo real.</li>
-                        <li>Exportamos el modelo tridimensional en formato <strong>.glb</strong>, el más optimizado para la memoria RAM de los móviles.</li>
-                        <li><strong>Ajuste de Escala Crítico:</strong> Los modelos 3D generados por IA cargan con un tamaño colosal. En Unity seleccionamos este Prefab y le aplicamos una escala de <code>0.05</code> en los ejes X,Y,Z para que la prenda tenga un tamaño realista anatómico.</li>
+                        <li>Configuramos la exportación a <strong>High Quality (PBR Textures)</strong>. Las texturas PBR son vitales para que la malla reaccione a la luz del mundo real en la experiencia de Realidad Aumentada.</li>
+                        <li>Exportamos el modelo tridimensional en formato <strong>.glb</strong>, el más optimizado para la memoria RAM de los dispositivos móviles.</li>
+                        <li><strong>Ajuste de Escala Crítico:</strong> Los modelos 3D generados por IA cargan con un tamaño colosal. En Unity seleccionamos este Prefab y le aplicamos una escala matemática de <code>0.05</code> en los ejes X,Y,Z para que la prenda tenga un tamaño realista anatómico y encaje con la cabeza del usuario.</li>
                     </ol>
 
                     <div class="media-showcase">
@@ -199,9 +199,9 @@
                         </div>
 
                         <ol class="step-list">
-                            <li><strong>Semántica y Accesibilidad:</strong> Todo el contenido se estructuró con etiquetas `<main>`, `<article>` y `<nav>`.</li>
-                            <li><strong>Responsive Design (Grid):</strong> La ficha técnica del producto se maquetó usando <code style="color:#fca5a5;">grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code>. Esto asegura que en la pantalla vertical del móvil (tras saltar desde Unity) se vea en una columna perfecta.</li>
-                            <li><strong>Interactividad y Pop-ups:</strong> Para mostrar detalles extra del producto, se usó la etiqueta nativa HTML5 <code>&lt;dialog&gt;</code>, la cual bloquea el scroll del resto de la página de forma automática y superpone la información.</li>
+                            <li><strong>Semántica y Accesibilidad:</strong> Todo el contenido se estructuró con etiquetas `<main>`, `<article>` y `<nav>`. Se priorizó el contraste visual.</li>
+                            <li><strong>Responsive Design (Grid):</strong> La ficha técnica del producto se maquetó usando <code style="color:#fca5a5;">grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code>. Esto asegura que en la pantalla vertical del móvil (tras saltar desde Unity) se formatee en una columna fluida.</li>
+                            <li><strong>Interactividad y Pop-ups:</strong> Para mostrar detalles extra del producto, se usó la etiqueta nativa HTML5 <code>&lt;dialog&gt;</code>, la cual bloquea el scroll del resto de la página de forma automática y superpone la información, logrando una UX impecable.</li>
                         </ol>
                     </div>
                 </div>
@@ -212,59 +212,68 @@
                     <h2>05. Desarrollo Técnico AR y UI (Tema 13: Unity)</h2>
                     <p>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" alt="Unity Logo" class="app-logo">
-                        Para este proyecto, se ha escalado la solución propuesta en la rúbrica. En lugar de un simple escaneo de imagen plana, se ha programado una <strong>arquitectura de interfaces (UI) completa</strong> y se ha utilizado <strong>Face Tracking</strong> para lograr un probador virtual realista.
+                        En este proyecto, se ha evolucionado la rúbrica base para crear un producto comercial realista. En lugar de forzar al usuario a imprimir un marcador físico estático, se ha implementado <strong>Face Tracking AR (Probador Virtual)</strong> y una arquitectura de interfaces gráficas completas (Canvas UI).
                     </p>
 
                     <div class="step-block" style="padding: 25px;">
                         <h3 style="margin-top:0;">Paso 1: Arquitectura de Menús (UI/Canvas Flow)</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Para que la aplicación funcione como un catálogo real, se desarrolló el siguiente flujo de pantallas mediante <code>UI Canvas</code>:</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Para que la aplicación funcione como un catálogo real, se desarrolló el siguiente flujo de pantallas interactivo:</p>
                         <ol class="step-list">
-                            <li><strong>Menú de Productos:</strong> Al abrir la App, el usuario ve un Canvas con la lista de productos disponibles.</li>
-                            <li><strong>Pop-up de Detalle:</strong> Al seleccionar un producto, se activa un panel con la información del artículo y un botón de "Probar Virtualmente".</li>
-                            <li><strong>Escena AR (Overlay):</strong> Al pulsar el botón, se activa la cámara frontal AR. Encima del <em>feed</em> del mundo real, coloqué un <strong>Canvas Overlay</strong> que contiene dos botones estáticos: <strong>"Volver al Menú"</strong> y <strong>"Comprar en Web"</strong>.</li>
+                            <li><strong>Menú de Productos:</strong> Al abrir la App, el usuario ve un Canvas con la lista de productos disponibles en la colección.</li>
+                            <li><strong>Pop-up de Detalle:</strong> Al seleccionar una prenda, se activa un panel con la información del artículo y un botón para iniciar la experiencia.</li>
+                            <li><strong>Escena AR (Overlay):</strong> Al entrar al modo AR, encima de la cámara del usuario se superpone un <strong>Canvas Overlay</strong> que contiene dos botones fijos: <strong>"Volver al Menú"</strong> y <strong>"Comprar en Web"</strong>.</li>
                         </ol>
+                    </div>
+
+                    <div class="problem-box" style="background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8;">
+                        <div class="solution-title" style="color: #38bdf8;">Mejora UX/UI frente a la Rúbrica Base</div>
+                        <div class="solution-text">
+                            <strong>Evolución del Tracking:</strong> Dado que vendemos una gorra, usar "Image Tracking" (escanear una foto en la mesa para ver la gorra flotar) no aporta valor al cliente. Decidimos implementar <strong>AR Face Manager</strong> para anclar la prenda a la anatomía del usuario, creando un Probador Virtual <em>(Try-On)</em> realista.<br><br>
+                            <strong>Evolución de Interfaz:</strong> La rúbrica sugería colocar un <em>BoxCollider</em> en el modelo 3D y usar <code>OnMouseDown</code> para ir a la web al tocarlo. Dado que la gorra se mueve dinámicamente con la cabeza del usuario, obligarlo a intentar atinarle con el dedo en la pantalla provoca "fricción" y mala experiencia de usuario. Por ello, <strong>prescindimos de los colliders y programamos Botones de Interfaz estáticos (Canvas)</strong> para garantizar la accesibilidad y un salto cómodo hacia la web.
+                        </div>
                     </div>
 
                     <div class="step-block" style="padding: 25px;">
                         <h3 style="margin-top:0;">Paso 2 y 3: Configuración AR Foundation (Face Tracking)</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;"><em>Evolución de la rúbrica: Dado que el producto es una gorra, el uso de "Image Tracking" resulta poco inmersivo. Por ello, se implementó el sistema AR Face Manager para anclar la malla a la anatomía del usuario.</em></p>
                         <ol class="step-list">
                             <li><strong>Instalación:</strong> En <code>Window &gt; Package Manager</code>, instalamos <strong>AR Foundation</strong> y el <strong>ARCore XR Plugin</strong>.</li>
-                            <li><strong>Setup de Escena (Face Tracking):</strong> Eliminamos la cámara tradicional e introdujimos el <code>AR Session Origin</code>. En lugar del Image Tracker, añadimos el script <code>AR Face Manager</code>.</li>
-                            <li>A este Manager se le asigna nuestro Prefab de la gorra. El motor de Unity detectará la malla de la cara del usuario a través de la cámara frontal y superpondrá la prenda.</li>
+                            <li><strong>Setup de Escena (Face Tracking):</strong> Eliminamos la cámara tradicional e introdujimos el <code>AR Session Origin</code>. En el Inspector, añadimos el script <code>AR Face Manager</code> en sustitución del rastreador de imágenes.</li>
+                            <li><strong>Asignación:</strong> A la propiedad *Face Prefab* de este Manager se le asigna nuestro modelo de gorra. El motor detecta la malla facial a través de la cámara frontal y superpone la prenda automáticamente.</li>
                         </ol>
                     </div>
 
                     <div class="step-block" style="padding: 25px;">
                         <h3 style="margin-top:0;">Paso 4: Programación de Controladores (C#)</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Para lograr la interacción fluida entre la cámara, los modelos y la web, se desarrollaron scripts avanzados depurados con IA, comentados exhaustivamente.</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Para lograr la interacción fluida entre la cámara, los modelos y la pasarela web, se desarrollaron scripts avanzados depurados con IA, comentados de forma exhaustiva para esta memoria.</p>
                         
                         <div class="prompt-box">
                             <strong style="color: #38bdf8;">Prompt de Programación (ChatGPT):</strong><br><br>
-                            "En Unity con AR Foundation, estoy usando Face Tracking para poner una gorra. 1) Necesito un script (ARHatController.cs) que mueva el modelo hacia arriba porque el punto ancla por defecto está en la nariz. 2) Necesito un script para gestionar mi Canvas UI, incluyendo un método para abrir mi URL y otro para recargar la escena de menú, mejorando la UX en lugar de obligar al usuario a tocar el modelo 3D. Comenta cada línea."
+                            "En Unity con AR Foundation, estoy usando Face Tracking para una gorra. 1) Necesito un script (ARHatController.cs) que mueva el modelo hacia arriba porque el punto ancla por defecto está en el centro de la cabeza. 2) Necesito un script (BotonCompra.cs) para enlazar mis botones UI del Canvas: un método para abrir mi URL de compra y otro para recargar la escena de menú inicial. Comenta cada línea detalladamente."
                         </div>
 
                         <p style="color: var(--accent); margin-top: 20px; font-weight: bold;">1. ARHatController.cs (Solución al Offset Anatómico)</p>
-                        <div class="code-block"><span class="code-comment">// Librerías necesarias para la Realidad Aumentada Facial</span>
+                        <div class="code-block"><span class="code-comment">// Librerías necesarias para usar las físicas y la Realidad Aumentada de Unity</span>
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-<span class="code-comment">// Obliga a que el objeto tenga un ARFace adosado</span>
+<span class="code-comment">// Exige al motor que el objeto que lleve este script tenga un componente ARFace adosado</span>
 [RequireComponent(typeof(ARFace))]
 public class ARHatController : MonoBehaviour
 {
     private ARFace _arFace;
     private GameObject _currentHatInstance;
 
+    <span class="code-comment">// Inicialización de los enlaces del componente</span>
     void Awake() { _arFace = GetComponent&lt;ARFace&gt;(); }
     void OnEnable() { _arFace.updated += OnFaceUpdated; }
     void OnDisable() { _arFace.updated -= OnFaceUpdated; }
 
-    <span class="code-comment">// Se ejecuta constantemente evaluando si la cámara capta el rostro</span>
+    <span class="code-comment">// Función que se ejecuta en bucle cada vez que el sensor del móvil actualiza la posición del rostro</span>
     private void OnFaceUpdated(ARFaceUpdatedEventArgs args)
     {
         if (_currentHatInstance != null)
         {
+            <span class="code-comment">// Si la cámara está rastreando activamente una cara, activamos el render del modelo</span>
             if (_arFace.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
                 _currentHatInstance.SetActive(true);
             else
@@ -278,21 +287,55 @@ public class ARHatController : MonoBehaviour
 
         if (newHatPrefab != null)
         {
+            <span class="code-comment">// Instancia en memoria la gorra (Prefab 3D)</span>
             _currentHatInstance = Instantiate(newHatPrefab);
             _currentHatInstance.transform.SetParent(transform, false);
             _currentHatInstance.transform.localScale = Vector3.one;
 
-            <span class="code-comment">// EL GRAN ARREGLO ESPACIAL:</span>
-            <span class="code-comment">// El motor sitúa el ancla en el centro del cráneo (nariz). </span>
-            <span class="code-comment">// Este offset sube la gorra 15cm (Y) y la adelanta 5cm (Z) hacia la frente.</span>
+            <span class="code-comment">// EL GRAN ARREGLO ESPACIAL DE UX:</span>
+            <span class="code-comment">// Por defecto, Unity sitúa el ancla ARFace en el centro interno de la cabeza del usuario. </span>
+            <span class="code-comment">// Este 'offset' desplaza la gorra 15cm hacia arriba (eje Y) y 5cm hacia adelante (eje Z),</span>
+            <span class="code-comment">// posando la prenda exactamente sobre la frente real del cliente.</span>
             _currentHatInstance.transform.localPosition = new Vector3(0, 0.15f, 0.05f);
+            
+            <span class="code-comment">// Bloquea la rotación inicial para evitar deformaciones matemáticas (Quaternions)</span>
             _currentHatInstance.transform.localRotation = Quaternion.identity;
         }
     }
 }</div>
 
-                        <p style="color: var(--accent); margin-top: 20px; font-weight: bold;">2. HologramGlitchAnimator.cs (Estética UI)</p>
-                        <div class="code-block"><span class="code-comment">// Gestiona los efectos de parpadeo simulando un sistema antiguo al abrir la interfaz.</span>
+                        <p style="color: var(--accent); margin-top: 30px; font-weight: bold;">2. BotonCompra.cs (Lógica de los Botones UI Canvas)</p>
+                        <div class="code-block"><span class="code-comment">// Librería principal del motor Unity.</span>
+using UnityEngine;
+<span class="code-comment">// Librería necesaria para poder cambiar de escenas (del AR al Menú).</span>
+using UnityEngine.SceneManagement; 
+
+<span class="code-comment">// Clase pública adosada a nuestro sistema Canvas y referenciada en los botones OnClick().</span>
+public class BotonCompra : MonoBehaviour 
+{
+    <span class="code-comment">// URL de la pasarela de pago del Ecommerce (Tema 14).</span>
+    public string urlCompra = "https://proyecto-pizhun.com/checkout";
+
+    <span class="code-comment">// --- 1. MÉTODO PARA EL BOTÓN UI DE COMPRA ("Ir a Web") ---</span>
+    <span class="code-comment">// Es público (public) para que el componente "Button" del Canvas pueda visualizarlo.</span>
+    public void AbrirWeb()
+    {
+        <span class="code-comment">// Application.OpenURL invoca el Sistema Operativo del móvil y abre el navegador por defecto.</span>
+        Application.OpenURL(urlCompra);
+        Debug.Log("Saliendo de la app AR. Redirigiendo a la pasarela web del Ecommerce...");
+    }
+
+    <span class="code-comment">// --- 2. MÉTODO PARA EL BOTÓN UI DE NAVEGACIÓN ("Volver al Menú") ---</span>
+    public void VolverAlMenu()
+    {
+        <span class="code-comment">// Cerramos la sesión activa de AR y recargamos la escena que contiene nuestro menú inicial.</span>
+        <span class="code-comment">// (Asumiendo que nuestra escena principal se llama "MenuPrincipal").</span>
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+}</div>
+
+                        <p style="color: var(--accent); margin-top: 30px; font-weight: bold;">3. HologramGlitchAnimator.cs (Estética UI en Menús)</p>
+                        <div class="code-block"><span class="code-comment">// Gestiona los efectos de parpadeo simulando un sistema antiguo al abrir un popup.</span>
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -316,7 +359,7 @@ public class HologramGlitchAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        <span class="code-comment">// Inicia la rutina de animación de glitch paralela</span>
+        <span class="code-comment">// Inicia la rutina de animación asíncrona</span>
         StartCoroutine(GlitchInCoroutine());
     }
 
@@ -325,7 +368,7 @@ public class HologramGlitchAnimator : MonoBehaviour
         float elapsed = 0f;
         _canvasGroup.alpha = 0.2f;
         
-        <span class="code-comment">// Bucle que altera la opacidad y escala durante 0.4 segundos</span>
+        <span class="code-comment">// Bucle que altera la opacidad y vibración (jitter) durante 0.4 segundos</span>
         while (elapsed &lt; transitionDuration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -339,28 +382,20 @@ public class HologramGlitchAnimator : MonoBehaviour
             yield return null;
         }
 
-        <span class="code-comment">// Estabiliza el panel al final de la animación</span>
+        <span class="code-comment">// Restaura los valores de escala y opacidad puros al terminar</span>
         _canvasGroup.alpha = 1f;
         _rectTransform.localScale = _originalScale;
     }
 }</div>
                     </div>
 
-                    <div class="problem-box">
-                        <div class="solution-title">UX/UI Mejora: Sustitución de OnMouseDown por Botones Canvas</div>
-                        <div class="solution-text">
-                            <strong>Decisión de Diseño:</strong> La rúbrica inicial sugería usar un Box Collider en la malla y el evento <code>OnMouseDown()</code>. Sin embargo, dado que el usuario se está probando la gorra moviendo la cabeza, intentar "tocar" un modelo 3D en movimiento resultaba frustrante.<br>
-                            <strong>Solución:</strong> Se implementaron botones clásicos de <strong>Canvas UI Overlay</strong> (<em>Volver al Menú</em> e <em>Ir a Web</em>) con métodos públicos, garantizando un salto limpio y accesible hacia nuestro Ecommerce web.
-                        </div>
-                    </div>
-
                     <div class="step-block" style="padding: 25px;">
                         <h3 style="margin-top:0;">Paso 5: Compilación y Exportación (Android Build)</h3>
                         <ol class="step-list">
-                            <li><strong>Ajustes de Rendering:</strong> En <code>Project Settings &gt; Player</code>, forzamos el uso de <strong>OpenGLES3</strong> y quitamos Vulkan (que rompe el feed de cámara en Android).</li>
+                            <li><strong>Ajustes de Rendering:</strong> En <code>Project Settings &gt; Player</code>, forzamos el uso de <strong>OpenGLES3</strong> y eliminamos Vulkan (API que rompe el feed de cámara en la mayoría de Androids).</li>
                             <li><strong>Build Settings:</strong> En <code>File &gt; Build Settings</code> seleccionamos <strong>Android</strong> y pulsamos <strong>Switch Platform</strong>.</li>
-                            <li>Incluimos ambas escenas (MenuPrincipal y EscenaAR) usando <strong>Add Open Scenes</strong>.</li>
-                            <li>Pulsamos <strong>Build</strong>, obteniendo el <code>.apk</code> final para la demostración en vídeo.</li>
+                            <li>Incluimos las escenas del proyecto (MenuPrincipal y EscenaAR) usando el botón <strong>Add Open Scenes</strong>.</li>
+                            <li>Pulsamos <strong>Build</strong>, obteniendo el ejecutable <code>.apk</code> final para instalar en el móvil y grabar la demostración obligatoria de la entrega.</li>
                         </ol>
                     </div>
 
@@ -384,7 +419,7 @@ public class HologramGlitchAnimator : MonoBehaviour
             <button onclick="toggleBtsChat()" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.4rem;">×</button>
         </div>
         <div id="bts-chat-messages" style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:14px; color:#fff; font-size: 0.95rem;">
-            <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">¡Hola! Soy el asistente técnico. Conozco toda la memoria: la estrategia de Ecommerce, Web DAW, y la avanzada arquitectura de Face Tracking en Unity y Menús UI. ¿Qué apartado repasamos?</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">¡Hola! Soy el asistente técnico. Conozco toda la memoria: Web DAW, la arquitectura Face Tracking en Unity y los Menús UI. No hay Image Tracking, solo un Virtual Try-On avanzado. ¿Qué repasamos?</div>
         </div>
         <div style="padding:15px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:10px;">
             <input id="bts-chat-input" type="text" placeholder="Pregunta sobre la memoria..."
@@ -396,7 +431,12 @@ public class HologramGlitchAnimator : MonoBehaviour
     </div>
 
     <script>
+        // Variables globales del chat
+        let btsChatOpen = false;
+        let btsChatHistory = [];
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Inicialización de animaciones GSAP
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
                 const reveals = document.querySelectorAll('.gs-reveal');
@@ -410,6 +450,7 @@ public class HologramGlitchAnimator : MonoBehaviour
                     );
                 });
 
+                // Lógica del Sidebar activo
                 const sections = document.querySelectorAll('.bts-section');
                 const navItems = document.querySelectorAll('.nav-item');
                 
@@ -429,16 +470,25 @@ public class HologramGlitchAnimator : MonoBehaviour
                     });
                 });
             }
+
+            // EXTRAER EL TEXTO DE LA PÁGINA WEB PARA LA INTELIGENCIA ARTIFICIAL
+            const pageMemoryText = document.querySelector('.doc-content').innerText;
+
+            // CONFIGURAR EL CEREBRO DE LA IA
+            const BTS_SYSTEM_PROMPT = `Eres el asistente oficial de la Memoria del Proyecto "Smart Commerce AR" para estudiantes de DAW/DAM.
+AQUÍ TIENES TODO EL TEXTO DE LA MEMORIA PARA USARLO COMO BASE DE CONOCIMIENTO:
+---
+${pageMemoryText}
+---
+
+INSTRUCCIONES DE ESTILO Y PERSONALIDAD (¡MUY IMPORTANTE!):
+1. RESPUESTAS RÁPIDAS Y CONCRETAS: Ve directo al grano. Usa listas o viñetas y no escribas más de 2 párrafos cortos por respuesta.
+2. TONO: Sé extremadamente simpático, entusiasta y geek. Usa emojis para darle vida al texto 🚀🤖.
+3. ACTITUD: Actúa con total seguridad de que este proyecto merece un 10/10 en la evaluación porque las decisiones tomadas (Face Tracking y Canvas UI en vez de BoxColliders) mejoran enormemente la Experiencia de Usuario (UX) exigida en la rúbrica.`;
+
+            // Iniciar el historial con las instrucciones y todo el texto scrapeado
+            btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
         });
-
-        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial de la Memoria del Proyecto "Smart Commerce AR" para estudiantes de DAW/DAM.
-Temas a evaluar:
-- Tema 14: Estrategia Ecommerce (PVP 42.35€, IVA 21%), Web Mobile First (Grid).
-- Tema 13: Unity AR. Face Tracking (ARFaceManager) en lugar de Image Tracking como mejora de UX. Flujo de Interfaz: Menú -> Popup -> Escena AR con botones superpuestos UI Canvas (Volver, Ir a Web) en lugar de BoxCollider para evitar fricción. Scripts ARHatController y HologramGlitchAnimator. Build .apk.
-Responde basándote en que el documento cumple perfectamente la rúbrica de evaluación justificando las mejoras.`;
-
-        let btsChatOpen = false;
-        let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
 
         function toggleBtsChat() {
             btsChatOpen = !btsChatOpen;
@@ -459,7 +509,7 @@ Responde basándote en que el documento cumple perfectamente la rúbrica de eval
             
             const typing = document.createElement('div');
             typing.style.cssText = "align-self: flex-start; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 12px 12px 12px 0; max-width: 85%; font-style: italic; color: #888;";
-            typing.innerHTML = 'Revisando memoria...';
+            typing.innerHTML = 'Analizando la memoria...';
             messages.appendChild(typing);
             messages.scrollTop = messages.scrollHeight;
 

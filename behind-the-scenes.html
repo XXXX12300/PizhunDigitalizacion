@@ -4,443 +4,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZHUN | Behind The Scenes</title>
+    <title>PIZHUN | Documentación Técnica</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="bts.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://js.puter.com/v2/"></script>
     <style>
-        .app-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-right: 10px;
-            background: #fff;
-            padding: 5px;
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.2);
+            --text-main: #eee;
+            --text-muted: #aaa;
+            --bg-dark: #050505;
         }
 
-        .step-list {
-            color: #aaa;
-            padding-left: 20px;
-            line-height: 1.8;
-            margin-bottom: 20px;
+        body { margin: 0; background: var(--bg-dark); color: var(--text-main); font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        html { scroll-behavior: smooth; scroll-padding-top: 40px; }
+
+        .app-logo {
+            width: 40px; height: 40px; border-radius: 8px; object-fit: contain;
+            vertical-align: middle; margin-right: 10px; background: #fff; padding: 5px;
         }
+
+        /* --- LAYOUT DE DOCUMENTACIÓN --- */
+        .doc-layout {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        /* BARRA LATERAL (SIDEBAR) */
+        .doc-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 40px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            background: rgba(15, 15, 18, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .doc-sidebar h3 {
+            color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;
+            border-bottom: 1px solid #333; padding-bottom: 15px; font-weight: 700;
+        }
+
+        .nav-item {
+            display: flex; align-items: center; gap: 12px; color: var(--text-muted);
+            text-decoration: none; padding: 12px 16px; border-radius: 10px;
+            font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--accent-glow); color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.3); transform: translateX(5px);
+        }
+
+        .nav-icon { font-size: 1.2rem; }
+
+        /* CONTENIDO PRINCIPAL */
+        .doc-content {
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        .bts-header { border-bottom: 1px solid #222; padding-bottom: 40px; margin-bottom: 40px; }
+        .bts-tag { color: var(--accent); font-weight: 800; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; }
+        .bts-title { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 900; }
+        .bts-subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; max-width: 800px; }
 
         .code-block {
-            background: #111;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #eee;
-            overflow-x: auto;
-            border: 1px solid #333;
-            margin: 15px 0;
-            white-space: pre;
-            line-height: 1.4;
+            background: #111; padding: 20px; border-radius: 12px; font-family: monospace;
+            font-size: 0.85rem; color: #eee; overflow-x: auto; border: 1px solid #333;
+            margin: 20px 0; white-space: pre; line-height: 1.5;
         }
 
-        .problem-box {
-            background: rgba(220, 38, 38, 0.1);
-            border-left: 4px solid #dc2626;
-            padding: 15px 20px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 15px;
-        }
+        .problem-box { background: rgba(220, 38, 38, 0.1); border-left: 4px solid #dc2626; padding: 20px; border-radius: 0 12px 12px 0; margin: 25px 0; }
+        .solution-title { color: #fca5a5; font-weight: 800; margin-bottom: 8px; font-size: 0.95rem; }
+        .solution-text { color: #eee; font-size: 0.95rem; line-height: 1.6;}
 
-        .solution-title {
-            color: #fca5a5;
-            font-weight: 800;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .solution-text {
-            color: #eee;
-            font-size: 0.95rem;
-        }
+        .metric-card { background: #111; padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; }
+        .metric-value { font-size: 2rem; font-weight: 800; color: var(--accent); font-family: 'Syne', sans-serif; }
+        .metric-label { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;}
 
-        .step-block {
-            background: rgba(255, 255, 255, 0.03); /* var(--glass-bg) */
-            border: 1px solid rgba(255, 255, 255, 0.08); /* var(--glass-border) */
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            position: relative;
-        }
+        .step-block { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 35px; margin-bottom: 40px; position: relative; }
+        .step-num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.03); position: absolute; top: 10px; right: 25px; line-height: 1; pointer-events: none; }
+        .step-list { color: var(--text-muted); padding-left: 20px; line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem; }
 
-        .step-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.05);
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            line-height: 1;
-        }
+        .prompt-box { background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-family: monospace; color: #bae6fd; font-size: 0.9rem; line-height: 1.6; }
 
-        .prompt-box {
-            background: rgba(56, 189, 248, 0.05);
-            border-left: 4px solid #38bdf8;
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 15px 0;
-            font-family: monospace;
-            color: #bae6fd;
-            font-size: 0.9rem;
+        .media-showcase img { border-radius: 12px; width: 100%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); margin: 15px 0; }
+
+        @media (max-width: 1024px) {
+            .doc-layout { flex-direction: column; padding: 20px; }
+            .doc-sidebar { position: static; width: 100%; height: auto; margin-bottom: 30px; }
+            .bts-title { font-size: 2.5rem; }
+            .step-block { padding: 20px; }
         }
     </style>
 </head>
 
 <body>
-    <header class="bts-header">
-        <div class="bts-container">
-            <div class="bts-tag gs-reveal">CLASSIFIED DOSSIER</div>
-            <h1 class="bts-title gs-reveal">Building<br>The Core</h1>
-            <p class="bts-subtitle gs-reveal">Un recorrido paso a paso, con extremo detalle, sobre el proceso de diseño
-                y desarrollo de PIZHUN. Construido como proyecto académico explorando la intersección del diseño web y la Inteligencia
-                Artificial interactiva.</p>
-        </div>
-    </header>
 
-    <main class="bts-container">
-        <section class="bts-section">
-            <div class="text-content gs-reveal" style="margin-bottom: 40px;">
-                <h2>01. Estrategia de Diseño y Flujo de Usuario (Tema 14)</h2>
-                <p>El objetivo de este proyecto de clase es explorar cómo una experiencia física puede conectarse fluidamente con un entorno digital interactivo. PIZHUN actúa como un concepto académico de marca de Streetwear Tecnológico (Tech-Core). Queremos que el usuario interactúe con el elemento físico mediante la cámara de su móvil y salte directamente a una landing page web inmersiva.</p>
-            </div>
+    <div class="doc-layout">
+        <aside class="doc-sidebar gs-reveal">
+            <h3>📚 Índice del Proyecto</h3>
+            <a href="#sec-estrategia" class="nav-item"><span class="nav-icon">🎯</span> 01. Estrategia y UX</a>
+            <a href="#sec-grok" class="nav-item"><span class="nav-icon">🧠</span> 02. Grok GenAI</a>
+            <a href="#sec-meshy" class="nav-item"><span class="nav-icon">🧊</span> 03. Modelado 3D</a>
+            <a href="#sec-web" class="nav-item"><span class="nav-icon">💻</span> 04. Arquitectura Web</a>
+            <a href="#sec-unity" class="nav-item"><span class="nav-icon">📱</span> 05. Unity AR Build</a>
+        </aside>
 
-            <div class="step-block gs-reveal">
-                <div class="step-num">1.1</div>
-                <h3>Inspiración y Creación del Concepto (Prompting Web)</h3>
-                <p>Para establecer las bases de la interfaz web, utilizamos como gran inspiración la interactividad y estética mostrada en <a href="https://www.youtube.com/watch?v=xKJ8ahVpJHw" target="_blank" style="color: #38bdf8;">este vídeo de referencia conceptual</a>. El reto era traducir esa fluidez a código Front-End real.</p>
-                <p>Para no contaminar la memoria contextual de la IA con otros proyectos, <strong>utilicé ChatGPT explícitamente en modo incógnito</strong> para generar la estructura inicial y refinar los estilos de la web de forma aislada. Esto garantizó respuestas mucho más precisas y enfocadas únicamente en el diseño "Tech-Wear".</p>
-                
-                <div class="prompt-box">
-                    <strong>Prompt Web en ChatGPT (Incógnito):</strong><br>
-                    "Actúa como un desarrollador Front-End experto y UI/UX designer. Necesito que estructures el esqueleto HTML5 y el CSS3 base para una landing page de estilo 'Tech-Wear' cyberpunk minimalista. Debe ser completamente Mobile-First, usar variables CSS para un tema oscuro (negros mate y acentos neón morados), y estar preparada para integrar animaciones complejas con la librería GSAP. Omite Javascript por ahora, solo dame una maqueta semántica perfecta."
-                </div>
-            </div>
+        <main class="doc-content">
             
-            <div class="step-block gs-reveal">
-                <div class="step-num">1.2</div>
-                <h3>La Web como Capa de Interacción</h3>
-                <p>La web desarrollada sirve como el <strong>núcleo informativo y de conversión del proyecto</strong>. Mientras que Unity genera el efecto visual en el mundo real, la web recoge al usuario.</p>
-                <ol class="step-list">
-                    <li><strong>Estructura Mobile-First Rígida:</strong> Como el usuario viene inevitablemente de interactuar con la Realidad Aumentada desde su teléfono móvil, se han usado Media Queries, CSS Grid avanzado y Flexbox para garantizar una navegación ergonómica a una sola mano.</li>
-                    <li><strong>Semántica HTML5 y Accesibilidad:</strong> Uso riguroso de etiquetas como <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, y <code>&lt;article&gt;</code> para asegurar que el DOM es legible, manteniendo un contraste de colores validado por las normativas W3C.</li>
-                    <li><strong>Tensión Visual:</strong> Implementación de estados <code>:hover</code> y micro-interacciones sutiles para guiar el recorrido del ojo del usuario a lo largo del trabajo.</li>
-                </ol>
-            </div>
-        </section>
+            <header class="bts-header">
+                <div class="bts-tag gs-reveal">DOCUMENTACIÓN TÉCNICA CLASIFICADA</div>
+                <h1 class="bts-title gs-reveal">Building<br>The Core</h1>
+                <p class="bts-subtitle gs-reveal">Un recorrido paso a paso, con extremo detalle, sobre el proceso de diseño, programación
+                    y desarrollo web de PIZHUN. Un proyecto académico que explora la intersección del desarrollo Front-End avanzado, los motores Unity AR y la Inteligencia Artificial generativa.</p>
+            </header>
 
-        <section class="bts-section">
-            <div class="section-grid">
-                <div class="text-content gs-reveal">
+            <section id="sec-estrategia" class="bts-section" style="padding-top: 20px;">
+                <div class="text-content gs-reveal" style="margin-bottom: 40px;">
+                    <h2>01. Estrategia de Diseño y Flujo de Usuario (Tema 14)</h2>
+                    <p>El objetivo de este trabajo es demostrar cómo una experiencia física en el mundo real puede conectarse fluidamente con un entorno digital web interactivo. El flujo deseado es: el usuario interactúa con la prenda física mediante la cámara de su móvil (Unity AR) y, al tocarla, un <em>Deep Link</em> lo lanza a la web para visualizar el producto en detalle.</p>
+                </div>
+
+                <div class="step-block gs-reveal">
+                    <div class="step-num">1.1</div>
+                    <h3>Inspiración Conceptual Web mediante IA</h3>
+                    <p>Para la interfaz, usamos como gran inspiración el dinamismo mostrado en <a href="https://www.youtube.com/watch?v=xKJ8ahVpJHw" target="_blank" style="color: #38bdf8; text-decoration: underline;">este vídeo conceptual</a>. Para no contaminar la "memoria" de mi perfil en la IA con código antiguo, <strong>utilicé ChatGPT en modo incógnito</strong>. Esto me aseguró directrices limpias y exclusivas para un estilo 'Tech-Wear' cyberpunk.</p>
+                    
+                    <div class="prompt-box">
+                        <strong style="color: #38bdf8;">Prompt de Ingeniería UI/UX (ChatGPT Incógnito):</strong><br><br>
+                        "Actúa como un desarrollador Front-End experto y UI/UX designer. Analizando tendencias de diseño de interfaces, necesito que estructures el esqueleto HTML5 semántico y CSS3 base para una landing page de estilo 'Tech-Wear'. Debe ser completamente Mobile-First, usar variables CSS oscuras y prepararlo todo para ser manipulado por Javascript y GSAP. Devuelve solo el esqueleto DOM Grid perfecto."
+                    </div>
+                </div>
+                
+                <div class="step-block gs-reveal">
+                    <div class="step-num">1.2</div>
+                    <h3>Métricas del Proyecto</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div class="metric-card"><div class="metric-value">60 FPS</div><div class="metric-label">Target Render Web</div></div>
+                        <div class="metric-card"><div class="metric-value">85/100</div><div class="metric-label">AR Tracking Score</div></div>
+                        <div class="metric-card"><div class="metric-value">4K PBR</div><div class="metric-label">Resolución Texturas</div></div>
+                        <div class="metric-card"><div class="metric-value">&lt; 15k</div><div class="metric-label">Límite Polígonos AR</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-grok" class="bts-section" style="padding-top: 40px;">
+                <div class="gs-reveal">
                     <h2>02. Ideación Visual y Audiovisual con Grok</h2>
                     <p>
-                        <img src="https://www.trecebits.com/wp-content/uploads/2025/03/grok-logo-ia.jpg.webp" alt="Grok Logo"
-                            class="app-logo">
-                        <strong>Grok Imagine</strong> fue el núcleo creativo para los <em>assets</em>. El objetivo era deconstruir la estética
-                        tradicional del "streetwear" y crear elementos de narrativa tecnológica.
+                        <img src="https://www.trecebits.com/wp-content/uploads/2025/03/grok-logo-ia.jpg.webp" alt="Grok Logo" class="app-logo">
+                        <strong>Grok Imagine</strong> fue el motor elegido para generar texturas hiperrealistas y los fondos de vídeo atmosféricos.
                     </p>
-                    <p><strong>Paso a paso y Prompts (Generación de Imágenes y Vídeo):</strong></p>
                     <ol class="step-list">
-                        <li>Accedí a la consola de <strong>Grok</strong>. Previamente elaboré los prompts usando ChatGPT en incógnito para asegurar la terminología técnica fotográfica correcta.</li>
-                        <li><strong>Prompt de Imagen utilizado:</strong> <br><code>"A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution, solid dark background, clean product photography."</code></li>
-                        <li>Para los fondos dinámicos de la web, pasamos al modo de vídeo generativo (Image-to-Video).</li>
-                        <li><strong>Prompt de Vídeo animado utilizado:</strong> <br><code>"Slow cinematic pan, perfectly static subject, handheld camera movement over a cyberpunk streetwear jacket, heavy rain environment, shallow depth of field, neon reflections on wet fabric, photorealistic 35mm lens."</code></li>
-                        <li>Descargamos el archivo <code>.mp4</code> resultante, y lo insertamos en el HTML con: <br><code>&lt;video autoplay loop muted playsinline src="video/asset.mp4"&gt;&lt;/video&gt;</code>.</li>
+                        <li><strong>Prompt Base de Imagen (Para prendas):</strong> <br><code>"A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution, clean product photography."</code></li>
+                        <li><strong>Prompt de Vídeo Cinemático (Fondos web):</strong> <br><code>"Slow cinematic pan, perfectly static subject, handheld camera movement over a cyberpunk streetwear jacket, heavy rain environment, shallow depth of field, neon reflections."</code></li>
                     </ol>
 
                     <div class="problem-box">
-                        <div class="solution-title">⚠ Problema: Deformación Visual en la IA</div>
+                        <div class="solution-title">⚠ Alucinaciones en la IA</div>
                         <div class="solution-text">
-                            <strong>Obstáculo:</strong> Al generar los vídeos de la ropa, la IA tendía a deformar las costuras o derretir los cierres si la instrucción sugería mucho movimiento (efecto alucinación).<br>
-                            <strong>Solución:</strong> Modifiqué las directrices del prompt introduciendo obligatoriamente las palabras clave <em>"static subject"</em> y aislando el movimiento solo a <em>"handheld camera movement"</em>. Al separar las físicas del entorno del objeto, la prenda mantuvo una coherencia geométrica perfecta.
+                            <strong>Obstáculo:</strong> Grok deformaba las prendas al generar el video si le pedía "movimiento".<br>
+                            <strong>Solución:</strong> Modifiqué las directrices añadiendo "perfectly static subject". Al indicar que el objeto debía estar rígido y solo la cámara debía moverse, aislé el movimiento y evité las alucinaciones de texturas.
                         </div>
                     </div>
-                </div>
-                
-                <div class="media-showcase gs-reveal"
-                    style="box-shadow: none; display: flex; flex-direction: column; gap: 15px;">
-                    <div class="grok-chat">
-                        <div class="grok-header" style="background: #1a1a1a; padding: 10px; border-radius: 8px 8px 0 0; border: 1px solid #333; font-family: monospace;">
-                            <span style="color:#fff;">Grok AI Console - Generación de Activos</span>
-                        </div>
-                        <div class="grok-ai-msg media-showcase" style="border: 1px solid #333; border-top: none; border-radius: 0 0 8px 8px; padding: 10px; background: #000;">
-                            <img src="https://i.ibb.co/7dWL8C2N/image.png"
-                                alt="Grok Video Process" loading="lazy"
-                                style="border-radius: 4px; width: 100%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="bts-section">
-            <div class="section-grid reverse">
-                <div class="text-content gs-reveal">
+                    <div class="media-showcase" style="margin-top: 20px;">
+                        <img src="https://i.ibb.co/7dWL8C2N/image.png" alt="Grok Interfaz Generando" style="border: 1px solid #333; padding: 2px; background: #000;">
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-meshy" class="bts-section" style="padding-top: 40px;">
+                <div class="gs-reveal">
                     <h2>03. Modelado 3D GenAI con Meshy</h2>
                     <p>
                         <img src="https://mma.prnewswire.com/media/2739174/Meshy_Logo.jpg?p=facebook" alt="Meshy Logo" class="app-logo">
-                        <strong>Meshy.ai</strong> fue la llave para dar el salto volumétrico. Convertimos la imagen plana generada por Grok en modelos tridimensionales físicos (mallas topológicas) para usarlos en el entorno de Realidad Aumentada de Unity.
+                        <strong>Meshy.ai</strong> convirtió las fotografías planas de Grok en mallas volumétricas `.glb` para inyectarlas en la aplicación de Unity.
                     </p>
-                    <p><strong>Flujo de Trabajo (Generación y Topología):</strong></p>
                     <ol class="step-list">
-                        <li>Dentro de Meshy, seleccionamos el flujo de trabajo <strong>Image to 3D</strong>.</li>
-                        <li>Subimos la fotografía plana frontal obtenida en el paso anterior.</li>
-                        <li><strong>Detalle Técnico Clave:</strong> Configuramos la salida a <strong>High Quality (PBR Textures)</strong>. PBR (Physically Based Rendering) es vital porque genera mapas de normales (relieve) y rugosidad que harán que la gorra interactúe de forma realista con la luz en Unity.</li>
-                        <li>Exportamos el archivo de forma selectiva en formato <strong>.glb</strong> (GL Transmission Format Binary). Es el formato más optimizado para empaquetar geometría y texturas en un solo archivo ligero para aplicaciones móviles AR.</li>
+                        <li>Subimos la fotografía plana frontal (limpia sin fondo).</li>
+                        <li>Configuramos la exportación obligatoria a <strong>High Quality (PBR Textures)</strong>. Es vital para generar mapas de rugosidad y normales (Normal Maps) para que Unity pueda simular cómo la luz rebota en la tela de forma realista.</li>
+                        <li>Exportamos en formato <strong>.glb</strong> (GL Transmission Format), que empaqueta texturas y mallas en un solo archivo binario muy optimizado para RAM de móviles.</li>
                     </ol>
 
                     <div class="problem-box">
-                        <div class="solution-title">⚠ Problema: Modelos Gigantes y Escala Absoluta</div>
+                        <div class="solution-title">⚠ Escala Absoluta World-Space</div>
                         <div class="solution-text">
-                            <strong>Obstáculo:</strong> Al importar el `.glb` a Unity, la gorra medía virtualmente decenas de metros, colapsando la cámara espacial y rompiendo el Image Tracking.<br>
-                            <strong>Solución:</strong> Meshy computa en unidades relativas, mientras que Unity interpreta 1 unidad = 1 metro en la vida real. Apliqué un ajuste en el componente <code>Transform -> Scale</code> del Prefab, reduciéndolo exactamente a <code>0.05</code> en los ejes X, Y, Z. Esto redimensionó la prenda a proporciones humanas reales para la simulación móvil.
+                            <strong>Obstáculo:</strong> El `.glb` cargaba midiendo 10 metros en Unity, colapsando el rastreo de cámara.<br>
+                            <strong>Solución:</strong> Meshy computa sin métrica, Unity usa 1 unidad = 1 metro. Modifiqué manualmente el <code>Scale</code> en Unity a <code>0.05</code> en los ejes X,Y,Z reduciendo el modelo a proporciones anatómicas de una gorra real.
                         </div>
                     </div>
-                </div>
-                <div class="media-showcase gs-reveal">
-                    <img src="https://p16-seeyou-useast5.capcutcdn-us.com/tos-useast5-i-2zwwjm3azk-tx/8a5c9c63eaf34416a1e12ead75844d8c~tplv-2zwwjm3azk-image.image"
-                        alt="Meshy AI Interface Process" loading="lazy"
-                        style="border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                </div>
-            </div>
-        </section>
 
-        <section class="bts-section">
-            <div class="section-grid">
-                <div class="text-content gs-reveal">
-                    <h2>04. Arquitectura Web y Entorno IDE</h2>
+                    <div class="media-showcase">
+                        <img src="https://p16-seeyou-useast5.capcutcdn-us.com/tos-useast5-i-2zwwjm3azk-tx/8a5c9c63eaf34416a1e12ead75844d8c~tplv-2zwwjm3azk-image.image" alt="Meshy Interfaz">
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-web" class="bts-section" style="padding-top: 40px;">
+                <div class="gs-reveal">
+                    <h2>04. Arquitectura Web y Antigravity IDE</h2>
                     <p>
-                        <span style="font-size: 2rem; vertical-align: middle; margin-right: 10px;">🚀</span>
-                        La plataforma central, su diseño de animaciones (SPA) y programación del DOM fueron ensambladas utilizando el motor de <strong>Google Antigravity IDE</strong>.
+                        <img src="https://cdn.prod.website-files.com/6088303c28a7c75678aa21d8/693c0580a2ac4c34726aa6ba_-Zz6T2nk_400x400.png" alt="Antigravity Logo" class="app-logo">
+                        La programación de la interfaz (Front-End) se ejecutó íntegramente en el ecosistema en la nube <strong>Antigravity IDE</strong>, gestionando estructuras HTML complejas, interactividad y estilos.
                     </p>
-                    <p><strong>Implementación Frontend Avanzada:</strong></p>
-                    <ol class="step-list">
-                        <li>Iniciamos el proyecto en Antigravity estructurando el esqueleto definido por los prompts anteriores.</li>
-                        <li>Vinculamos los motores gráficos introduciendo las librerías CDN en el <code>&lt;head&gt;</code>: <code>gsap.min.js</code> y <code>ScrollTrigger.min.js</code>.</li>
-                        <li><strong>Integración de IA en la Web:</strong> Para el panel de asistencia interactivo, implementamos <strong>Puter.js</strong>. Usamos una función asincrónica <code>await puter.ai.chat(historial)</code> atada al DOM, permitiendo al usuario "dialogar" con el entorno sin necesidad de configurar un backend Node.js complejo.</li>
-                        <li>Control del Scroll: Se usó <code>gsap.fromTo()</code> atado a los nodos del DOM para revelar los elementos secuencialmente conforme el usuario hace scroll, inyectando un sentimiento de descubrimiento.</li>
-                    </ol>
-
-                    <div class="problem-box">
-                        <div class="solution-title">⚠ Problema: Solapamiento Visual y Lag ('Stuttering')</div>
-                        <div class="solution-text">
-                            <strong>Obstáculo:</strong> Al incluir transiciones rápidas y manipular el DOM, el rendimiento caía en dispositivos móviles ("Stuttering") y el puntero personalizado se desfasaba de la posición real.<br>
-                            <strong>Solución:</strong> Se abandonó la animación de propiedades CSS como <em>margin</em> o <em>width</em> (que fuerzan el Reflow del navegador) en favor de la propiedad <em>Transform</em>. Para el puntero, se programó usando <code>gsap.quickTo()</code>, que interpola valores directamente a la GPU esquivando los cuellos de botella del DOM.
-                        </div>
-                    </div>
-                </div>
-                <div class="media-showcase gs-reveal" style="box-shadow: none;">
-                    <div class="mock-ide-window">
-                        <div class="ide-header">
-                            <span class="mac-btn mac-close"></span><span class="mac-btn mac-min"></span><span
-                                class="mac-btn mac-max"></span>
-                            <span
-                                style="margin-left: 10px; color: #888; font-size: 0.8rem; font-family: sans-serif;">Google
-                                Antigravity IDE — script.js</span>
-                        </div>
-                        <div class="ide-content">
-                            <span class="comment">// Resolviendo "Stuttering" y Pizhun Cursor Web Initialization</span>
-                            <span class="keyword">function</span> <span class="function">initInteraction</span>() {
-                            <span class="keyword">const</span> cursor = document.querySelector(<span
-                                class="string">'.cursor'</span>);
-                            <span class="comment">// El uso de quickTo evita el reflow del DOM y solventa lag //</span>
-                            <span class="keyword">const</span> xTo = gsap.quickTo(cursor, <span
-                                class="string">"x"</span>, {duration: <span class="string">0.2</span>, ease: <span
-                                class="string">"power3"</span>});
-                            <span class="keyword">const</span> yTo = gsap.quickTo(cursor, <span
-                                class="string">"y"</span>, {duration: <span class="string">0.2</span>, ease: <span
-                                class="string">"power3"</span>});
-
-                            window.addEventListener(<span class="string">'mousemove'</span>, e => {
-                            xTo(e.clientX);
-                            yTo(e.clientY);
-                            });
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bts-section">
-            <div class="section-grid reverse">
-                <div class="text-content gs-reveal">
-                    <h2>05. Realidad Aumentada Extrema en Unity (Tema 13)</h2>
-                    <p>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg"
-                            alt="Unity Logo" class="app-logo" style="background:#fff;">
-                        Toda la experiencia de captura en el mundo físico transcurre en <strong>Unity</strong> apoyándose en los motores de AR Foundation para compilar un archivo ejecutable Android (.apk).
-                    </p>
-
-                    <p><strong>Configuración Profunda de la Arquitectura AR:</strong></p>
-                    <ol class="step-list">
-                        <li>En el Project Settings, desactivamos la API gráfica <em>Vulkan</em> (que suele generar incompatibilidades con cámaras AR de Android) forzando el uso exclusivo de <strong>OpenGLES3</strong>.</li>
-                        <li>Desplegamos el <code>AR Session Origin</code> en la escena. Añadimos el script <strong>AR Tracked Image Manager</strong>.</li>
-                        <li>Creamos una base de datos de imágenes de referencia. Para garantizar que Unity otorgue un rastreo fiable, nos aseguramos de que el marcador físico tuviera alto contraste asimétrico (evitando patrones repetitivos) logrando una puntuación de Tracking superior a 85/100.</li>
-                        <li><strong>Light Estimation (Iluminación Realista):</strong> En la cámara de AR, activamos el estimador de luz ambiental. Esto lee los datos del sensor del móvil para ajustar dinámicamente el brillo y la temperatura del material PBR del modelo 3D (la gorra de Meshy), logrando que se integre visualmente en la habitación del usuario.</li>
-                        <li><strong>Requisito Crítico de Interacción:</strong> Seleccionamos el Prefab del modelo 3D importado y le añadimos un componente <code>Box Collider</code>. Sin estos colisionadores las mallas 3D son fantasmas matemáticos y la pantalla táctil ignoraría los toques del usuario (Raycasting).</li>
-                        <li>Compilamos estableciendo el Minimum API Level de Android requerido por los paquetes de ARCore.</li>
-                    </ol>
-
-                    <div class="problem-box">
-                        <div class="solution-title">⚠ Problemas Fatales Frecuentes en el SDK de Unity</div>
-                        <div class="solution-text">
-                            <strong>Problema 1 - Pantalla Azul y Render Roto:</strong> Al limpiar la caché eliminando la carpeta <code>Library</code> del proyecto, el compilador generó un .apk donde la cámara real no se activaba (solo mostraba un fondo azul/negro).<br>
-                            <strong>Solución:</strong> Todo el 'Universal Render Pipeline' de Unity perdió la sincronía de la cámara. La solución técnica fue ir a los <em>Renderer Features</em> del URP activo y volver a inyectar a la fuerza el script <code>AR Background Render Feature</code>. Esto devolvió el flujo de video real a la pantalla.
-                            <br><br>
-                            <strong>Problema 2 - Geometría Desplazada (Tracking de Rostro):</strong> El módulo AR sí reconocía el rostro, pero generaba el origen del `.glb` de la gorra dentro de la nariz del usuario, ya que el ancla ARFace se sitúa en el centro geométrico de la cabeza.<br>
-                            <strong>Solución:</strong> Tuve que alterar el sistema vectorial diseñando un script matemático en C# (ARHatController). Aplicamos un Offset espacial: <code>localPosition = new Vector3(0, 0.15f, 0.05f);</code> subiendo el modelo 15 centímetros hacia el eje Y (frente) y avanzándolo 5 cm en Z, logrando el ajuste anatómico correcto.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="media-showcase gs-reveal"
-                    style="box-shadow: none; display: flex; flex-direction: column; gap: 15px;">
                     
-                    <div class="prompt-box" style="margin: 0; padding: 20px; background: rgba(139, 92, 246, 0.05); border-left: 4px solid #8b5cf6;">
-                        <strong style="color:#a5b4fc">PROMPT DE DEPURACIÓN EN CHATGPT:</strong><br>
-                        <code style="color: #eee;">"En Unity usando AR Foundation, tengo un modelo 3D instanciado. Necesito un script en C# que detecte cuando el usuario toca ese modelo específico en la pantalla táctil de su teléfono y, al hacerlo, abra el navegador en una URL externa. ¿Qué componente físico necesito añadirle al modelo?"</code>
+                    <div class="step-block" style="padding: 25px;">
+                        <h3 style="margin-top: 0; color: #38bdf8;">Ingeniería del DOM y Layout de Producto</h3>
+                        <ol class="step-list">
+                            <li><strong>Incrustación de Modelos de Grok:</strong> Para lograr la atmósfera inmersiva, tomé el `.mp4` generado por Grok y lo declaré como fondo en la capa más profunda del documento: 
+                            <br><code style="background:#000; padding:4px; border-radius:4px; color:#fff;">&lt;video class="bg-layer" autoplay loop muted playsinline src="vid/grok_bg.mp4"&gt;</code>.<br> 
+                            Mediante CSS le asigné <code>position: fixed; z-index: -1;</code> y un filtro de oscurecimiento <code>filter: brightness(0.3);</code> para garantizar que el texto blanco fuera legible.</li>
+                            
+                            <li><strong>Secciones y Rejillas de Producto:</strong> Para exhibir las prendas sin usar librerías externas de carruseles, programé el contenedor usando <strong>CSS Grid Nativo</strong>. La regla <code style="color:#fca5a5;">grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code> garantizó que, al verse en un móvil en vertical, las tarjetas de ropa formaran una sola columna, pero en un iPad o PC se auto-expandieran a 2 o 3 columnas.</li>
+                            
+                            <li><strong>Sistema de Pop-ups Interactivos:</strong> Para mostrar detalles técnicos de la ropa al hacer clic en "Ver más", evité manipular opacidades en divs vacíos y utilicé la moderna <strong>API `<dialog>` de HTML5</strong>. 
+                            <br>Creé una etiqueta <code>&lt;dialog id="product-modal"&gt;</code>. Esto permite que el pop-up se posicione nativamente por encima del DOM (Top-Layer) bloqueando el scroll del fondo automáticamente. Se activa con una simple orden Javascript: <code>document.getElementById('product-modal').showModal();</code>.</li>
+                        </ol>
                     </div>
 
-                    <p style="color: #aaa; margin-top: 15px; margin-bottom: 5px; font-size: 0.9rem;"><strong>BotonCompra.cs</strong> - Script de conexión entre el entorno AR y la web interactiva.</p>
-                    <div class="code-block" style="margin-top: 0;">using UnityEngine;
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Cuellos de Botella (Lag y Stuttering en GSAP)</div>
+                        <div class="solution-text">
+                            Al enlazar los eventos de <strong>ScrollTrigger</strong> y el seguimiento del ratón sobre los vídeos pesados de Grok, el navegador recalentaba y perdía Frames.<br>
+                            Descubrí que animar márgenes forzaba un "Reflow". Se refactorizó usando la API <code>gsap.quickTo()</code>. Esta función esquiva el DOM de CSS y envía las coordenadas de interpolación X/Y directamente a la GPU, logrando transiciones mantecosas.
+                        </div>
+                    </div>
 
-// Script adjunto a nuestro Prefab (El modelo 3D).
+                    <div class="media-showcase" style="margin-top: 25px;">
+                        <img src="https://pbs.twimg.com/media/G6DY_crbMAEVDsE.jpg" alt="Antigravity IDE Interface" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-unity" class="bts-section" style="padding-top: 40px;">
+                <div class="gs-reveal">
+                    <h2>05. Desarrollo de Realidad Aumentada (Unity 3D)</h2>
+                    <p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" alt="Unity Logo" class="app-logo">
+                        La conexión física a digital se programó en Unity, gestionando la cámara a través del SDK de ARCore de Google.
+                    </p>
+
+                    <div class="step-block" style="padding: 25px;">
+                        <h3 style="margin-top:0;">Configuración, Package Manager y Deep Linking</h3>
+                        <ol class="step-list">
+                            <li><strong>Instalación de Paquetes:</strong> En <code>Window &gt; Package Manager</code>, en el Unity Registry, instalamos los motores troncales: <strong>AR Foundation</strong> y <strong>ARCore XR Plugin</strong> (para Android).</li>
+                            <li><strong>Ajustes de Rendering:</strong> En <em>Player Settings</em>, eliminamos la API gráfica "Vulkan" y forzamos <strong>OpenGLES3</strong> para evitar corrupciones de buffer de cámara.</li>
+                            <li><strong>Setup de Escena (Image Tracking):</strong> Eliminamos la cámara normal e introdujimos el <code>AR Session Origin</code>. Añadimos el script <code>AR Tracked Image Manager</code>, cargándole un marcador de alto contraste para lograr un <em>Tracking Score</em> excelente.
+                                
+                            </li>
+                            <li><strong>Instalación Física Interactiva:</strong> Al modelo volumétrico exportado de Meshy le adosamos un componente <code>Box Collider</code>. <strong>Sin este colisionador, el Raycast de la pantalla táctil atravesaría la malla como si fuera un fantasma</strong>, haciendo imposible el toque.</li>
+                        </ol>
+                    </div>
+
+                    <div class="media-showcase">
+                        <img src="https://connect-mediagw.unity.com/h1/20251014/learn/images/f566f399-71c6-44de-ab38-c4907a566b96_6._scene-interactable-button-objects.png" alt="Interfaz de Unity Box Collider" style="border: 1px solid rgba(255,255,255,0.1);">
+                    </div>
+
+                    <div class="problem-box">
+                        <div class="solution-title">⚠ Generación de la Compilación (Android Build .apk)</div>
+                        <div class="solution-text">
+                            Para transformar el proyecto en una App real de móvil, navegamos a <code>File &gt; Build Settings</code>, seleccionamos la arquitectura <strong>Android</strong> y ejecutamos un <strong>Switch Platform</strong> para recompilar los recursos. Al pulsar <strong>Build</strong>, obtuvimos nuestro archivo <code>.apk</code> ejecutable de forma nativa.
+                        </div>
+                    </div>
+
+                    <div class="media-showcase">
+                        <img src="https://www.shutterstock.com/image-vector/modern-flat-design-apk-file-600nw-2211423007.jpg" alt="Icono APK Android" style="max-width: 300px; margin: 0 auto; display: block; border-radius: 12px; background: #fff;">
+                    </div>
+
+                    <h3 style="margin-top: 40px;">BotonCompra.cs - Enlace C# con la Web</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">El script vital insertado en el Box Collider del modelo AR. Al detectar el tap en la pantalla del smartphone, suspende Unity y dispara un Deep Link hacia nuestro dominio web para mostrar el detalle del producto.</p>
+                    <div class="code-block">using UnityEngine;
+
 public class BotonCompra : MonoBehaviour 
 {
-    // Variable para configurar el puente hacia la plataforma web
+    // URL del proyecto enlazada directamente
     public string urlProyectoWeb = "https://nuestro-proyecto-pizhun.com/entrada";
 
-    // Evento nativo de física en Unity. Se activa con el tacto (Raycast implicito)
-    // Exige que el objeto tenga un Box Collider configurado.
+    // Evento nativo de colisión (Touch en AR)
     void OnMouseDown() 
     {
-        // LLama a la API del OS móvil para suspender la app y abrir el navegador web.
+        // Interfaz de sistema que abre el navegador nativo del móvil
         Application.OpenURL(urlProyectoWeb);
-        Debug.Log("Transición hacia la Landing Page iniciada...");
+        Debug.Log("Saliendo de la simulación AR, abriendo plataforma web...");
     }
 }</div>
                 </div>
-            </div>
+            </section>
+        </main>
+    </div>
 
-            <div class="gs-reveal" style="margin-top: 40px;">
-                <h3>Scripts Avanzados de Control Espacial</h3>
-                
-                <p style="color: #aaa; margin-bottom: 5px;"><strong>ARHatController.cs</strong> - (Solución a la Gorra Flotante del Problema 2). Offset anatómico sobre el Tracking de cara.</p>
-                <div class="code-block">using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-
-[RequireComponent(typeof(ARFace))]
-public class ARHatController : MonoBehaviour
-{
-    private ARFace _arFace;
-    private GameObject _currentHatInstance;
-
-    void Awake() { _arFace = GetComponent&lt;ARFace&gt;(); }
-
-    void OnEnable() { _arFace.updated += OnFaceUpdated; }
-    void OnDisable() { _arFace.updated -= OnFaceUpdated; }
-
-    private void OnFaceUpdated(ARFaceUpdatedEventArgs args)
-    {
-        if (_currentHatInstance != null)
-        {
-            if (_arFace.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
-                _currentHatInstance.SetActive(true);
-            else
-                _currentHatInstance.SetActive(false);
-        }
-    }
-
-    public void SetHatPrefab(GameObject newHatPrefab)
-    {
-        if (_currentHatInstance != null) Destroy(_currentHatInstance);
-
-        if (newHatPrefab != null)
-        {
-            _currentHatInstance = Instantiate(newHatPrefab);
-            _currentHatInstance.transform.SetParent(transform, false);
-            _currentHatInstance.transform.localScale = Vector3.one;
-
-            // EL GRAN ARREGLO AL PROBLEMA 2:
-            // Offset espacial: 15cm hacia arriba y 5cm hacia adelante sobre la frente real.
-            _currentHatInstance.transform.localPosition = new Vector3(0, 0.15f, 0.05f);
-            _currentHatInstance.transform.localRotation = Quaternion.identity;
-        }
-    }
-}</div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bts-footer">
-        <br>
-        <a href="index.html" class="btn-back">← Volver a PIZHUN CORE</a>
-    </footer>
-
-    <div id="bts-chat-btn" title="Preguntar al asistente de IA" onclick="toggleBtsChat()"
-        style="position:fixed; bottom:30px; right:30px; width:56px; height:56px; background:#8b5cf6; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:8000; box-shadow: 0 4px 20px rgba(139,92,246,0.5); font-size:1.4rem;">
+    <div id="bts-chat-btn" title="Preguntar al asistente" onclick="toggleBtsChat()"
+        style="position:fixed; bottom:30px; right:30px; width:60px; height:60px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:8000; box-shadow: 0 4px 25px rgba(139,92,246,0.6); font-size:1.6rem; transition: transform 0.2s;">
         🤖
     </div>
+    
     <div id="bts-chat-panel"
-        style="display:none; position:fixed; bottom:100px; right:30px; width:360px; max-height:520px; background:#111119; border:1px solid rgba(139,92,246,0.3); border-radius:20px; z-index:8000; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.7);">
-        <div
-            style="padding:16px 20px; background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.2); display:flex; justify-content:space-between; align-items:center;">
-            <div style="font-weight:700; font-size:0.95rem;"><span
-                    style="color:#8b5cf6; margin-right:8px;">✦</span>Asistente del Proyecto</div>
-            <button onclick="toggleBtsChat()"
-                style="background:none; border:none; color:#888; cursor:pointer; font-size:1.1rem;">×</button>
+        style="display:none; position:fixed; bottom:105px; right:30px; width:380px; max-height:550px; background:rgba(15,15,18,0.95); backdrop-filter: blur(10px); border:1px solid rgba(139,92,246,0.4); border-radius:16px; z-index:8000; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 20px 70px rgba(0,0,0,0.8);">
+        <div style="padding:16px 20px; background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.2); display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:700; font-size:1rem;"><span style="color:var(--accent); margin-right:8px;">✦</span>AI Assistant</div>
+            <button onclick="toggleBtsChat()" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.4rem;">×</button>
         </div>
-        <div id="bts-chat-messages"
-            style="flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px;">
-            <div class="bts-ai-msg-bubble">¡Hola! Soy el asistente técnico del proyecto educativo PIZHUN. Puedo explicarte detalles
-                sobre Generación de prompts (Grok/Meshy/ChatGPT), Arquitectura Web y GSAP, o la configuración de Unity AR Foundation.
-            </div>
+        <div id="bts-chat-messages" style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:14px; color:#fff; font-size: 0.95rem;">
+            <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">¡Hola! Soy el asistente técnico. Exploro la arquitectura web (DOM, dialog, grid), modelos Grok/Meshy o el entorno Unity (.apk, tracking). Pregunta lo que necesites.</div>
         </div>
-        <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:8px;">
+        <div style="padding:15px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:10px;">
             <input id="bts-chat-input" type="text" placeholder="Pregunta técnica..."
-                style="flex:1; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:10px 16px; color:#fff; font-size:0.9rem; outline:none;"
+                style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:100px; padding:12px 18px; color:#fff; font-size:0.95rem; outline:none;"
                 onkeydown="if(event.key==='Enter') sendBtsMessage()">
             <button onclick="sendBtsMessage()"
-                style="background:#8b5cf6; border:none; color:#fff; padding:10px 16px; border-radius:100px; cursor:pointer; font-weight:600; font-size:0.9rem;">&#8594;</button>
+                style="background:var(--accent); border:none; color:#fff; width:45px; border-radius:100px; cursor:pointer; font-weight:800; font-size:1.1rem; display:flex; align-items:center; justify-content:center;">↑</button>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar GSAP
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
                 const reveals = document.querySelectorAll('.gs-reveal');
                 reveals.forEach((element) => {
                     gsap.fromTo(element,
-                        { y: 50, opacity: 0 },
+                        { y: 30, opacity: 0 },
                         {
-                            scrollTrigger: { trigger: element, start: "top 85%" },
-                            y: 0, opacity: 1, duration: 1, ease: "power3.out"
+                            scrollTrigger: { trigger: element, start: "top 90%" },
+                            y: 0, opacity: 1, duration: 0.8, ease: "power3.out"
                         }
                     );
+                });
+
+                // Activar estado de enlaces en el Sidebar según el Scroll
+                const sections = document.querySelectorAll('.bts-section');
+                const navItems = document.querySelectorAll('.nav-item');
+                
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        if (scrollY >= sectionTop - 100) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${current}`) {
+                            item.classList.add('active');
+                        }
+                    });
                 });
             }
         });
 
-        // Prompt actualizado enfocado al mundo académico y omitiendo conceptos empresariales falsos.
-        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto educativo/académico de diseño y digitalización PIZHUN. 
-Proyecto: Une el mundo físico con una web interactiva mediante Unity AR Foundation (AR Tracked Image Manager).
-Temas a tratar:
-- Tema 14: Estrategia de proyecto web interactivo (Flujo UX, Diseño web Mobile First, GSAP).
-- Tema 13: Unity AR (AR Session Origin, Box Collider, Script BotonCompra.cs para abrir URL, solución Pantalla Azul, Light Estimation).
-Consideraciones adicionales: Generación AI con Grok (static movements), Meshy.ai (escala 0.05, topología PBR), Antigravity IDE (lag GSAP solucionado), ARHatController (Offset). Refinamiento de Prompts mediante ChatGPT en incógnito.
-Responde siempre en español de forma amigable y analítica.`;
+        // Configuración de la IA Puter
+        const BTS_SYSTEM_PROMPT = `Eres el asistente oficial del proyecto PIZHUN. 
+Responde dudas sobre:
+- Arquitectura Web en Antigravity IDE (Uso de videos de Grok como background z-index, etiqueta <dialog> para popups, CSS Grid nativo).
+- Unity AR (AR Session, Tracked Image, Box Collider, Build .apk, Deep Linking script).
+Responde amigable y muy técnico en español.`;
 
         let btsChatOpen = false;
         let btsChatHistory = [{ role: 'system', content: BTS_SYSTEM_PROMPT }];
@@ -458,14 +397,13 @@ Responde siempre en español de forma amigable y analítica.`;
             input.value = '';
 
             const userBubble = document.createElement('div');
-            userBubble.className = 'bts-user-msg-bubble';
+            userBubble.style.cssText = "align-self: flex-end; background: var(--accent); padding: 10px 15px; border-radius: 12px 12px 0 12px; max-width: 85%; word-wrap: break-word;";
             userBubble.textContent = text;
             messages.appendChild(userBubble);
-            messages.scrollTop = messages.scrollHeight;
-
+            
             const typing = document.createElement('div');
-            typing.className = 'bts-ai-msg-bubble';
-            typing.innerHTML = '<span class="typing-dots">•••</span>';
+            typing.style.cssText = "align-self: flex-start; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 12px 12px 12px 0; max-width: 85%; font-style: italic; color: #888;";
+            typing.innerHTML = 'Analizando...';
             messages.appendChild(typing);
             messages.scrollTop = messages.scrollHeight;
 
@@ -473,11 +411,14 @@ Responde siempre en español de forma amigable y analítica.`;
 
             try {
                 const response = await puter.ai.chat(btsChatHistory);
-                const reply = response?.message?.content || response?.text || 'No pude obtener respuesta.';
+                const reply = response?.message?.content || response?.text || 'Sin respuesta.';
                 btsChatHistory.push({ role: 'assistant', content: reply });
+                
+                typing.style.fontStyle = 'normal';
+                typing.style.color = '#fff';
                 typing.innerHTML = reply;
             } catch (e) {
-                typing.innerHTML = 'Error de conexión. Inténtalo más tarde.';
+                typing.innerHTML = 'Error de red con el asistente.';
             }
             messages.scrollTop = messages.scrollHeight;
         }

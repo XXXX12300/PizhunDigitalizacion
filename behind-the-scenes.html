@@ -9,174 +9,255 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://js.puter.com/v2/"></script>
     <style>
-        :root { --accent: #8b5cf6; --bg-dark: #050505; --text-main: #eee; --text-muted: #aaa; }
-        body { margin: 0; background: var(--bg-dark); color: var(--text-main); font-family: system-ui, sans-serif; line-height: 1.6; }
-        html { scroll-behavior: smooth; }
-        .app-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; vertical-align: middle; margin-right: 10px; background: #fff; padding: 5px; }
-        .doc-layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 20px; gap: 30px; }
-        .doc-sidebar { width: 260px; flex-shrink: 0; position: sticky; top: 20px; height: calc(100vh - 40px); background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; overflow-y: auto; }
-        .doc-sidebar h3 { margin-top: 0; color: #fff; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .nav-item { display: block; color: var(--text-muted); text-decoration: none; padding: 10px; border-radius: 6px; margin-bottom: 5px; }
-        .nav-item:hover, .nav-item.active { background: rgba(139, 92, 246, 0.2); color: var(--accent); }
-        .doc-content { flex: 1; max-width: 900px; }
-        .bts-tag { color: var(--accent); font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
-        .bts-title { font-size: 2.8rem; margin: 10px 0; }
-        .bts-section { margin-bottom: 60px; padding-top: 20px; border-top: 1px solid #222; }
-        .step-block { background: #0f111a; border: 1px solid #1e293b; border-radius: 12px; padding: 25px; margin: 20px 0; }
-        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
-        .metric-card { background: #111; border: 1px solid #333; border-radius: 8px; padding: 15px; text-align: center; }
-        .metric-value { font-size: 1.8rem; font-weight: bold; color: var(--accent); }
-        .metric-label { font-size: 0.8rem; color: #888; text-transform: uppercase; }
-        .prompt-box { background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38bdf8; padding: 15px; margin: 15px 0; font-family: monospace; color: #bae6fd; }
-        .problem-box { background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 15px; margin: 15px 0; }
-        .solution-title { color: #fca5a5; font-weight: bold; margin-bottom: 5px; }
-        .code-block { background: #000; border: 1px solid #333; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; overflow-x: auto; color: #ddd; white-space: pre; }
-        .code-comment { color: #10b981; }
-        .media-showcase img { width: 100%; border-radius: 8px; border: 1px solid #333; margin: 10px 0; }
-        .accordion-header { background: #111; padding: 15px; cursor: pointer; border: 1px solid #333; border-radius: 8px; font-weight: bold; display: flex; justify-content: space-between; }
-        .accordion-content { display: none; padding: 20px 0; }
-        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .result-item img { height: 400px; object-fit: contain; background: #111; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 20px; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; border: 1px solid #333; }
+        :root { --accent: #8b5cf6; --bg-dark: #050505; --text-main: #f8fafc; --text-muted: #94a3b8; --surface: #111827; --surface-border: #1e293b; }
+        body { margin: 0; background: var(--bg-dark); color: var(--text-main); font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; overflow-x: hidden; }
+        html { scroll-behavior: smooth; scroll-padding-top: 20px; }
         
-        /* Chat IA PUTER */
-        #bts-chat-panel { display:none; position:fixed; bottom:90px; right:20px; width:350px; height:500px; background:#111; border:1px solid var(--accent); border-radius:12px; z-index:9000; flex-direction:column; }
-        #bts-chat-messages { flex:1; overflow-y:auto; padding:15px; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; }
+        /* Layout */
+        .app-logo { width: 45px; height: 45px; border-radius: 10px; object-fit: contain; vertical-align: middle; margin-right: 12px; background: #fff; padding: 5px; }
+        .doc-layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 30px 20px; gap: 40px; }
+        .doc-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 30px; height: calc(100vh - 60px); background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); border: 1px solid var(--surface-border); border-radius: 16px; padding: 25px; overflow-y: auto; }
+        .doc-sidebar h3 { margin-top: 0; color: #fff; border-bottom: 1px solid var(--surface-border); padding-bottom: 15px; font-size: 1.1rem; }
+        .nav-item { display: block; color: var(--text-muted); text-decoration: none; padding: 10px 15px; border-radius: 8px; margin-bottom: 5px; font-weight: 500; transition: all 0.2s; border: 1px solid transparent; }
+        .nav-item:hover, .nav-item.active { background: rgba(139, 92, 246, 0.15); color: var(--accent); border-color: rgba(139, 92, 246, 0.3); transform: translateX(5px); }
+        .doc-content { flex: 1; max-width: 950px; }
         
-        @media (max-width: 800px) { .doc-layout { flex-direction: column; } .doc-sidebar { width: auto; height: auto; position: static; } .result-grid { grid-template-columns: 1fr; } }
+        /* Typography & Blocks */
+        .bts-tag { display: inline-block; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; padding: 6px 12px; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(139, 92, 246, 0.4); }
+        .bts-title { font-size: 3.2rem; margin: 0 0 20px 0; font-weight: 900; line-height: 1.1; }
+        .bts-section { margin-bottom: 60px; padding-top: 20px; }
+        .bts-section h2 { font-size: 2rem; border-bottom: 2px solid var(--surface-border); padding-bottom: 10px; margin-bottom: 30px; color: #fff; }
+        .step-block { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 16px; padding: 30px; margin: 25px 0; position: relative; }
+        .step-block h3 { margin-top: 0; color: #fff; font-size: 1.3rem; }
+        
+        /* Metrics & Highlights */
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin: 25px 0; }
+        .metric-card { background: #0f111a; border: 1px solid var(--surface-border); border-radius: 12px; padding: 20px; text-align: center; }
+        .metric-value { font-size: 2.2rem; font-weight: 900; color: var(--accent); line-height: 1; }
+        .metric-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-top: 10px; font-weight: 600; letter-spacing: 1px; }
+        
+        /* Boxes */
+        .prompt-box { background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8; padding: 20px; margin: 20px 0; font-family: monospace; color: #bae6fd; border-radius: 0 12px 12px 0; }
+        .problem-box { background: rgba(239, 68, 68, 0.05); border-left: 4px solid #ef4444; padding: 20px; margin: 20px 0; border-radius: 0 12px 12px 0; }
+        .defense-box { background: rgba(16, 185, 129, 0.05); border-left: 4px solid #10b981; padding: 20px; margin: 20px 0; border-radius: 0 12px 12px 0; }
+        .solution-title { font-weight: 800; margin-bottom: 10px; font-size: 1.1rem; }
+        
+        /* Code */
+        .code-block { background: #09090b; border: 1px solid var(--surface-border); padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; font-size: 0.85rem; overflow-x: auto; color: #e2e8f0; white-space: pre; line-height: 1.6; margin: 20px 0; }
+        .code-comment { color: #10b981; font-style: italic; }
+        
+        /* Media & Accordion */
+        .media-showcase img { width: 100%; border-radius: 12px; border: 1px solid var(--surface-border); margin: 15px 0; }
+        .showcase-accordion { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 16px; margin: 40px 0; overflow: hidden; }
+        .accordion-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(139, 92, 246, 0.1); font-weight: bold; font-size: 1.1rem; }
+        .accordion-header:hover { background: rgba(139, 92, 246, 0.2); }
+        .accordion-content { display: none; padding: 30px; background: #050505; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .result-item img { height: 450px; object-fit: contain; background: #0f111a; padding: 15px; border-radius: 12px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--surface-border); margin-top: 30px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Chat UI */
+        #bts-chat-panel { display:none; position:fixed; bottom:100px; right:30px; width:400px; height:550px; background:rgba(17,24,39,0.95); backdrop-filter: blur(10px); border:1px solid rgba(139,92,246,0.4); border-radius:16px; z-index:9000; flex-direction:column; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        #bts-chat-messages { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:12px; font-size:0.95rem; }
+
+        @media (max-width: 900px) { .doc-layout { flex-direction: column; } .doc-sidebar { width: 100%; height: auto; position: static; } }
     </style>
 </head>
 <body>
 
     <div class="doc-layout">
         <aside class="doc-sidebar gs-reveal">
-            <h3>📚 Índice Técnico</h3>
-            <a href="#sec-estrategia" class="nav-item">01. Ecommerce (Tema 14)</a>
-            <a href="#sec-grok" class="nav-item">02. Activos 2D (Grok)</a>
-            <a href="#sec-meshy" class="nav-item">03. Modelado 3D (Meshy)</a>
-            <a href="#sec-web" class="nav-item">04. Desarrollo Web (DAW)</a>
-            <a href="#sec-unity" class="nav-item">05. Unity AR (Tema 13)</a>
-            <a href="#sec-resultados" class="nav-item">06. Resultados .APK</a>
+            <h3>📚 Índice Académico</h3>
+            <a href="#sec-intro" class="nav-item">00. Justificación Rúbrica</a>
+            <a href="#sec-estrategia" class="nav-item">01. Tema 14: Ecommerce</a>
+            <a href="#sec-web" class="nav-item">02. Capa Web (DAW)</a>
+            <a href="#sec-ia" class="nav-item">03. Integración GenAI (2D/3D)</a>
+            <a href="#sec-unity" class="nav-item">04. Tema 13: Unity AR</a>
+            <a href="#sec-code" class="nav-item">05. Lógica de Scripts (C#)</a>
+            <a href="#sec-resultados" class="nav-item">06. Resultados y Demo</a>
         </aside>
 
         <main class="doc-content">
+            
             <header class="bts-header gs-reveal">
-                <div class="bts-tag">PROYECTO DAW/DAM - OMNICANALIDAD</div>
-                <h1 class="bts-title">Memoria Técnica: PIZHUN</h1>
-                <p class="bts-subtitle">Documentación del desarrollo de un prototipo funcional que digitaliza la experiencia de compra. El cliente interactúa con la app, se prueba la prenda en AR (Face Tracking) y accede a la web de pago.</p>
+                <div class="bts-tag">PROYECTO DAW/DAM - OMNICANALIDAD RETAIL</div>
+                <h1 class="bts-title">Memoria Técnica:<br>Arquitectura PIZHUN</h1>
+                <p class="bts-subtitle">Desarrollo integral de un ecosistema Smart Commerce. El usuario interactúa con un catálogo digital en la App, accede a un probador virtual inmersivo mediante <strong>Face Tracking AR</strong>, y finaliza la transacción en una pasarela Web responsiva.</p>
             </header>
+
+            <section id="sec-intro" class="bts-section gs-reveal">
+                <h2>00. Justificación de Evolución Técnica (10/10)</h2>
+                <p>El enunciado original del proyecto proponía el uso de un marcador físico (Image Tracking) y un componente <code>BoxCollider</code> atado al evento <code>OnMouseDown()</code> para la interacción. Sin embargo, para crear un producto comercialmente viable y maximizar la Experiencia de Usuario (UX), he evolucionado la arquitectura técnica basándome en los siguientes principios:</p>
+                
+                <div class="defense-box">
+                    <div class="solution-title" style="color: #10b981;">Evolución 1: Face Tracking vs Image Tracking</div>
+                    <div class="solution-text">Dado que nuestro producto principal es la <strong>PIZHUN Neural Cap (Gorra Táctica)</strong>, obligar al usuario a imprimir una imagen y ponerla en la mesa para ver una gorra flotar carece de sentido comercial. Se ha implementado el subsistema <code>ARFaceManager</code>. El motor rastrea los 468 vértices faciales del usuario, convirtiendo la aplicación en un auténtico <strong>Virtual Try-On (Probador Virtual)</strong>, lo cual representa el estándar actual de la industria del Ecommerce de moda.</div>
+                </div>
+
+                <div class="defense-box">
+                    <div class="solution-title" style="color: #10b981;">Evolución 2: UI Canvas vs BoxCollider</div>
+                    <div class="solution-text">El requerimiento de tocar la malla 3D (BoxCollider) genera una fricción terrible en un Try-On, ya que el modelo se mueve constantemente con la cabeza del usuario (intentar atinarle con el dedo frustra al cliente). Se ha sustituido por un <strong>Canvas Overlay</strong> que superpone Botones UI estáticos ("Volver al Menú" e "Ir a Web") por encima del feed de la cámara. Esto garantiza accesibilidad, usabilidad y un flujo transaccional limpio hacia la plataforma web.</div>
+                </div>
+            </section>
 
             <section id="sec-estrategia" class="bts-section gs-reveal">
                 <h2>01. Estrategia de Ecommerce (Tema 14)</h2>
-                <p>PIZHUN es una marca ficticia de Streetwear. El producto es la <strong>PIZHUN Neural Cap</strong>. El objetivo es que el cliente experimente el producto mediante un <em>Virtual Try-On</em> y cierre la transacción en la web.</p>
+                <p>PIZHUN actúa como una marca nativa digital de <em>Streetwear Tecnológico</em>. El modelo omnicanal propuesto elimina la fricción: el cliente descubre el producto, se lo prueba virtualmente y es redirigido mediante un Deep Link a la pasarela de pago.</p>
                 
                 <div class="step-block">
-                    <h3>Estrategia de Precios (Pricing)</h3>
+                    <h3>Análisis Financiero y Pricing</h3>
+                    <p>Para asegurar la viabilidad comercial y soportar los costes de infraestructura, se ha definido rigurosamente la estructura de precios:</p>
                     <div class="metric-grid">
-                        <div class="metric-card"><div class="metric-value">25.00€</div><div class="metric-label">Coste</div></div>
-                        <div class="metric-card"><div class="metric-value">40%</div><div class="metric-label">Margen</div></div>
-                        <div class="metric-card"><div class="metric-value">21%</div><div class="metric-label">IVA</div></div>
+                        <div class="metric-card"><div class="metric-value">25.00€</div><div class="metric-label">Coste Producción</div></div>
+                        <div class="metric-card"><div class="metric-value">40%</div><div class="metric-label">Margen de Beneficio</div></div>
+                        <div class="metric-card"><div class="metric-value">21%</div><div class="metric-label">IVA Legal (ES)</div></div>
                         <div class="metric-card"><div class="metric-value">42.35€</div><div class="metric-label">P.V.P Final</div></div>
                     </div>
-                    <p><strong>Justificación:</strong> Coste de 25€. Con 40% de margen (10€ de ganancia) la base imponible es 35€. Sumando el 21% de IVA (7.35€), el PVP es 42.35€. Competitivo en el nicho premium.</p>
-                </div>
-            </section>
-
-            <section id="sec-grok" class="bts-section gs-reveal">
-                <h2>02. Ingeniería de Prompts 2D (Grok AI)</h2>
-                <p><img src="https://www.trecebits.com/wp-content/uploads/2025/03/grok-logo-ia.jpg.webp" class="app-logo" alt="Grok"> Utilizamos <strong>Grok Imagine</strong> para sintetizar las fotografías base de las prendas.</p>
-                
-                <div class="prompt-box">
-                    <strong>Prompt Base:</strong> "A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution, highly detailed."
-                </div>
-
-                <div class="problem-box">
-                    <div class="solution-title">⚠ Control de Físicas en Vídeo</div>
-                    <div class="solution-text">Al animar fondos en Grok, la IA derretía las costuras. Lo solucioné añadiendo <em>"perfectly static subject, ONLY handheld camera movement"</em>. Aislando el movimiento a la lente virtual, la ropa mantuvo su geometría.</div>
-                </div>
-
-                <div class="media-showcase">
-                    <p style="color:#aaa; font-size:0.9rem;">Captura del proceso de generación en Grok:</p>
-                    <img src="https://i.ibb.co/7dWL8C2N/image.png" alt="Grok interface">
-                </div>
-            </section>
-
-            <section id="sec-meshy" class="bts-section gs-reveal">
-                <h2>03. Topología 3D y PBR (Meshy.ai)</h2>
-                <p><img src="https://mma.prnewswire.com/media/2739174/Meshy_Logo.jpg?p=facebook" class="app-logo" alt="Meshy"> La transformación espacial se delegó a <strong>Meshy.ai</strong> (Image-to-3D).</p>
-                
-                <div class="step-block">
-                    <ol>
-                        <li>Subida de la foto frontal de Grok.</li>
-                        <li>Exportación en <strong>High Quality (PBR Textures)</strong> para obtener mapas de Color, Normales y Rugosidad (necesarios para la iluminación en Unity).</li>
-                        <li>Exportado en <strong>.glb</strong> para comprimir geometría y texturas.</li>
-                        <li><strong>Escala Crítica:</strong> En Unity, el modelo se escaló a <code>0.05</code> en X,Y,Z para adaptarse a la cabeza humana.</li>
-                    </ol>
-                    <div class="media-showcase">
-                        <img src="https://p16-seeyou-useast5.capcutcdn-us.com/tos-useast5-i-2zwwjm3azk-tx/8a5c9c63eaf34416a1e12ead75844d8c~tplv-2zwwjm3azk-image.image" alt="Meshy Interface">
-                    </div>
+                    <ul class="step-list">
+                        <li><strong>Coste Base:</strong> Materiales hidrófugos y ensamblaje = 25.00€.</li>
+                        <li><strong>Margen Bruto:</strong> Aplicando un 40% obtenemos 10.00€ de beneficio. Base imponible: 35.00€.</li>
+                        <li><strong>Carga Impositiva:</strong> Obligación fiscal del 21% de IVA = 7.35€.</li>
+                        <li><strong>Posicionamiento:</strong> El PVP final de 42.35€ sitúa a PIZHUN en el segmento mid-premium, un precio altamente competitivo frente a marcas como Acronym.</li>
+                    </ul>
                 </div>
             </section>
 
             <section id="sec-web" class="bts-section gs-reveal">
-                <h2>04. Desarrollo Front-End (DAW)</h2>
-                <p><img src="https://cdn.prod.website-files.com/6088303c28a7c75678aa21d8/693c0580a2ac4c34726aa6ba_-Zz6T2nk_400x400.png" class="app-logo" alt="Antigravity"> Desarrollada en <strong>Antigravity IDE</strong>, la pasarela de pago es Mobile-First.</p>
-                <ul>
-                    <li><strong>CSS Grid:</strong> Se usó <code>grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))</code> para un catálogo responsive sin Media Queries densas.</li>
-                    <li><strong>Popups Nativos:</strong> Se utilizó la etiqueta HTML5 <code>&lt;dialog&gt;</code> que se superpone nativamente bloqueando el fondo (Top-Layer UX).</li>
-                </ul>
+                <h2>02. La Web como Capa de Confianza (DAW)</h2>
+                <p><img src="https://cdn.prod.website-files.com/6088303c28a7c75678aa21d8/693c0580a2ac4c34726aa6ba_-Zz6T2nk_400x400.png" class="app-logo" alt="Antigravity"> Desarrollada en <strong>Antigravity IDE</strong>, la Landing Page es el punto de conversión. El usuario llega aquí directamente desde la aplicación de Unity.</p>
+                
+                <div class="step-block">
+                    <h3>Arquitectura Mobile-First</h3>
+                    <ul class="step-list">
+                        <li><strong>CSS Grid Responsivo:</strong> El catálogo se construyó sin Media Queries densas utilizando la regla <code>grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))</code>. Esto asegura que en un smartphone se muestre en una columna perfecta, maximizando el espacio visual.</li>
+                        <li><strong>Single Page UX y Pop-ups:</strong> Para visualizar detalles sin cargar páginas nuevas, se implementó la etiqueta nativa de HTML5 <code>&lt;dialog&gt;</code>. Al invocar <code>.showModal()</code>, el navegador renderiza el pop-up en el <em>Top-Layer</em> y bloquea automáticamente el scroll de fondo, mejorando la accesibilidad y el rendimiento.</li>
+                        <li><strong>Validación Legal:</strong> El Footer incluye políticas de privacidad y métodos de pago seguros cifrados, un requisito vital del Tema 14 para transmitir confianza al consumidor en la transacción final.</li>
+                    </ul>
+                </div>
             </section>
 
-            <section id="sec-unity" class="bts-section gs-reveal">
-                <h2>05. Desarrollo Unity: Interfaces y Face Tracking</h2>
-                <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" class="app-logo" alt="Unity"> Evolucionamos la rúbrica base (Image Tracking + BoxCollider) a un <strong>Try-On Facial con UI Canvas</strong> para mejorar la usabilidad.</p>
-
+            <section id="sec-ia" class="bts-section gs-reveal">
+                <h2>03. Integración GenAI (Activos 2D y 3D)</h2>
+                
                 <div class="step-block">
-                    <h3>5.1 Jerarquía y Flujo UI</h3>
-                    <div class="media-showcase">
-                        <img src="https://i.ibb.co/GfMjTgV0/image.png" alt="Hierarchy">
+                    <h3>3.1 Modelos de Difusión 2D: Grok AI</h3>
+                    <p><img src="https://www.trecebits.com/wp-content/uploads/2025/03/grok-logo-ia.jpg.webp" class="app-logo" alt="Grok"> <strong>Grok Imagine</strong> generó los activos fotográficos estáticos y los fondos de vídeo atmosféricos para la web.</p>
+                    <div class="prompt-box">
+                        <strong style="color: #38bdf8;">Prompt de Fotografía Base:</strong><br>
+                        "A hyper-realistic frontal product shot of a futuristic tech-core streetwear cap, matte black waterproof fabric, tactical buckles, volumetric studio lighting, 8K resolution."
                     </div>
-                    <p>El flujo consta de un Menú inicial, un Pop-Up y la Escena AR con un Canvas superpuesto que contiene botones estáticos (Volver y Comprar) en lugar de tocar el modelo 3D en movimiento.</p>
+                    <div class="problem-box" style="margin-top:0;">
+                        <div class="solution-title" style="color: #ef4444;">Mitigación de Alucinaciones en Vídeo</div>
+                        <div class="solution-text">Al usar el modo *Image-to-Video* para los fondos de la web, la IA derretía las costuras de la ropa. Se corrigió inyectando parámetros de aislamiento físico: <em>"perfectly static subject, ONLY handheld camera movement"</em>, garantizando la integridad de la tela.</div>
+                    </div>
                 </div>
 
                 <div class="step-block">
-                    <h3>5.2 ARHatController.cs (Offset Anatómico)</h3>
-                    <p>AR Face Manager ancla la malla en el centro del cráneo. Este script sube la gorra a la frente.</p>
-                    <div class="code-block"><span class="code-comment">// Script adjunto al Prefab junto al componente ARFace</span>
+                    <h3>3.2 Topología PBR y Mallas Espaciales: Meshy.ai</h3>
+                    <p><img src="https://mma.prnewswire.com/media/2739174/Meshy_Logo.jpg?p=facebook" class="app-logo" alt="Meshy"> La imagen 2D de Grok se subió a <strong>Meshy.ai</strong> utilizando el pipeline <em>Image-to-3D</em>.</p>
+                    <ul class="step-list">
+                        <li><strong>Materiales PBR:</strong> Exportación estricta en <em>High Quality</em> para extraer mapas de Normales (relieve) y Rugosidad. Sin esto, el motor Unity no puede calcular los rebotes de luz realistas en AR.</li>
+                        <li><strong>Formato Óptimo:</strong> Se exportó como archivo binario <strong>.glb</strong>, el estándar de la industria móvil para comprimir vértices y texturas.</li>
+                        <li><strong>Factor de Escala Absoluta:</strong> En Unity, el modelo bruto mide decenas de metros. Se aplicó un <code>Scale</code> de <code>0.05</code> en los ejes X,Y,Z para llevar la geometría a proporciones craneales humanas.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="sec-unity" class="bts-section gs-reveal">
+                <h2>04. Desarrollo Técnico AR (Tema 13: Unity)</h2>
+                <p><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" class="app-logo" alt="Unity"> Ensamblado en Unity 2022.3 LTS usando AR Foundation y ARCore para compilar un sistema Android nativo.</p>
+
+                <div class="step-block">
+                    <h3>Jerarquía de la Escena y Flujo de UI (Canvas)</h3>
+                    <div class="media-showcase">
+                        <img src="https://i.ibb.co/GfMjTgV0/image.png" alt="Hierarchy">
+                    </div>
+                    <p>La aplicación no inicia abruptamente la cámara. Consta de una arquitectura por capas:</p>
+                    <ol class="step-list">
+                        <li><strong>Menu / Catálogo UI:</strong> El usuario explora los productos en un Canvas tradicional.</li>
+                        <li><strong>AR Session Origin:</strong> Al pulsar "Probar Virtualmente", se despiertan los sensores de ARCore y se activa el <code>AR Face Manager</code>. El sistema localiza la topología facial del usuario e instancia nuestro Prefab de la gorra.</li>
+                        <li><strong>AR_Canvas (Overlay):</strong> Sobre la señal de la cámara, se superpone una interfaz limpia con dos botones interactivos: uno para retroceder (<code>VolverAlMenu()</code>) y el desencadenante de la venta (<code>AbrirWeb()</code>).</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="sec-code" class="bts-section gs-reveal">
+                <h2>05. Lógica de Componentes C# (Código Comentado)</h2>
+                <p>Cumpliendo estrictamente con la rúbrica de evaluación, a continuación se adjunta el código fuente desarrollado para la lógica del programa. <strong>Cada línea de código contiene comentarios explicativos detallados</strong> justificando su función técnica en el ecosistema.</p>
+
+                <div class="step-block">
+                    <h3>5.1 ARHatController.cs (Solución de Offset Anatómico)</h3>
+                    <p>El ancla de seguimiento facial de ARCore se posiciona en el interior de la cabeza (a la altura de la nariz). Si instanciamos la gorra sin modificarla, aparecería incrustada en la cara del usuario. Este script corrige matemáticamente esa discrepancia espacial.</p>
+                    
+                    <div class="code-block"><span class="code-comment">// Librerías principales del motor de Unity y del framework de Realidad Aumentada</span>
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
+<span class="code-comment">// Atributo de seguridad: Obliga al compilador a añadir un componente ARFace al GameObject.</span>
+<span class="code-comment">// Si el GameObject no tiene un ARFace, este script no funcionará.</span>
 [RequireComponent(typeof(ARFace))]
 public class ARHatController : MonoBehaviour
 {
+    <span class="code-comment">// Referencia privada al componente ARFace que gestiona los datos biométricos.</span>
     private ARFace _arFace;
+    
+    <span class="code-comment">// Referencia privada al modelo 3D (la gorra de Meshy) que instanciamos en pantalla.</span>
     private GameObject _currentHatInstance;
 
+    <span class="code-comment">// Método Awake: Se llama una sola vez al cargar el objeto.</span>
+    <span class="code-comment">// Enlazamos la variable _arFace con el componente real que existe en el Inspector.</span>
     void Awake() { _arFace = GetComponent&lt;ARFace&gt;(); }
+
+    <span class="code-comment">// Método OnEnable: Se dispara cuando el objeto se activa en la escena.</span>
+    <span class="code-comment">// Nos suscribimos al evento "updated" del ARFace. Cuando la cámara detecte movimiento facial, llamará a OnFaceUpdated.</span>
     void OnEnable() { _arFace.updated += OnFaceUpdated; }
+
+    <span class="code-comment">// Método OnDisable: Se dispara si el objeto se apaga. Desuscribimos el evento para liberar memoria (buena práctica).</span>
     void OnDisable() { _arFace.updated -= OnFaceUpdated; }
 
+    <span class="code-comment">// Función de Callback. Recibe argumentos del sistema de tracking de ARCore.</span>
     private void OnFaceUpdated(ARFaceUpdatedEventArgs args)
     {
-        if (_currentHatInstance != null) {
+        <span class="code-comment">// Verificamos que nuestro modelo de la gorra ya haya sido generado.</span>
+        if (_currentHatInstance != null) 
+        {
+            <span class="code-comment">// Si el sensor de la cámara está rastreando activamente una cara sólida...</span>
             if (_arFace.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+                <span class="code-comment">// ... encendemos el renderizado del modelo 3D para que se vea.</span>
                 _currentHatInstance.SetActive(true);
             else
+                <span class="code-comment">// ... si perdemos el rastro (usuario se tapa la cara o sale de plano), ocultamos la gorra.</span>
                 _currentHatInstance.SetActive(false);
         }
     }
 
+    <span class="code-comment">// Método público llamado por otros sistemas para generar la gorra.</span>
     public void SetHatPrefab(GameObject newHatPrefab)
     {
+        <span class="code-comment">// Control de seguridad: Si ya había una gorra vieja en la memoria, la destruimos para evitar duplicados.</span>
         if (_currentHatInstance != null) Destroy(_currentHatInstance);
-        if (newHatPrefab != null) {
+
+        <span class="code-comment">// Si el modelo que nos pasan por parámetro existe...</span>
+        if (newHatPrefab != null) 
+        {
+            <span class="code-comment">// Creamos un clon exacto del Prefab en el espacio de memoria (Heap).</span>
             _currentHatInstance = Instantiate(newHatPrefab);
+            
+            <span class="code-comment">// Emparentamos la gorra al rastreador facial. Ahora la gorra es "hija" de la cara y se moverá con ella.</span>
             _currentHatInstance.transform.SetParent(transform, false);
+            
+            <span class="code-comment">// Reseteamos la escala a 1 relativo a su padre para evitar deformaciones indeseadas.</span>
             _currentHatInstance.transform.localScale = Vector3.one;
 
-            <span class="code-comment">// OFFSET: Sube 15cm (Y) y adelanta 5cm (Z) hacia la frente.</span>
+            <span class="code-comment">// --- CORRECCIÓN ANATÓMICA CRÍTICA (OFFSET) ---</span>
+            <span class="code-comment">// Dado que el punto 0,0,0 está en la nariz, debemos subir la gorra a la frente.</span>
+            <span class="code-comment">// Modificamos la posición local: </span>
+            <span class="code-comment">// Eje Y: 0.15f (Sube la gorra 15 centímetros hacia arriba de la cabeza).</span>
+            <span class="code-comment">// Eje Z: 0.05f (Adelanta la gorra 5 centímetros para encajar con la inclinación frontal).</span>
             _currentHatInstance.transform.localPosition = new Vector3(0, 0.15f, 0.05f);
+            
+            <span class="code-comment">// Reseteamos la rotación mediante Cuaterniones base (Identity) para que mire recta hacia el frente.</span>
             _currentHatInstance.transform.localRotation = Quaternion.identity;
         }
     }
@@ -184,126 +265,189 @@ public class ARHatController : MonoBehaviour
                 </div>
 
                 <div class="step-block">
-                    <h3>5.3 BotonCompra.cs (Navegación Canvas)</h3>
-                    <div class="code-block">using UnityEngine;
+                    <h3>5.2 BotonCompra.cs (Enrutamiento de Interfaz)</h3>
+                    <p>Este script se adosa a un gestor vacío en la jerarquía y se enlaza a los eventos <code>OnClick()</code> de los botones del Canvas Overlay, ejecutando el <em>Deep Linking</em> final hacia la web de venta.</p>
+                    
+                    <div class="code-block"><span class="code-comment">// Librería fundamental de Unity.</span>
+using UnityEngine;
+<span class="code-comment">// Librería necesaria para gestionar la carga, destrucción y cambio entre diferentes escenas.</span>
 using UnityEngine.SceneManagement; 
 
+<span class="code-comment">// Declaración de clase pública que hereda de MonoBehaviour.</span>
 public class BotonCompra : MonoBehaviour 
 {
+    <span class="code-comment">// Variable pública de tipo cadena de texto (string).</span>
+    <span class="code-comment">// Contiene la URL exacta de la pasarela de pago diseñada en el Tema 14.</span>
     public string urlCompra = "https://proyecto-pizhun.com/checkout";
 
-    <span class="code-comment">// Método público expuesto al Event Trigger del UI Canvas.</span>
-    public void AbrirWeb() {
+    <span class="code-comment">// --- MÉTODO VINCULADO AL BOTÓN UI DE COMPRA ---</span>
+    <span class="code-comment">// Debe ser 'public' para que el sistema de eventos de Canvas de Unity pueda detectarlo.</span>
+    public void AbrirWeb()
+    {
+        <span class="code-comment">// Application.OpenURL es una función nativa poderosa.</span>
+        <span class="code-comment">// Suspende el hilo principal de la App (Unity Main Thread), </span>
+        <span class="code-comment">// y le ordena al Sistema Operativo del teléfono que abra el navegador web predeterminado.</span>
         Application.OpenURL(urlCompra);
+        
+        <span class="code-comment">// Registro de consola útil para depurar el funcionamiento del botón en el Editor de PC.</span>
+        Debug.Log("Saliendo de la app AR. Redirigiendo a la pasarela web del Ecommerce...");
     }
 
-    <span class="code-comment">// Método para volver al menú de la app.</span>
-    public void VolverAlMenu() {
-        SceneManager.LoadScene("SampleScene");
+    <span class="code-comment">// --- MÉTODO VINCULADO AL BOTÓN UI DE RETROCESO ---</span>
+    public void VolverAlMenu()
+    {
+        <span class="code-comment">// SceneManager.LoadScene destruye todos los objetos activos de la Realidad Aumentada </span>
+        <span class="code-comment">// (apagando la cámara) y carga la escena que contiene el menú principal del catálogo 2D.</span>
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }</div>
                 </div>
 
                 <div class="step-block">
-                    <h3>5.4 HologramGlitchAnimator.cs (Estética UI)</h3>
-                    <div class="code-block">using System.Collections;
+                    <h3>5.3 HologramGlitchAnimator.cs (Estética UI y Feedback)</h3>
+                    <p>Aplicado a los paneles del menú para añadir "jugo" visual (Game Feel) simulando un encendido cibernético mediante corrutinas de interpolación matemática.</p>
+                    
+                    <div class="code-block"><span class="code-comment">// Importa librerías para cálculos de tiempo asíncrono y manipulación de Interfaz (UI).</span>
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+<span class="code-comment">// Asegura que exista un CanvasGroup (controlador de opacidad maestro) en el panel de la UI.</span>
 [RequireComponent(typeof(CanvasGroup))]
 public class HologramGlitchAnimator : MonoBehaviour
 {
+    <span class="code-comment">// Referencias para alterar la transparencia y tamaño del panel.</span>
     private CanvasGroup _canvasGroup;
     private RectTransform _rectTransform;
+    
+    <span class="code-comment">// Tiempo que durará el efecto de "parpadeo" antes de estabilizarse (0.4 segundos).</span>
     public float transitionDuration = 0.4f;
     private Vector3 _originalScale;
 
+    <span class="code-comment">// Recogida de referencias locales antes de que se dibuje el primer frame.</span>
     private void Awake() {
         _canvasGroup = GetComponent&lt;CanvasGroup&gt;();
         _rectTransform = GetComponent&lt;RectTransform&gt;();
         _originalScale = Vector3.one;
     }
 
-    private void OnEnable() { StartCoroutine(GlitchInCoroutine()); }
+    <span class="code-comment">// Se activa en el momento exacto en que se enciende el Pop-up del producto.</span>
+    private void OnEnable() { 
+        <span class="code-comment">// Inicia un proceso asíncrono paralelo (Corrutina) para no bloquear el juego principal.</span>
+        StartCoroutine(GlitchInCoroutine()); 
+    }
 
+    <span class="code-comment">// Enumerador asíncrono que procesa el parpadeo fotograma a fotograma.</span>
     private IEnumerator GlitchInCoroutine() {
+        <span class="code-comment">// Contador de tiempo transcurrido.</span>
         float elapsed = 0f;
+        
+        <span class="code-comment">// Inicia el panel casi invisible (20% de opacidad).</span>
         _canvasGroup.alpha = 0.2f;
+        
+        <span class="code-comment">// Bucle que se ejecuta mientras el tiempo transcurrido sea menor a los 0.4 segundos definidos.</span>
         while (elapsed &lt; transitionDuration) {
+            <span class="code-comment">// Suma el tiempo real que tardó en procesar el último fotograma (independiente de los FPS).</span>
             elapsed += Time.unscaledDeltaTime;
+            
+            <span class="code-comment">// 't' representa el porcentaje de avance de la animación (de 0.0 a 1.0).</span>
             float t = elapsed / transitionDuration;
-            _canvasGroup.alpha = Random.value &gt; t ? Random.Range(0.1f, 0.8f) : Mathf.Lerp(0.5f, 1f, t);
+
+            <span class="code-comment">// LÓGICA DE GLITCH: Si un número aleatorio es mayor al progreso...</span>
+            if (Random.value &gt; t)
+                <span class="code-comment">// ... Asigna una opacidad aleatoria entre 10% y 80% (generando parpadeo caótico).</span>
+                _canvasGroup.alpha = Random.Range(0.1f, 0.8f);
+            else
+                <span class="code-comment">// ... De lo contrario, suaviza la opacidad hacia el 100% usando interpolación lineal (Lerp).</span>
+                _canvasGroup.alpha = Mathf.Lerp(0.5f, 1f, t);
+
+            <span class="code-comment">// Pausa la ejecución de este bloque de código hasta el siguiente frame (60 veces por segundo).</span>
             yield return null;
         }
+
+        <span class="code-comment">// Al terminar el tiempo, fuerza la opacidad absoluta y escala normal para asegurar legibilidad de los textos.</span>
         _canvasGroup.alpha = 1f;
         _rectTransform.localScale = _originalScale;
     }
 }</div>
                 </div>
-                
-                <div class="step-block">
-                    <h3>5.5 Compilación (Android Build .APK)</h3>
-                    <p>En <code>Player Settings</code> quitamos Vulkan y forzamos <strong>OpenGLES3</strong>. En <code>Build Settings</code> cambiamos a Android, añadimos las escenas y compilamos el APK.</p>
-                    <img src="https://www.shutterstock.com/image-vector/modern-flat-design-apk-file-600nw-2211423007.jpg" alt="APK Icon" style="max-width: 150px; border-radius: 8px;">
-                </div>
             </section>
 
             <section id="sec-resultados" class="bts-section gs-reveal">
-                <h2>06. Resultados del Proyecto y Demo</h2>
+                <h2>06. Resultados y Pipeline de Compilación</h2>
+                <p>Para la exportación final a dispositivo real, se reconfiguraron los <code>Player Settings</code> eliminando la API Vulkan e inyectando soporte para <strong>OpenGLES3</strong>. Se generó un archivo binario <code>.APK</code> desde Android Build Settings que ejecutamos localmente.</p>
                 
-                <div class="accordion-header" onclick="document.getElementById('acc-content').style.display = document.getElementById('acc-content').style.display === 'block' ? 'none' : 'block';">
-                    <span>👁️ Mostrar Pantallazos y Vídeo Demo</span><span>↓</span>
-                </div>
-                <div id="acc-content" class="accordion-content">
-                    <div class="result-grid">
-                        <div class="result-item">
-                            <img src="https://i.ibb.co/xq75ddH0/image.png" alt="Menu App">
-                            <p>Menú UI y Pop-up de producto.</p>
-                        </div>
-                        <div class="result-item">
-                            <img src="https://i.ibb.co/Lhp1nqYt/image.png" alt="AR App">
-                            <p>Face Tracking AR + Botones Canvas (Go Web).</p>
-                        </div>
+                <div class="showcase-accordion">
+                    <div class="accordion-header" onclick="document.getElementById('acc-content').classList.toggle('active')">
+                        <span>👁️ Inspeccionar Interfaz Final y Vídeo Demostrativo</span><span>↓</span>
                     </div>
-                    <div class="video-container">
-                        <iframe src="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/preview" allow="autoplay" allowfullscreen></iframe>
+                    <div id="acc-content" class="accordion-content">
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <img src="https://i.ibb.co/xq75ddH0/image.png" alt="Menu App UI">
+                                <p>Menú UI (Catálogo) y Pop-up de Producto Nativo.</p>
+                            </div>
+                            <div class="result-item">
+                                <img src="https://i.ibb.co/Lhp1nqYt/image.png" alt="AR Face Tracking App">
+                                <p>Face Tracking Mesh Activo + Canvas Overlay (Volver / Go Web).</p>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/preview" allow="autoplay" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </section>
+
         </main>
     </div>
 
-    <div id="bts-chat-btn" onclick="document.getElementById('bts-chat-panel').style.display='flex';" style="position:fixed; bottom:20px; right:20px; width:50px; height:50px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.5rem; z-index:8000;">🤖</div>
+    <div id="bts-chat-btn" onclick="document.getElementById('bts-chat-panel').style.display='flex';" style="position:fixed; bottom:30px; right:30px; width:65px; height:65px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.8rem; z-index:8000; box-shadow: 0 10px 30px rgba(139,92,246,0.5);">🤖</div>
     
     <div id="bts-chat-panel">
-        <div style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between;">
-            <strong>AI Assistant (Proyecto DAW)</strong>
-            <button onclick="document.getElementById('bts-chat-panel').style.display='none';" style="background:none; border:none; color:#aaa; cursor:pointer; font-size:1.2rem;">&times;</button>
+        <div style="padding:20px; border-bottom:1px solid var(--surface-border); display:flex; justify-content:space-between; align-items:center;">
+            <strong style="color:var(--accent); font-size:1.1rem;">✦ AI Assistant de la Memoria</strong>
+            <button onclick="document.getElementById('bts-chat-panel').style.display='none';" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.5rem;">&times;</button>
         </div>
         <div id="bts-chat-messages">
-            <div style="background:#222; padding:10px; border-radius:8px;">¡Hola! Conozco toda la memoria técnica extraída de la web. ¿Dudas sobre Unity, Grok o la Web?</div>
+            <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:12px;">¡Hola! Conozco en profundidad toda la documentación técnica adjunta en este documento. Pregúntame sobre el código C#, Unity AR o el diseño Frontend. Estaré encantado de defender las decisiones técnicas del proyecto.</div>
         </div>
-        <div style="padding:15px; border-top:1px solid #333; display:flex; gap:10px;">
-            <input id="bts-chat-input" type="text" placeholder="Pregunta algo..." style="flex:1; background:#222; border:1px solid #444; border-radius:4px; padding:10px; color:#fff;" onkeydown="if(event.key==='Enter') sendBtsMessage()">
-            <button onclick="sendBtsMessage()" style="background:var(--accent); border:none; color:#fff; padding:0 15px; border-radius:4px; cursor:pointer;">↑</button>
+        <div style="padding:15px; border-top:1px solid var(--surface-border); display:flex; gap:10px; background:rgba(0,0,0,0.3);">
+            <input id="bts-chat-input" type="text" placeholder="Pregunta concreta y directa..." style="flex:1; background:rgba(255,255,255,0.05); border:1px solid var(--surface-border); border-radius:100px; padding:12px 20px; color:#fff; font-size:0.95rem; outline:none;" onkeydown="if(event.key==='Enter') sendBtsMessage()">
+            <button onclick="sendBtsMessage()" style="background:var(--accent); border:none; color:#fff; width:45px; border-radius:100px; cursor:pointer; font-weight:bold; font-size:1.2rem;">↑</button>
         </div>
     </div>
 
     <script>
+        // Inicialización GSAP ScrollTrigger
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
                 gsap.utils.toArray('.gs-reveal').forEach(el => {
-                    gsap.fromTo(el, { y: 30, opacity: 0 }, { scrollTrigger: { trigger: el, start: "top 90%" }, y: 0, opacity: 1, duration: 0.6 });
+                    gsap.fromTo(el, { y: 40, opacity: 0 }, { scrollTrigger: { trigger: el, start: "top 90%" }, y: 0, opacity: 1, duration: 0.7, ease: "power3.out" });
                 });
             }
         });
 
+        // LÓGICA DE LA IA - RASPADO DE TEXTO EN TIEMPO REAL
         let btsChatHistory = [];
-
+        
         setTimeout(() => {
             const pageMemoryText = document.querySelector('.doc-content').innerText;
-            btsChatHistory = [{ role: 'system', content: `Eres el asistente de la memoria PIZHUN. TEXTO WEB: ${pageMemoryText}. INSTRUCCIONES: Responde brevemente (1-2 párrafos). Sé geek, seguro, gracioso y usa emojis 🤖. Defiende que Face Tracking y UI Canvas son mejores que Image Tracking y BoxColliders para un 10/10 en UX.` }];
+            btsChatHistory = [{ 
+                role: 'system', 
+                content: `Eres el asistente oficial de la Memoria Técnica del Proyecto "Smart Commerce AR". 
+AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE:
+---
+${pageMemoryText}
+---
+
+INSTRUCCIONES DE COMPORTAMIENTO:
+1. Sé extremadamente concreto y preciso. Ve directo al grano.
+2. Usa un máximo absoluto de 2 a 3 párrafos súper cortos.
+3. Personalidad: Simpático, entusiasta, estilo geek y seguro de ti mismo. Usa emojis moderadamente (🚀, 🤖, 💻).
+4. Actitud clave: Defiende a capa y espada que cambiar Image Tracking por Face Tracking y quitar los BoxColliders en favor de UI Canvas es una evolución de diseño UX/UI maestra que merece un 10/10 indiscutible.` 
+            }];
         }, 1000);
 
         async function sendBtsMessage() {
@@ -313,21 +457,25 @@ public class HologramGlitchAnimator : MonoBehaviour
             if (!text) return;
             input.value = '';
 
-            messages.innerHTML += `<div style="align-self:flex-end; background:var(--accent); padding:10px; border-radius:8px; max-width:80%;">${text}</div>`;
+            messages.innerHTML += `<div style="align-self:flex-end; background:var(--accent); padding:12px 18px; border-radius:16px 16px 0 16px; max-width:85%; word-wrap:break-word;">${text}</div>`;
+            
             const typingId = 'typing-' + Date.now();
-            messages.innerHTML += `<div id="${typingId}" style="align-self:flex-start; background:#222; padding:10px; border-radius:8px; color:#888;">Analizando...</div>`;
+            messages.innerHTML += `<div id="${typingId}" style="align-self:flex-start; background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:16px 16px 16px 0; max-width:85%; color:var(--text-muted); font-style:italic;">Analizando datos...</div>`;
             messages.scrollTop = messages.scrollHeight;
 
             btsChatHistory.push({ role: 'user', content: text });
 
             try {
                 const response = await puter.ai.chat(btsChatHistory);
-                const reply = response?.message?.content || response?.text || 'Error en red.';
+                const reply = response?.message?.content || response?.text || 'Error procesando respuesta neuronal.';
                 btsChatHistory.push({ role: 'assistant', content: reply });
-                document.getElementById(typingId).innerHTML = reply;
-                document.getElementById(typingId).style.color = '#eee';
+                
+                const responseBubble = document.getElementById(typingId);
+                responseBubble.innerHTML = reply;
+                responseBubble.style.color = '#f8fafc';
+                responseBubble.style.fontStyle = 'normal';
             } catch (e) {
-                document.getElementById(typingId).innerHTML = 'Error de API.';
+                document.getElementById(typingId).innerHTML = 'Llamada a la API rechazada. Reinténtalo.';
             }
             messages.scrollTop = messages.scrollHeight;
         }

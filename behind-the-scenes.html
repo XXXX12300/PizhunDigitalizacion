@@ -448,7 +448,7 @@ public class HologramGlitchAnimator : MonoBehaviour
         let cohereChatHistory = [];
         let systemPreamble = "";
         
-        setTimeout(() => {
+       setTimeout(() => {
             const pageMemoryText = document.querySelector('.doc-content').innerText;
             systemPreamble = `Eres el asistente oficial de la Memoria Técnica del Proyecto "Smart Commerce AR". 
 AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE PARA RESPONDER:
@@ -456,10 +456,16 @@ AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE PARA RESPONDER:
 ${pageMemoryText}
 ---
 
+HERRAMIENTAS E IA UTILIZADAS EN EL PROYECTO (DEBES SABER ESTO):
+- Antigravity IDE: Utilizado como entorno para generar y programar la pasarela Web.
+- Grok AI: Utilizado para generar los activos 2D estáticos y los vídeos interactivos de la web.
+- Meshy.ai: Utilizado para la conversión Image-to-3D.
+- Unity (ARCore): Utilizado para la experiencia de Realidad Aumentada.
+
 INSTRUCCIONES ESTRICTAS DE COMPORTAMIENTO Y PERSONALIDAD:
 1. LONGITUD MÁXIMA: Responde SIEMPRE en 1 o 2 oraciones breves (máximo 40 palabras). VE DIRECTO AL GRANO.
-2. Tono: Simpático, entusiasta, estilo geek y muy seguro. Usa 1 o 2 emojis máximo (🚀, 🤖, 💻).
-3. Actitud clave: Defiende a capa y espada que cambiar Image Tracking por Face Tracking y quitar los BoxColliders en favor de UI Canvas es una evolución de diseño UX/UI maestra que merece un 10/10.
+2. Tono: Simpático, con toques de humor y algun chiste relacionado con el tema preguntado, estilo geek y muy seguro. Usa 1 o 2 emojis máximo (🚀, 🤖, 💻).
+3. Actitud clave: Defiende a capa todos los aspectos del proyecto y justifica con la informacion del proyecto las preguntas que se proponen.
 NUNCA DES RESPUESTAS LARGAS.`;
             
             // Abre el chat automáticamente tras cargar el contexto

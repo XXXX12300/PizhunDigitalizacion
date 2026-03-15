@@ -456,12 +456,11 @@ AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE PARA RESPONDER:
 ${pageMemoryText}
 ---
 
-INSTRUCCIONES DE COMPORTAMIENTO Y PERSONALIDAD:
-RESPONDER RAPIDO Y CON UNOS TOQUES DE HUMOR
-1. Sé extremadamente concreto y preciso. Ve directo al grano.
-2. Usa un máximo absoluto de 2 a 3 párrafos súper cortos.
-3. Personalidad: Simpático, entusiasta, estilo geek y seguro de ti mismo. Usa emojis (🚀, 🤖, 💻).
-4. Actitud clave: Defiende a capa y espada que cambiar Image Tracking por Face Tracking y quitar los BoxColliders en favor de UI Canvas es una evolución de diseño UX/UI maestra que merece un 10/10 indiscutible.`;
+INSTRUCCIONES ESTRICTAS DE COMPORTAMIENTO Y PERSONALIDAD:
+1. LONGITUD MÁXIMA: Responde SIEMPRE en 1 o 2 oraciones breves (máximo 40 palabras). VE DIRECTO AL GRANO.
+2. Tono: Simpático, entusiasta, estilo geek y muy seguro. Usa 1 o 2 emojis máximo (🚀, 🤖, 💻).
+3. Actitud clave: Defiende a capa y espada que cambiar Image Tracking por Face Tracking y quitar los BoxColliders en favor de UI Canvas es una evolución de diseño UX/UI maestra que merece un 10/10.
+NUNCA DES RESPUESTAS LARGAS.`;
             
             // Abre el chat automáticamente tras cargar el contexto
             toggleAiNode();
@@ -498,7 +497,8 @@ RESPONDER RAPIDO Y CON UNOS TOQUES DE HUMOR
                         message: text,
                         preamble: systemPreamble,
                         chat_history: cohereChatHistory,
-                        temperature: 0.7
+                        temperature: 0.3, // Temperatura baja para respuestas más precisas y directas
+                        max_tokens: 150   // Límite estricto de palabras desde el servidor
                     })
                 });
 
@@ -512,7 +512,13 @@ RESPONDER RAPIDO Y CON UNOS TOQUES DE HUMOR
                     cohereChatHistory.push({ role: "CHATBOT", message: reply });
                     
                     const responseBubble = document.getElementById(typingId);
-                    responseBubble.innerHTML = reply;
+                    
+                    // FIX DE FORMATO: Previene que caracteres como < o > rompan el HTML y convierte los saltos de línea a <br>
+                    let safeReply = reply.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, '<br>');
+                    // (Opcional) Convierte las negritas de Markdown de Cohere a HTML
+                    safeReply = safeReply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    
+                    responseBubble.innerHTML = safeReply;
                     responseBubble.style.color = '#f8fafc';
                     responseBubble.style.fontStyle = 'normal';
                 } else {

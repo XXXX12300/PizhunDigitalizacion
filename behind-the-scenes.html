@@ -402,13 +402,16 @@ public class HologramGlitchAnimator : MonoBehaviour
                 <div style="background: #0f111a; border: 1px solid var(--surface-border); border-radius: 16px; padding: 40px 20px; text-align: center; margin-top: 40px;">
                     <div style="font-size: 3rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite;">📱</div>
                     <h3 style="color: #fff; margin-top: 0; font-size: 1.3rem;">Vídeo de Demostración del Sistema (.APK)</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.95rem;">
-                        El archivo de prueba funcional está alojado nativamente en Google Drive. Pulse el botón para visualizar el funcionamiento de la App en el dispositivo móvil de prueba.
-                    </p>
-                    <a href="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/view?usp=sharing" target="_blank" 
-                       style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--accent), #9f7aea); color: #fff; text-decoration: none; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1.05rem; transition: transform 0.2s ease;">
-                        <span>▶️</span> Abrir Reproductor de Drive
-                    </a>
+                   <div style="margin-top: 30px; text-align: center;">
+    <video controls autoplay loop muted playsinline style="width: 100%; border-radius: 12px; border: 1px solid var(--surface-border); box-shadow: 0 20px 40px rgba(0,0,0,0.5); background: #000;">
+        <source src="https://drive.google.com/uc?export=download&id=1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8" type="video/mp4">
+        Tu navegador no soporta el formato de vídeo nativo.
+    </video>
+    
+    <a href="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/view?usp=sharing" target="_blank" style="display: inline-block; margin-top: 15px; color: #8b5cf6; text-decoration: none; font-size: 0.9rem; border: 1px solid #8b5cf6; padding: 5px 15px; border-radius: 100px;">
+        Ver en Google Drive si no carga ↗
+    </a>
+</div>
                 </div>
             </section>
 

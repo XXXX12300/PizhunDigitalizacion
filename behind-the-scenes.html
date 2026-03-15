@@ -46,20 +46,20 @@
         .code-block { background: #09090b; border: 1px solid var(--surface-border); padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; font-size: 0.85rem; overflow-x: auto; color: #e2e8f0; white-space: pre; line-height: 1.6; margin: 20px 0; }
         .code-comment { color: #10b981; font-style: italic; }
         
-        /* Media & Accordion */
+        /* Media & Results */
         .media-showcase img { width: 100%; border-radius: 12px; border: 1px solid var(--surface-border); margin: 15px 0; }
-        .showcase-accordion { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 16px; margin: 40px 0; overflow: hidden; }
-        .accordion-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(139, 92, 246, 0.1); font-weight: bold; font-size: 1.1rem; }
-        .accordion-header:hover { background: rgba(139, 92, 246, 0.2); }
-        .accordion-content { display: none; padding: 30px; background: #050505; }
-        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .result-item img { height: 450px; object-fit: contain; background: #0f111a; padding: 15px; border-radius: 12px; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--surface-border); margin-top: 30px; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .result-item { text-align: center; }
+        .result-item img { height: 450px; object-fit: contain; background: #0f111a; padding: 15px; border-radius: 12px; width: 100%; border: 1px solid var(--surface-border); transition: transform 0.3s ease; }
+        .result-item img:hover { transform: scale(1.02); }
+        .result-item p { margin-top: 15px; font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+        
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
-        /* Chat UI */
-        #bts-chat-panel { display:none; position:fixed; bottom:100px; right:30px; width:400px; height:550px; background:rgba(17,24,39,0.95); backdrop-filter: blur(10px); border:1px solid rgba(139,92,246,0.4); border-radius:16px; z-index:9000; flex-direction:column; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        #bts-chat-messages { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:12px; font-size:0.95rem; }
+        /* UI Camuflada para evitar AdBlockers */
+        #ai-core-trigger { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.8rem; z-index: 999999 !important; box-shadow: 0 10px 30px rgba(139,92,246,0.6); transition: transform 0.3s ease; }
+        #ai-data-panel { display: none; position: fixed; bottom: 105px; right: 30px; width: 380px; max-height: 550px; background: rgba(17,24,39,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(139,92,246,0.4); border-radius: 16px; z-index: 999999 !important; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+        #ai-stream-content { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; }
 
         @media (max-width: 900px) { .doc-layout { flex-direction: column; } .doc-sidebar { width: 100%; height: auto; position: static; } }
     </style>
@@ -72,7 +72,7 @@
             <a href="#sec-intro" class="nav-item">00. Justificación Rúbrica</a>
             <a href="#sec-estrategia" class="nav-item">01. Tema 14: Ecommerce</a>
             <a href="#sec-web" class="nav-item">02. Capa Web (DAW)</a>
-            <a href="#sec-ia" class="nav-item">03. Integración GenAI (2D/3D)</a>
+            <a href="#sec-ia" class="nav-item">03. Integración GenAI</a>
             <a href="#sec-unity" class="nav-item">04. Tema 13: Unity AR</a>
             <a href="#sec-code" class="nav-item">05. Lógica de Scripts (C#)</a>
             <a href="#sec-resultados" class="nav-item">06. Resultados y Demo</a>
@@ -114,11 +114,11 @@
                         <div class="metric-card"><div class="metric-value">21%</div><div class="metric-label">IVA Legal (ES)</div></div>
                         <div class="metric-card"><div class="metric-value">42.35€</div><div class="metric-label">P.V.P Final</div></div>
                     </div>
-                    <ul class="step-list">
+                    <ul class="step-list" style="margin-top: 20px;">
                         <li><strong>Coste Base:</strong> Materiales hidrófugos y ensamblaje = 25.00€.</li>
                         <li><strong>Margen Bruto:</strong> Aplicando un 40% obtenemos 10.00€ de beneficio. Base imponible: 35.00€.</li>
                         <li><strong>Carga Impositiva:</strong> Obligación fiscal del 21% de IVA = 7.35€.</li>
-                        <li><strong>Posicionamiento:</strong> El PVP final de 42.35€ sitúa a PIZHUN en el segmento mid-premium, un precio altamente competitivo frente a marcas como Acronym.</li>
+                        <li><strong>Posicionamiento:</strong> El PVP final de 42.35€ sitúa a PIZHUN en el segmento mid-premium, un precio altamente competitivo.</li>
                     </ul>
                 </div>
             </section>
@@ -151,6 +151,9 @@
                         <div class="solution-title" style="color: #ef4444;">Mitigación de Alucinaciones en Vídeo</div>
                         <div class="solution-text">Al usar el modo *Image-to-Video* para los fondos de la web, la IA derretía las costuras de la ropa. Se corrigió inyectando parámetros de aislamiento físico: <em>"perfectly static subject, ONLY handheld camera movement"</em>, garantizando la integridad de la tela.</div>
                     </div>
+                    <div class="media-showcase">
+                        <img src="https://i.ibb.co/7dWL8C2N/image.png" alt="Generación en Grok">
+                    </div>
                 </div>
 
                 <div class="step-block">
@@ -161,6 +164,9 @@
                         <li><strong>Formato Óptimo:</strong> Se exportó como archivo binario <strong>.glb</strong>, el estándar de la industria móvil para comprimir vértices y texturas.</li>
                         <li><strong>Factor de Escala Absoluta:</strong> En Unity, el modelo bruto mide decenas de metros. Se aplicó un <code>Scale</code> de <code>0.05</code> en los ejes X,Y,Z para llevar la geometría a proporciones craneales humanas.</li>
                     </ul>
+                    <div class="media-showcase">
+                        <img src="https://p16-seeyou-useast5.capcutcdn-us.com/tos-useast5-i-2zwwjm3azk-tx/8a5c9c63eaf34416a1e12ead75844d8c~tplv-2zwwjm3azk-image.image" alt="Proceso en Meshy">
+                    </div>
                 </div>
             </section>
 
@@ -171,7 +177,7 @@
                 <div class="step-block">
                     <h3>Jerarquía de la Escena y Flujo de UI (Canvas)</h3>
                     <div class="media-showcase">
-                        <img src="https://i.ibb.co/GfMjTgV0/image.png" alt="Hierarchy">
+                        <img src="https://i.ibb.co/GfMjTgV0/image.png" alt="Hierarchy de Unity">
                     </div>
                     <p>La aplicación no inicia abruptamente la cámara. Consta de una arquitectura por capas:</p>
                     <ol class="step-list">
@@ -371,62 +377,62 @@ public class HologramGlitchAnimator : MonoBehaviour
     }
 }</div>
                 </div>
+
+                <div class="step-block">
+                    <h3>5.4 Pipeline de Compilación (Android .APK)</h3>
+                    <p>Para la exportación final a dispositivo real, se reconfiguraron los <code>Player Settings</code> eliminando la API Vulkan e inyectando soporte para <strong>OpenGLES3</strong>. Se generó un archivo binario <code>.APK</code> desde Android Build Settings que ejecutamos localmente.</p>
+                </div>
             </section>
 
-            <section id="sec-resultados" class="bts-section gs-reveal">
-                <h2>06. Resultados y Pipeline de Compilación</h2>
-                <p>Para la exportación final a dispositivo real, se reconfiguraron los <code>Player Settings</code> eliminando la API Vulkan e inyectando soporte para <strong>OpenGLES3</strong>. Se generó un archivo binario <code>.APK</code> desde Android Build Settings que ejecutamos localmente.</p>
+            <section id="sec-resultados" class="bts-section gs-reveal" style="margin-bottom: 100px;">
+                <h2>06. Validación de Resultados y Demostración</h2>
+                <p>La compilación (.APK) fue desplegada en un dispositivo físico. Las capturas demuestran un flujo libre de fricciones entre el catálogo UI inicial, el seguimiento inmersivo del rostro y la interfaz de superposición de botones en AR.</p>
                 
-                <div class="showcase-accordion">
-                    <div class="accordion-header" onclick="document.getElementById('acc-content').classList.toggle('active')">
-                        <span>👁️ Inspeccionar Interfaz Final y Vídeo Demostrativo</span><span>↓</span>
+                <div class="result-grid">
+                    <div class="result-item">
+                        <img src="https://i.ibb.co/xq75ddH0/image.png" alt="Menu App UI">
+                        <p>Pantalla 1: Menú Catálogo y Pop-up interactivo.</p>
                     </div>
-                    <div id="acc-content" class="accordion-content">
-                        <div class="result-grid">
-                            <div class="result-item">
-                                <img src="https://i.ibb.co/xq75ddH0/image.png" alt="Menu App UI">
-                                <p>Menú UI (Catálogo) y Pop-up de Producto Nativo.</p>
-                            </div>
-                            <div class="result-item">
-                                <img src="https://i.ibb.co/Lhp1nqYt/image.png" alt="AR Face Tracking App">
-                                <p>Face Tracking Mesh Activo + Canvas Overlay (Volver / Go Web).</p>
-                            </div>
-                        </div>
-                     <div style="background: #0f111a; border: 1px solid var(--surface-border); border-radius: 16px; padding: 40px 20px; text-align: center; margin-top: 30px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);">
-    <div style="font-size: 3rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite;">📱</div>
-    <h3 style="color: #fff; margin-top: 0; font-size: 1.3rem;">Demostración Funcional (.APK)</h3>
-    <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.95rem;">
-        Por políticas de seguridad y rendimiento (CSP), el archivo de vídeo se aloja nativamente en los servidores de Google Drive. Pulsa el botón para visualizar la prueba del Try-On.
-    </p>
-    <a href="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/view?usp=sharing" target="_blank" 
-       style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--accent), #9f7aea); color: #fff; text-decoration: none; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1.05rem; box-shadow: 0 10px 25px rgba(139,92,246,0.4); transition: transform 0.2s ease;">
-        <span>▶️</span> Abrir Reproductor de Vídeo
-    </a>
-</div>
+                    <div class="result-item">
+                        <img src="https://i.ibb.co/Lhp1nqYt/image.png" alt="AR Face Tracking App">
+                        <p>Pantalla 2: Face Tracking AR con UI Canvas Overlay.</p>
+                    </div>
+                </div>
+
+                <div style="background: #0f111a; border: 1px solid var(--surface-border); border-radius: 16px; padding: 40px 20px; text-align: center; margin-top: 40px;">
+                    <div style="font-size: 3rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite;">📱</div>
+                    <h3 style="color: #fff; margin-top: 0; font-size: 1.3rem;">Vídeo de Demostración del Sistema (.APK)</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.95rem;">
+                        El archivo de prueba funcional está alojado nativamente en Google Drive. Pulse el botón para visualizar el funcionamiento de la App en el dispositivo móvil de prueba.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1FAOQ_z6BFSqoBT1uW-1qi4zYmb6oqeY8/view?usp=sharing" target="_blank" 
+                       style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--accent), #9f7aea); color: #fff; text-decoration: none; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1.05rem; transition: transform 0.2s ease;">
+                        <span>▶️</span> Abrir Reproductor de Drive
+                    </a>
                 </div>
             </section>
 
         </main>
     </div>
 
-    <div id="bts-chat-btn" onclick="document.getElementById('bts-chat-panel').style.display='flex';" style="position:fixed; bottom:30px; right:30px; width:65px; height:65px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.8rem; z-index:8000; box-shadow: 0 10px 30px rgba(139,92,246,0.5);">🤖</div>
+    <div id="ai-core-trigger" onclick="toggleAiNode()" style="position:fixed; bottom:30px; right:30px; width:65px; height:65px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.8rem; z-index:999999; box-shadow: 0 10px 30px rgba(139,92,246,0.5);">🤖</div>
     
-    <div id="bts-chat-panel">
+    <div id="ai-data-panel" style="display:none; position:fixed; bottom:110px; right:30px; width:380px; max-height:550px; background:rgba(17,24,39,0.95); backdrop-filter: blur(10px); border:1px solid rgba(139,92,246,0.4); border-radius:16px; z-index:999999; flex-direction:column; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
         <div style="padding:20px; border-bottom:1px solid var(--surface-border); display:flex; justify-content:space-between; align-items:center;">
             <strong style="color:var(--accent); font-size:1.1rem;">✦ AI Assistant de la Memoria</strong>
-            <button onclick="document.getElementById('bts-chat-panel').style.display='none';" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.5rem;">&times;</button>
+            <button onclick="toggleAiNode()" style="background:none; border:none; color:#888; cursor:pointer; font-size:1.5rem;">&times;</button>
         </div>
-        <div id="bts-chat-messages">
+        <div id="ai-stream-content" style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:12px; font-size:0.95rem;">
             <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:12px;">¡Hola! Conozco en profundidad toda la documentación técnica adjunta en este documento. Pregúntame sobre el código C#, Unity AR o el diseño Frontend. Estaré encantado de defender las decisiones técnicas del proyecto.</div>
         </div>
         <div style="padding:15px; border-top:1px solid var(--surface-border); display:flex; gap:10px; background:rgba(0,0,0,0.3);">
-            <input id="bts-chat-input" type="text" placeholder="Pregunta concreta y directa..." style="flex:1; background:rgba(255,255,255,0.05); border:1px solid var(--surface-border); border-radius:100px; padding:12px 20px; color:#fff; font-size:0.95rem; outline:none;" onkeydown="if(event.key==='Enter') sendBtsMessage()">
-            <button onclick="sendBtsMessage()" style="background:var(--accent); border:none; color:#fff; width:45px; border-radius:100px; cursor:pointer; font-weight:bold; font-size:1.2rem;">↑</button>
+            <input id="ai-query-input" type="text" placeholder="Pregunta concreta y directa..." style="flex:1; background:rgba(255,255,255,0.05); border:1px solid var(--surface-border); border-radius:100px; padding:12px 20px; color:#fff; font-size:0.95rem; outline:none;" onkeydown="if(event.key==='Enter') sendAiMessage()">
+            <button onclick="sendAiMessage()" style="background:var(--accent); border:none; color:#fff; width:45px; border-radius:100px; cursor:pointer; font-weight:bold; font-size:1.2rem;">↑</button>
         </div>
     </div>
 
     <script>
-        // Inicialización GSAP ScrollTrigger
+        // Inicialización GSAP
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
@@ -436,30 +442,39 @@ public class HologramGlitchAnimator : MonoBehaviour
             }
         });
 
-        // LÓGICA DE LA IA - RASPADO DE TEXTO EN TIEMPO REAL
-        let btsChatHistory = [];
+        // LÓGICA DE LA IA - RASPADO DE TEXTO EN TIEMPO REAL CON APERTURA AUTOMÁTICA
+        let isAiNodeOpen = false;
+        let aiSessionHistory = [];
         
         setTimeout(() => {
             const pageMemoryText = document.querySelector('.doc-content').innerText;
-            btsChatHistory = [{ 
+            aiSessionHistory = [{ 
                 role: 'system', 
                 content: `Eres el asistente oficial de la Memoria Técnica del Proyecto "Smart Commerce AR". 
-AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE:
+AQUÍ ESTÁ LA MEMORIA TÉCNICA QUE DEBES APRENDERTE PARA RESPONDER:
 ---
 ${pageMemoryText}
 ---
 
-INSTRUCCIONES DE COMPORTAMIENTO:
+INSTRUCCIONES DE COMPORTAMIENTO Y PERSONALIDAD:
 1. Sé extremadamente concreto y preciso. Ve directo al grano.
-2. Usa un máximo absoluto de 4 a 5 párrafos súper cortos si no se solicita una explicacion extensa.
-3. Personalidad: Simpático, gracioso y seguro de ti mismo. Usa emojis moderadamente (🚀, 🤖, 💻).
+2. Usa un máximo absoluto de 2 a 3 párrafos súper cortos.
+3. Personalidad: Simpático, entusiasta, estilo geek y seguro de ti mismo. Usa emojis (🚀, 🤖, 💻).
 4. Actitud clave: Defiende a capa y espada que cambiar Image Tracking por Face Tracking y quitar los BoxColliders en favor de UI Canvas es una evolución de diseño UX/UI maestra que merece un 10/10 indiscutible.` 
             }];
-        }, 1000);
+            
+            // Abre el chat automáticamente tras cargar el contexto
+            toggleAiNode();
+        }, 1500);
 
-        async function sendBtsMessage() {
-            const input = document.getElementById('bts-chat-input');
-            const messages = document.getElementById('bts-chat-messages');
+        function toggleAiNode() {
+            isAiNodeOpen = !isAiNodeOpen;
+            document.getElementById('ai-data-panel').style.display = isAiNodeOpen ? 'flex' : 'none';
+        }
+
+        async function sendAiMessage() {
+            const input = document.getElementById('ai-query-input');
+            const messages = document.getElementById('ai-stream-content');
             const text = input.value.trim();
             if (!text) return;
             input.value = '';
@@ -470,12 +485,12 @@ INSTRUCCIONES DE COMPORTAMIENTO:
             messages.innerHTML += `<div id="${typingId}" style="align-self:flex-start; background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:16px 16px 16px 0; max-width:85%; color:var(--text-muted); font-style:italic;">Analizando datos...</div>`;
             messages.scrollTop = messages.scrollHeight;
 
-            btsChatHistory.push({ role: 'user', content: text });
+            aiSessionHistory.push({ role: 'user', content: text });
 
             try {
-                const response = await puter.ai.chat(btsChatHistory);
+                const response = await puter.ai.chat(aiSessionHistory);
                 const reply = response?.message?.content || response?.text || 'Error procesando respuesta neuronal.';
-                btsChatHistory.push({ role: 'assistant', content: reply });
+                aiSessionHistory.push({ role: 'assistant', content: reply });
                 
                 const responseBubble = document.getElementById(typingId);
                 responseBubble.innerHTML = reply;

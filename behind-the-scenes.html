@@ -127,12 +127,26 @@
                 <p><img src="https://cdn.prod.website-files.com/6088303c28a7c75678aa21d8/693c0580a2ac4c34726aa6ba_-Zz6T2nk_400x400.png" class="app-logo" alt="Antigravity"> Desarrollada en <strong>Antigravity IDE</strong>, la Landing Page es el punto de conversión. El usuario llega aquí directamente desde la aplicación de Unity.</p>
                 
                 <div class="step-block">
-                    <h3>Arquitectura Mobile-First</h3>
+                   <div class="step-block">
+                    <h3>Generación Asistida y Arquitectura Mobile-First</h3>
+                    <p>El esqueleto estructural de la pasarela web fue generado inicialmente utilizando inteligencia artificial en el entorno de <strong>Antigravity IDE</strong> para agilizar la maquetación semántica.</p>
+                    
+                    <div class="prompt-box">
+                        <strong style="color: #38bdf8;">Prompt de Generación Web Base:</strong><br>
+                        "Actúa como un desarrollador Front-End. Genera el esqueleto HTML5 semántico y CSS3 base para una Landing Page de un ecommerce 'Tech-Wear' llamado PIZHUN. Estética oscura (Dark Mode), minimalista y cyberpunk. Necesito secciones para: Hero con CTA, un Grid de productos (Gorras, Chaquetas), una sección dedicada a descargar una App de Realidad Aumentada (.APK), testimonios de clientes, una sección 'Brand Vision 2026' y un footer legal completo. Todo debe ser 100% Mobile-First."
+                    </div>
+
+                    <div class="defense-box" style="border-left-color: #8b5cf6; background: rgba(139, 92, 246, 0.05);">
+                        <div class="solution-title" style="color: #c4b5fd;">Refactorización y Ensamblaje Manual (Aporte Técnico)</div>
+                        <div class="solution-text">El código devuelto por la IA sirvió únicamente como un lienzo en blanco. <strong>Intervine el código a mano en su totalidad</strong> para inyectar mis activos multimedia (los vídeos generados en Grok y los renders 3D), ajustar el diseño a mi visión exacta y programar la lógica interactiva avanzada para garantizar una experiencia de usuario fluida:</div>
+                    </div>
+
                     <ul class="step-list">
-                        <li><strong>CSS Grid Responsivo:</strong> El catálogo se construyó sin Media Queries densas utilizando la regla <code>grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))</code>. Esto asegura que en un smartphone se muestre en una columna perfecta, maximizando el espacio visual.</li>
-                        <li><strong>Single Page UX y Pop-ups:</strong> Para visualizar detalles sin cargar páginas nuevas, se implementó la etiqueta nativa de HTML5 <code>&lt;dialog&gt;</code>. Al invocar <code>.showModal()</code>, el navegador renderiza el pop-up en el <em>Top-Layer</em> y bloquea automáticamente el scroll de fondo, mejorando la accesibilidad y el rendimiento.</li>
-                        <li><strong>Validación Legal:</strong> El Footer incluye políticas de privacidad y métodos de pago seguros cifrados, un requisito vital del Tema 14 para transmitir confianza al consumidor en la transacción final.</li>
+                        <li><strong>CSS Grid Responsivo (Ajuste Manual):</strong> Refiné la cuadrícula del catálogo eliminando Media Queries densas y estáticas, sustituyéndolas por la regla matemática <code>grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))</code>. Esto asegura que en un smartphone se apile en una columna perfecta, maximizando el espacio visual de la prenda.</li>
+                        <li><strong>Single Page UX y Pop-ups Nativos:</strong> Para visualizar detalles de producto (tallas, materiales) y alertas de seguridad (descarga del APK) sin cargar páginas nuevas, implementé la API nativa de HTML5 <code>&lt;dialog&gt;</code>. Al invocar <code>.showModal()</code> con JS, el navegador renderiza el pop-up en el <em>Top-Layer</em> y bloquea automáticamente el scroll de fondo, mejorando el rendimiento web.</li>
+                        <li><strong>Validación Legal:</strong> Diseñé el Footer integrando políticas de privacidad, términos y métodos de pago seguros cifrados. Un requisito vital del Tema 14 para transmitir confianza absoluta al consumidor antes de la transacción final.</li>
                     </ul>
+                </div>
                 </div>
             </section>
 
